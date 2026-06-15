@@ -10,4 +10,3 @@ The open governance standard for agentic systems. Substrate-agnostic. Model-agno
 
 Authored by [Extended Systems Intelligence Corporation (XSI)](https://xtendedsystems.com).
 
-See also: [aims-standard](https://github.com/Extended-Systems-Intelligence/aims-standard) (canonical spec home).
