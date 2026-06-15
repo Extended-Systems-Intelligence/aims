@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 1100" font-family="Helvetica, Arial, sans-serif">
+  <!-- AIMS D05 - Witness Chain Formation: Sequence Diagram -->
+  <!-- Educational diagram. Sanitized: canonical AIMS engineering lexicon only. -->
+
+  <defs>
+    <marker id="arrow_d5" viewBox="0 0 12 8" refX="11" refY="4" markerWidth="12" markerHeight="8" orient="auto">
+      <polygon points="0,0 12,4 0,8" fill="black"/>
+    </marker>
+  </defs>
+
+  <!-- Header -->
+  <text x="270" y="285" font-size="18" font-weight="bold">D05</text>
+  <text x="270" y="310" font-size="13" font-style="italic">Witness Chain Formation - Per-Path Hash-Chained Audit Records</text>
+  <text x="270" y="332" font-size="10">Source: AIMS specification §3.10 (Witness Layer), §3.18.5 (IAME), §3.11 (Memory)</text>
+
+  <!-- Lifeline headers -->
+  <rect x="265" y="365" width="80" height="28" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="305" y="383" font-size="10" font-weight="bold" text-anchor="middle">SENDER</text>
+
+  <rect x="365" y="365" width="80" height="28" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="405" y="383" font-size="10" font-weight="bold" text-anchor="middle">RELAY</text>
+
+  <rect x="465" y="365" width="100" height="28" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="515" y="383" font-size="10" font-weight="bold" text-anchor="middle">WITNESS LAYER</text>
+
+  <rect x="585" y="365" width="80" height="28" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="625" y="383" font-size="10" font-weight="bold" text-anchor="middle">RECEIVER</text>
+
+  <!-- Lifelines (vertical dashed lines) -->
+  <line x1="305" y1="393" x2="305" y2="850" stroke="black" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="405" y1="393" x2="405" y2="850" stroke="black" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="515" y1="393" x2="515" y2="850" stroke="black" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="625" y1="393" x2="625" y2="850" stroke="black" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <!-- Step 1: Sender constructs IAME envelope -->
+  <text x="240" y="418" font-size="10" font-weight="bold" text-anchor="end">1</text>
+  <rect x="265" y="408" width="80" height="22" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="305" y="423" font-size="9" text-anchor="middle">construct IAME</text>
+
+  <!-- Step 2: Sender sends to Relay -->
+  <text x="240" y="453" font-size="10" font-weight="bold" text-anchor="end">2</text>
+  <line x1="305" y1="446" x2="403" y2="446" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d5)"/>
+  <text x="350" y="441" font-size="9" text-anchor="middle">send(IAME-N)</text>
+  <text x="350" y="461" font-size="8" font-style="italic" text-anchor="middle">predecessor: chain_hash(N-1)</text>
+
+  <!-- Step 3: Relay routes via path_id -->
+  <text x="240" y="488" font-size="10" font-weight="bold" text-anchor="end">3</text>
+  <rect x="365" y="478" width="80" height="22" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="405" y="493" font-size="9" text-anchor="middle">route by path_id</text>
+
+  <!-- Step 4: Relay writes to Witness -->
+  <text x="240" y="523" font-size="10" font-weight="bold" text-anchor="end">4</text>
+  <line x1="405" y1="516" x2="513" y2="516" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d5)"/>
+  <text x="460" y="511" font-size="9" text-anchor="middle">write(record_N)</text>
+
+  <!-- Step 5: Witness Layer computes chain_hash -->
+  <text x="240" y="558" font-size="10" font-weight="bold" text-anchor="end">5</text>
+  <rect x="465" y="548" width="100" height="48" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="515" y="563" font-size="9" text-anchor="middle">compute</text>
+  <text x="515" y="575" font-size="9" text-anchor="middle">chain_hash =</text>
+  <text x="515" y="587" font-size="9" text-anchor="middle">SHA256(prev || N)</text>
+
+  <!-- Step 6: Witness signs and returns attestation -->
+  <text x="240" y="616" font-size="10" font-weight="bold" text-anchor="end">6</text>
+  <line x1="513" y1="612" x2="407" y2="612" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d5)"/>
+  <text x="460" y="607" font-size="9" text-anchor="middle">witness_attestation</text>
+  <text x="460" y="624" font-size="8" font-style="italic" text-anchor="middle">witness_record_id, chain_hash, signature</text>
+
+  <!-- Step 7: Relay forwards enveloped message to Receiver -->
+  <text x="240" y="660" font-size="10" font-weight="bold" text-anchor="end">7</text>
+  <line x1="405" y1="652" x2="623" y2="652" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d5)"/>
+  <text x="515" y="647" font-size="9" text-anchor="middle">deliver(IAME-N + witness_attestation)</text>
+
+  <!-- Step 8: Receiver verifies signature, chain, sequence -->
+  <text x="240" y="697" font-size="10" font-weight="bold" text-anchor="end">8</text>
+  <rect x="585" y="685" width="80" height="34" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="625" y="700" font-size="9" text-anchor="middle">verify checks</text>
+  <text x="625" y="713" font-size="8" font-style="italic" text-anchor="middle">8 verification steps</text>
+
+  <!-- Step 9: Receiver queries Witness for chain continuity confirm -->
+  <text x="240" y="747" font-size="10" font-weight="bold" text-anchor="end">9</text>
+  <line x1="623" y1="740" x2="517" y2="740" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d5)"/>
+  <text x="570" y="735" font-size="9" text-anchor="middle">verify chain continuity</text>
+
+  <line x1="513" y1="765" x2="623" y2="765" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d5)"/>
+  <text x="568" y="760" font-size="9" text-anchor="middle">continuity OK</text>
+
+  <!-- Step 10: Receiver acks (sequence advances) -->
+  <text x="240" y="803" font-size="10" font-weight="bold" text-anchor="end">10</text>
+  <rect x="585" y="790" width="80" height="22" fill="white" stroke="black" stroke-width="1.5"/>
+  <text x="625" y="805" font-size="9" text-anchor="middle">accept N</text>
+
+  <text x="475" y="838" font-size="9" font-style="italic" text-anchor="middle">[record N becomes predecessor for record N+1]</text>
+
+  <!-- Hash chain visualization -->
+  <rect x="245" y="870" width="465" height="68" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="255" y="888" font-size="11" font-weight="bold">HASH-CHAIN STRUCTURE (per path)</text>
+  <text x="255" y="906" font-size="10">record_N.chain_hash = SHA-256( record_(N-1).chain_hash || record_N.payload_hash )</text>
+  <text x="255" y="922" font-size="9" font-style="italic">A chain break implies Witness Layer compromise OR forgery attempt; both trigger</text>
+  <text x="255" y="934" font-size="9" font-style="italic">EMERGENCY_HALT_BROADCAST + SOVEREIGN_REQUIRED_REVIEW (per §3.18.5).</text>
+
+  <!-- Bottom legend -->
+  <text x="270" y="990" font-size="8">Multiple agents witnessing the same path see the same chain. Episodic memory (§3.11) is a topology-governed read view on this chain.</text>
+  <text x="270" y="1002" font-size="8">Witness records are WORM-immutable. The Forensic Query Engine retrieves any historical record by witness_record_id.</text>
+</svg>

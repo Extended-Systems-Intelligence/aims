@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+XSI-AIMS README masthead banner.
+Mark: Radial Gateway (three rings = L-Plan / L-Form / L-Exec; SOV→ORC→RELAY→EXEC spine;
+six diagonals to the lower archetype columns; EXEC Gateway center node) adapted from
+xtendedsystems.com brand mark, recoloured for a dark masthead panel.
+Palette: carbon #0a0f1e → sapphire #0a3b85 ground, brand crimson #c1121f / #e0566a,
+gold rule #d4a017. Text uses system serif/sans so GitHub renders it without web fonts.
+viewBox 1200x340, scales freely; reads on both GitHub light and dark themes.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340" role="img" aria-label="XSI-AIMS — Agent Instrumentation and Management Specification">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0f1e"/>
+      <stop offset="0.55" stop-color="#0b234f"/>
+      <stop offset="1" stop-color="#0a3b85"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#c1121f" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#c1121f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="340" rx="18" fill="url(#bg)"/>
+  <circle cx="215" cy="172" r="230" fill="url(#glow)"/>
+
+  <!-- Radial Gateway mark -->
+  <g transform="translate(215 172) scale(1.28)">
+    <!-- ambient ring bands -->
+    <circle r="65" fill="none" stroke="#c1121f" stroke-width="8" opacity="0.16"/>
+    <circle r="57" fill="none" stroke="#c1121f" stroke-width="8" opacity="0.16"/>
+    <circle r="50" fill="none" stroke="#c1121f" stroke-width="8" opacity="0.16"/>
+    <!-- crisp rings -->
+    <circle r="65" fill="none" stroke="#e0566a" stroke-width="2.2" opacity="0.85"/>
+    <circle r="57" fill="none" stroke="#e0566a" stroke-width="2.2" opacity="0.85"/>
+    <circle r="50" fill="none" stroke="#e0566a" stroke-width="2.2" opacity="0.85"/>
+    <!-- vertical spine SOV -> ORC -> RELAY -> EXEC -->
+    <line x1="0" y1="-65" x2="0" y2="-4" stroke="#f4f4f5" stroke-width="3" stroke-linecap="round"/>
+    <!-- six diagonals to lower archetype columns -->
+    <line x1="-9.5" y1="5.5" x2="-56.3" y2="32.5" stroke="#e0566a" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+    <line x1="-9.5" y1="5.5" x2="-49.4" y2="28.5" stroke="#e0566a" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+    <line x1="-9.5" y1="5.5" x2="-43.3" y2="25.0" stroke="#e0566a" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+    <line x1="9.5"  y1="5.5" x2="56.3"  y2="32.5" stroke="#e0566a" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+    <line x1="9.5"  y1="5.5" x2="49.4"  y2="28.5" stroke="#e0566a" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+    <line x1="9.5"  y1="5.5" x2="43.3"  y2="25.0" stroke="#e0566a" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+    <!-- spine archetype dots -->
+    <circle cx="0" cy="-65" r="3.4" fill="#e0566a"/>
+    <circle cx="0" cy="-57" r="3.4" fill="#eb8a96"/>
+    <circle cx="0" cy="-50" r="3.4" fill="#f4b8c0"/>
+    <!-- lower-left dots -->
+    <circle cx="-56.3" cy="32.5" r="3.4" fill="#e0566a"/>
+    <circle cx="-49.4" cy="28.5" r="3.4" fill="#eb8a96"/>
+    <circle cx="-43.3" cy="25.0" r="3.4" fill="#f4b8c0"/>
+    <!-- lower-right dots -->
+    <circle cx="56.3" cy="32.5" r="3.4" fill="#e0566a"/>
+    <circle cx="49.4" cy="28.5" r="3.4" fill="#eb8a96"/>
+    <circle cx="43.3" cy="25.0" r="3.4" fill="#f4b8c0"/>
+    <!-- EXEC Gateway center node -->
+    <circle r="9" fill="#f2ede6" stroke="#ffffff" stroke-width="2.2"/>
+  </g>
+
+  <!-- Wordmark + supporting text -->
+  <g font-family="Georgia, 'Times New Roman', serif">
+    <text x="442" y="150" font-size="100" font-weight="600" fill="#ffffff" letter-spacing="-2">XSI-AIMS</text>
+  </g>
+  <g font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif">
+    <text x="446" y="192" font-size="25" font-weight="500" fill="#c9d4e8" letter-spacing="0.4">Agent Instrumentation &amp; Management Specification</text>
+    <line x1="446" y1="214" x2="1112" y2="214" stroke="#d4a017" stroke-width="2" opacity="0.9"/>
+    <text x="446" y="250" font-size="18" font-weight="400" fill="#aab6cc">The open standard for instrumenting, managing, and governing agentic systems.</text>
+    <text x="446" y="288" font-size="16" font-weight="600" fill="#e6c463" letter-spacing="1.2">Substrate-agnostic&#160;&#160;·&#160;&#160;Model-agnostic&#160;&#160;·&#160;&#160;Deployment-agnostic</text>
+    <text x="1112" y="322" font-size="13" font-weight="400" fill="#6f7d96" text-anchor="end">Extended Systems Intelligence Corporation</text>
+  </g>
+</svg>

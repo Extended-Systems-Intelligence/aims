@@ -1,0 +1,31 @@
+name: SVG validate
+
+on:
+  pull_request:
+    paths:
+      - 'figures/**.svg'
+  push:
+    branches: [main, develop]
+    paths:
+      - 'figures/**.svg'
+
+jobs:
+  svg-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y libxml2-utils imagemagick
+      - name: xmllint each SVG
+        run: |
+          for f in figures/*.svg; do
+            echo "Validating $f"
+            xmllint --noout "$f"
+          done
+      - name: Render each SVG to PNG (smoke test)
+        run: |
+          mkdir -p /tmp/render
+          for f in figures/*.svg; do
+            base=$(basename "$f" .svg)
+            convert -density 110 -background white "$f" "/tmp/render/$base.png"
+          done

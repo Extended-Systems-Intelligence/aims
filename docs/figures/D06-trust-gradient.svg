@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 1100" font-family="Helvetica, Arial, sans-serif">
+  <!-- AIMS D06 - Trust Gradient: Continuous Scalar with Asymmetric Decay and Gating -->
+  <!-- Educational diagram. Sanitized: canonical AIMS engineering lexicon only. -->
+
+  <defs>
+    <marker id="arrow_d6" viewBox="0 0 12 8" refX="11" refY="4" markerWidth="12" markerHeight="8" orient="auto">
+      <polygon points="0,0 12,4 0,8" fill="black"/>
+    </marker>
+  </defs>
+
+  <!-- Header -->
+  <text x="270" y="285" font-size="18" font-weight="bold">D06</text>
+  <text x="270" y="310" font-size="13" font-style="italic">Trust Gradient - Continuous Scalar with Asymmetric Decay and Gating</text>
+  <text x="270" y="332" font-size="10">Source: AIMS specification §3.18.4 (Trust Gradient and Cumulative Degradation)</text>
+
+  <!-- Continuum scale 0.0 to 1.0 -->
+  <text x="265" y="365" font-size="11" font-weight="bold">CONTINUUM</text>
+  <text x="265" y="378" font-size="9" font-style="italic">scalar [0.0, 1.0]</text>
+  <text x="265" y="390" font-size="9" font-style="italic">per-agent state</text>
+  <text x="265" y="402" font-size="9" font-style="italic">owned by Enforcer</text>
+
+  <!-- The continuum bar -->
+  <line x1="370" y1="395" x2="700" y2="395" stroke="black" stroke-width="2.5"/>
+  <line x1="370" y1="385" x2="370" y2="405" stroke="black" stroke-width="1.5"/>
+  <line x1="700" y1="385" x2="700" y2="405" stroke="black" stroke-width="1.5"/>
+
+  <!-- Tick marks for tier thresholds -->
+  <line x1="403" y1="389" x2="403" y2="401" stroke="black" stroke-width="1"/>
+  <line x1="436" y1="389" x2="436" y2="401" stroke="black" stroke-width="1"/>
+  <line x1="568" y1="389" x2="568" y2="401" stroke="black" stroke-width="1"/>
+  <line x1="634" y1="389" x2="634" y2="401" stroke="black" stroke-width="1"/>
+
+  <!-- Tier labels above and below -->
+  <text x="370" y="378" font-size="9" text-anchor="middle">0.0</text>
+  <text x="403" y="378" font-size="9" text-anchor="middle">0.1</text>
+  <text x="436" y="378" font-size="9" text-anchor="middle">0.2</text>
+  <text x="502" y="378" font-size="9" text-anchor="middle">0.5</text>
+  <text x="568" y="378" font-size="9" text-anchor="middle">0.6</text>
+  <text x="634" y="378" font-size="9" text-anchor="middle">0.8</text>
+  <text x="700" y="378" font-size="9" text-anchor="middle">1.0</text>
+
+  <text x="386" y="420" font-size="8" text-anchor="middle">quarantine</text>
+  <text x="386" y="430" font-size="8" text-anchor="middle">review</text>
+
+  <text x="420" y="420" font-size="8" text-anchor="middle">force</text>
+  <text x="420" y="430" font-size="8" text-anchor="middle">L1</text>
+
+  <text x="455" y="420" font-size="8" text-anchor="middle">force</text>
+  <text x="455" y="430" font-size="8" text-anchor="middle">L2</text>
+
+  <text x="500" y="420" font-size="8" text-anchor="middle">post-quarantine</text>
+  <text x="500" y="430" font-size="8" text-anchor="middle">re-attest</text>
+
+  <text x="555" y="420" font-size="8" text-anchor="middle">new-agent</text>
+  <text x="555" y="430" font-size="8" text-anchor="middle">baseline</text>
+
+  <text x="618" y="420" font-size="8" text-anchor="middle">eligible:</text>
+  <text x="618" y="430" font-size="8" text-anchor="middle">promotion</text>
+
+  <text x="670" y="420" font-size="8" text-anchor="middle">eligible:</text>
+  <text x="670" y="430" font-size="8" text-anchor="middle">scope expansion</text>
+
+  <!-- Update rules box -->
+  <rect x="245" y="455" width="465" height="125" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="255" y="473" font-size="11" font-weight="bold">UPDATE RULES (asymmetric)</text>
+
+  <text x="255" y="492" font-size="10" font-weight="bold">positive evidence (slow accumulation)</text>
+  <text x="255" y="506" font-size="9">successful_action: +0.001 (cap 1.0)   |   coherence_self_resolved: +0.005</text>
+  <text x="255" y="518" font-size="9">integration_decision_validated: +0.003   |   provocation_passed: +0.002 (capped P7D)</text>
+
+  <text x="255" y="538" font-size="10" font-weight="bold">shadow events (rapid decay)</text>
+  <text x="255" y="552" font-size="9">shadow_emerging: -0.02   |   shadow_active: -0.10   |   shadow_critical: -0.30</text>
+  <text x="255" y="564" font-size="9">correlated_shadow_contribution: -0.20   |   provocation_failed: -0.25 (uncapped)</text>
+  <text x="255" y="576" font-size="9">integrity_hash_mismatch: -1.0 (immediate distrust + auto-quarantine)</text>
+
+  <!-- Time decay box -->
+  <rect x="245" y="592" width="465" height="62" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="255" y="610" font-size="11" font-weight="bold">TIME DECAY (toward archetype baseline, asymmetric)</text>
+  <text x="255" y="628" font-size="9">delta_per_hour = (baseline - current) * decay_rate</text>
+  <text x="255" y="642" font-size="9">decay_rate = 0.001 if current &lt; baseline (10x faster recovery from low trust)</text>
+  <text x="255" y="652" font-size="9">decay_rate = 0.0001 if current &gt;= baseline (slow drop from inflated trust)</text>
+
+  <!-- Decision flow -->
+  <text x="265" y="690" font-size="11" font-weight="bold">SCOPE</text>
+  <text x="265" y="703" font-size="11" font-weight="bold">DECISION</text>
+  <text x="265" y="717" font-size="9" font-style="italic">on every scope</text>
+  <text x="265" y="729" font-size="9" font-style="italic">request</text>
+
+  <!-- Diamond: read gradient -->
+  <polygon points="445,680 545,718 445,756 345,718" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="445" y="710" font-size="10" font-weight="bold" text-anchor="middle">gradient *</text>
+  <text x="445" y="722" font-size="10" font-weight="bold" text-anchor="middle">scope_weight</text>
+  <text x="445" y="736" font-size="10" font-weight="bold" text-anchor="middle">&gt; minimum?</text>
+
+  <!-- yes branch -->
+  <line x1="545" y1="718" x2="595" y2="718" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d6)"/>
+  <text x="570" y="713" font-size="9" font-style="italic" text-anchor="middle">yes</text>
+
+  <rect x="600" y="700" width="100" height="36" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="650" y="717" font-size="10" font-weight="bold" text-anchor="middle">PERMIT</text>
+  <text x="650" y="730" font-size="9" text-anchor="middle">+ witness log</text>
+
+  <!-- no branch -->
+  <line x1="445" y1="756" x2="445" y2="780" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d6)"/>
+  <text x="455" y="772" font-size="9" font-style="italic">no</text>
+
+  <rect x="395" y="785" width="100" height="36" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="445" y="802" font-size="10" font-weight="bold" text-anchor="middle">DENY</text>
+  <text x="445" y="815" font-size="9" text-anchor="middle">or reduce scope</text>
+
+  <!-- Aggravator note -->
+  <rect x="245" y="843" width="465" height="48" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="255" y="861" font-size="11" font-weight="bold">CORRELATED SHADOW AGGRAVATOR (§3.18.1 integration)</text>
+  <text x="255" y="878" font-size="9">A correlation pattern that includes any agent with gradient &lt; 0.3 elevates ELEVATED to CRITICAL,</text>
+  <text x="255" y="888" font-size="9">making low gradient a multiplicative risk factor for system-level safety classification.</text>
+
+  <!-- Bottom legend -->
+  <text x="270" y="970" font-size="8">Trust is a stateful, continuous, time-decaying scalar. It is owned by the Enforcer, stored in the Witness Layer (§3.10),</text>
+  <text x="270" y="982" font-size="8">surfaced on the §3.23 dashboard heatmap, and integrated with §3.7 circuit breakers, §3.18.3 provocation testing,</text>
+  <text x="270" y="994" font-size="8">and §3.18.6 quarantine triggers. Sole basis for termination or scope expansion is prohibited; gradient is necessary, not sufficient.</text>
+</svg>

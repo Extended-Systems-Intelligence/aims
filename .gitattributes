@@ -1,0 +1,56 @@
+# AIMS specification project — line-ending + binary classification
+#
+# Why this file: prevent CRLF/LF mixed-line-ending churn that surfaces when
+# Windows contributors push (Windows core.autocrlf=true converts LF -> CRLF
+# in the working tree on checkout, then back to LF on commit; without
+# `text=auto eol=lf`, files can land in the index with CRLF endings or
+# trigger "LF will be replaced by CRLF" warnings on every operation).
+#
+# Policy:
+#   * text=auto eol=lf  — every text file normalizes to LF in the index
+#                          and stays LF on Linux/macOS checkout. Windows
+#                          contributors can have CRLF in working tree, but
+#                          the canonical stored form is LF.
+#   * <ext> binary       — don't try to normalize; keep bytes intact.
+#
+# Trigger to revisit: when adding a new binary file format (audio, video,
+# fonts, archives, etc.), add an explicit `binary` line below.
+
+* text=auto eol=lf
+
+# Image / vector / document binaries
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.pdf binary
+*.docx binary
+*.xlsx binary
+*.pptx binary
+
+# SVG is XML text but treated as binary to avoid line-ending churn on
+# vector files that are typically authored once and rarely re-saved.
+*.svg binary
+
+# Archives + compressed
+*.zip binary
+*.tar binary
+*.gz binary
+*.tgz binary
+*.bz2 binary
+*.7z binary
+
+# Audio / video
+*.mp3 binary
+*.mp4 binary
+*.mov binary
+*.webm binary
+
+# Fonts
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary

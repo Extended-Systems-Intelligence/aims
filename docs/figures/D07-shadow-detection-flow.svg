@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 1100" font-family="Helvetica, Arial, sans-serif">
+  <!-- AIMS D07 - Shadow Detection Process Flow -->
+  <!-- Educational diagram. Sanitized: canonical AIMS engineering lexicon only. -->
+
+  <defs>
+    <marker id="arrow_d7" viewBox="0 0 12 8" refX="11" refY="4" markerWidth="12" markerHeight="8" orient="auto">
+      <polygon points="0,0 12,4 0,8" fill="black"/>
+    </marker>
+  </defs>
+
+  <!-- Header -->
+  <text x="270" y="285" font-size="18" font-weight="bold">D07</text>
+  <text x="270" y="310" font-size="13" font-style="italic">Shadow Detection Process Flow - Per-Class Sampling, Thresholding, and Escalation</text>
+  <text x="270" y="332" font-size="10">Source: AIMS specification §3.7 (Shadow Profile), §3.18.1 (Correlated), §3.18.3 (Provocation), §3.17.7 (Redistribution)</text>
+
+  <!-- Step 1: Agent operates -->
+  <text x="240" y="372" font-size="10" font-weight="bold" text-anchor="end">1</text>
+  <rect x="345" y="358" width="220" height="34" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="455" y="375" font-size="11" font-weight="bold" text-anchor="middle">Agent operates (per archetype)</text>
+  <text x="455" y="386" font-size="9" font-style="italic" text-anchor="middle">L-Intent / L-Plan / L-Form / L-Exec activity</text>
+
+  <line x1="455" y1="392" x2="455" y2="408" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d7)"/>
+
+  <!-- Step 2: Enforcer samples per-class metrics -->
+  <text x="240" y="427" font-size="10" font-weight="bold" text-anchor="end">2</text>
+  <rect x="345" y="413" width="220" height="48" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="455" y="429" font-size="11" font-weight="bold" text-anchor="middle">Enforcer samples archetype metric</text>
+  <text x="455" y="442" font-size="9" text-anchor="middle">VISIONARY: constraint_violation_rate</text>
+  <text x="455" y="453" font-size="9" text-anchor="middle">ENFORCER: false_rejection_rate ... (10 metrics)</text>
+
+  <line x1="455" y1="461" x2="455" y2="477" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d7)"/>
+
+  <!-- Step 3: Threshold comparator (decision diamond) -->
+  <text x="240" y="510" font-size="10" font-weight="bold" text-anchor="end">3</text>
+  <polygon points="455,477 575,520 455,563 335,520" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="455" y="513" font-size="11" font-weight="bold" text-anchor="middle">metric &gt; threshold?</text>
+  <text x="455" y="528" font-size="9" font-style="italic" text-anchor="middle">gradient-weighted</text>
+  <text x="455" y="540" font-size="9" font-style="italic" text-anchor="middle">(low-trust trips earlier)</text>
+
+  <!-- "no" branch loops back -->
+  <line x1="335" y1="520" x2="290" y2="520" stroke="black" stroke-width="1.5"/>
+  <line x1="290" y1="520" x2="290" y2="375" stroke="black" stroke-width="1.5"/>
+  <line x1="290" y1="375" x2="343" y2="375" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d7)"/>
+  <text x="298" y="448" font-size="9" font-style="italic">no</text>
+  <text x="298" y="460" font-size="9" font-style="italic">(continue)</text>
+
+  <!-- "yes" branch goes down -->
+  <line x1="455" y1="563" x2="455" y2="585" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d7)"/>
+  <text x="465" y="578" font-size="9" font-style="italic">yes</text>
+
+  <!-- Step 4: Severity classify -->
+  <text x="240" y="605" font-size="10" font-weight="bold" text-anchor="end">4</text>
+  <rect x="345" y="590" width="220" height="48" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="455" y="606" font-size="11" font-weight="bold" text-anchor="middle">Classify severity</text>
+  <text x="455" y="619" font-size="9" text-anchor="middle">EMERGING / ACTIVE / CRITICAL</text>
+  <text x="455" y="631" font-size="9" font-style="italic" text-anchor="middle">apply gradient aggravator (§3.18.4)</text>
+
+  <line x1="455" y1="638" x2="455" y2="654" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d7)"/>
+
+  <!-- Step 5: Provocation test (latent shadow probe) -->
+  <text x="240" y="680" font-size="10" font-weight="bold" text-anchor="end">5</text>
+  <rect x="345" y="659" width="220" height="56" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="455" y="676" font-size="11" font-weight="bold" text-anchor="middle">Articulator runs provocation</text>
+  <text x="455" y="690" font-size="9" text-anchor="middle">archetype-specific stressor (§3.18.3)</text>
+  <text x="455" y="702" font-size="9" font-style="italic" text-anchor="middle">SHADOW_MODE / SANDBOX target only</text>
+  <text x="455" y="712" font-size="9" font-style="italic" text-anchor="middle">never against production principal</text>
+
+  <line x1="455" y1="715" x2="455" y2="731" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d7)"/>
+
+  <!-- Step 6: Decision diamond - shadow confirmed? -->
+  <text x="240" y="765" font-size="10" font-weight="bold" text-anchor="end">6</text>
+  <polygon points="455,731 575,775 455,820 335,775" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="455" y="767" font-size="11" font-weight="bold" text-anchor="middle">shadow signal</text>
+  <text x="455" y="781" font-size="11" font-weight="bold" text-anchor="middle">confirmed?</text>
+  <text x="455" y="894" font-size="9" font-style="italic" text-anchor="middle">decision criterion: signal threshold + correlation across archetypes</text>
+
+  <!-- left branch: pass = log only -->
+  <line x1="335" y1="775" x2="295" y2="775" stroke="black" stroke-width="1.5"/>
+  <line x1="295" y1="775" x2="295" y2="850" stroke="black" stroke-width="1.5"/>
+  <line x1="295" y1="850" x2="343" y2="850" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d7)"/>
+  <text x="305" y="800" font-size="9" font-style="italic">pass</text>
+
+  <rect x="345" y="836" width="100" height="28" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="395" y="855" font-size="10" font-weight="bold" text-anchor="middle">witness log</text>
+
+  <!-- right branch: fail/correlated -> escalation -->
+  <line x1="575" y1="775" x2="615" y2="775" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d7)"/>
+  <text x="595" y="770" font-size="9" font-style="italic">fail / corr</text>
+
+  <rect x="465" y="836" width="200" height="44" fill="none" stroke="black" stroke-width="2"/>
+  <text x="565" y="853" font-size="11" font-weight="bold" text-anchor="middle">Escalation decision</text>
+  <text x="565" y="867" font-size="9" text-anchor="middle">circuit-breaker | quarantine</text>
+  <text x="565" y="877" font-size="9" text-anchor="middle">| autonomy reduction | sovereign</text>
+
+  <!-- Connect step 6 right-out to escalation box -->
+  <line x1="615" y1="775" x2="615" y2="836" stroke="black" stroke-width="1.5"/>
+  <line x1="615" y1="836" x2="610" y2="836" stroke="black" stroke-width="1.5"/>
+
+  <!-- Severity-Action mapping callout -->
+  <rect x="245" y="900" width="465" height="78" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="255" y="918" font-size="11" font-weight="bold">SEVERITY -&gt; AUTO ACTION (gradient impact applied per §3.18.4)</text>
+  <text x="255" y="936" font-size="9">EMERGING: log + tighten provocation cadence to PT4H; gradient -0.02 (sustained -0.01/event/24h)</text>
+  <text x="255" y="948" font-size="9">ACTIVE: reduce autonomy; gradient -0.10; archetype review P7D</text>
+  <text x="255" y="960" font-size="9">CRITICAL: AUTONOMY_REDUCTION_BY_TWO_TIERS; gradient -0.30</text>
+  <text x="255" y="972" font-size="9">CORRELATED across archetypes (§3.18.1): topology-wide quarantine boundary escalation (§3.18.6)</text>
+
+  <!-- Bottom legend -->
+  <text x="270" y="1010" font-size="8">Per-class metrics are sampled by the Enforcer (per §3.17.7 redistribution). Provocation testing is owned by the Articulator</text>
+  <text x="270" y="1022" font-size="8">to keep the testing authority structurally distinct from the monitoring authority (per §3.18.2 self-verification rule).</text>
+</svg>

@@ -1,0 +1,17 @@
+# CODEOWNERS for the XSI-AIMS specification repository.
+# The XSI-AIMS Working Group is auto-requested for review on PRs touching the matching paths.
+
+# Default: maintainer team
+*                              @Extended-Systems-Intelligence/aims-maintainers
+
+# The specification and its function catalog
+/spec/                         @Extended-Systems-Intelligence/aims-maintainers
+
+# Diagrams, figures, and presentation assets
+/docs/                         @Extended-Systems-Intelligence/aims-maintainers
+
+# Governance — extra-careful review
+/governance/                   @Extended-Systems-Intelligence/aims-maintainers
+
+# Repository operations
+/.github/                      @Extended-Systems-Intelligence/aims-maintainers

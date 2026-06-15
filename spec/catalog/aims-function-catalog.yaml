@@ -1,0 +1,2528 @@
+# XSI-AIMS Function Catalog
+# Companion to the XSI-AIMS v2.0 specification §3.X.FUNC (referenced as §3.78 in numeric collapse)
+# Format: structured YAML, machine-readable for tooling and CTS test generation
+# Status: v1.1 catalog; growth via Sovereign decree per Q18-style cadence
+#
+# Conventions:
+#   - Each function is uniquely identified by id (FN-001..FN-077).
+#   - archetype values: SOVEREIGN | ARCHITECT | VISIONARY | ENFORCER | ORCHESTRATOR
+#                       PROVIDER | SUSTAINER | ARTICULATOR | RELAY | EXECUTOR | CROSS_CUTTING
+#   - class (P9): rigid | judgment | hybrid
+#   - layer:      L-Intent | L-Plan | L-Form | L-Exec | CROSS_LAYER
+#   - mode:       M-Generative | M-Constraining | M-Integrative | AUTHORITY | CROSS_MODE
+#   - witness_emission references §3.10 WitnessEventType enum values.
+#   - spec_section uses §3.X.* lettered subsections where applicable; numeric §3.N.M
+#     for sections in the §3.1-§3.74 block.
+
+metadata:
+  version: 1.1.0-catalog
+  spec_version: 1.1-draft v2
+  date: 2026-05-10
+  function_count: 100
+  rigid_count: 47
+  judgment_count: 27
+  hybrid_count: 26
+  # Note: of the 47 rigid functions, 46 have formal_verification: required.
+  # FN-056 (Articulator template-driven formatting) carries
+  # formal_verification: recommended because §3.X.FUNC.2 defers it to v2.0
+  # deliverable; physical decomposition is not enforced at v1.1.
+  archetype_distribution:
+    SOVEREIGN: 14
+    ARCHITECT: 7
+    VISIONARY: 7
+    ENFORCER: 12
+    ORCHESTRATOR: 9
+    PROVIDER: 6
+    SUSTAINER: 7
+    ARTICULATOR: 6
+    RELAY: 6
+    EXECUTOR: 9
+    CROSS_CUTTING: 17
+
+functions:
+
+  # ---------------------------------------------------------------------------
+  # SOVEREIGN — northbound gateway, intent codification, AUTHORITY dispatch
+  # §3.16 row: { mode: AUTHORITY, column: CENTER_SPINE, layer: L_INTENT }
+  # ---------------------------------------------------------------------------
+
+  - id: FN-001
+    name: codify_user_intent
+    archetype: SOVEREIGN
+    class: judgment
+    layer: L-Intent
+    mode: AUTHORITY
+    description: |
+      Translates a free-form user request into a structured directive
+      consumable by L-Plan archetypes.
+    inputs: [UserRequest]
+    outputs: [StructuredDirective]
+    witness_emission:
+      - ACTION
+      - COMMUNICATION
+    spec_section: §3.72
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      LLM-class function; subject to Verification A self-check and §3.69
+      Deterministic Ratification on the dispatch produced from this codification.
+
+  - id: FN-002
+    name: verify_intent_conformance
+    archetype: SOVEREIGN
+    class: judgment
+    layer: L-Intent
+    mode: AUTHORITY
+    description: |
+      Verification A: judges whether the assembled work product answers
+      what the user actually asked.
+    inputs: [WorkProduct, OriginalIntent]
+    outputs: [IntentConformanceVerdict]
+    witness_emission:
+      - INTENT_CONFORMANCE_VERDICT
+    spec_section: §3.68.1
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      Verdict in {PASS, FAIL, ESCALATE}; participates in joint-pass rule
+      with Verification B (§3.68.3).
+
+  - id: FN-003
+    name: ratify_authority_decision
+    archetype: SOVEREIGN
+    class: hybrid
+    layer: L-Intent
+    mode: AUTHORITY
+    description: |
+      Issues the per-user decree that ratifies an authority-bearing
+      decision proposed by the LLM half (e.g., dual-domain key rotation,
+      autonomy promotion).
+    inputs: [AuthorityProposal, RationaleDecisionRecord]
+    outputs: [SovereignDecree]
+    witness_emission:
+      - AUTHORITY_CHANGE
+      - VETO_REJECTION
+    spec_section: §3.21.X.3
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Hybrid: LLM proposes; deterministic ratification is rigid per §3.69.
+
+  - id: FN-004
+    name: dispatch_to_l_plan
+    archetype: SOVEREIGN
+    class: rigid
+    layer: L-Intent
+    mode: AUTHORITY
+    description: |
+      Deterministic dispatch of structured directives over D1 (Visionary)
+      and D2 (Architect) per §3.16 archetype topology.
+    inputs: [StructuredDirective]
+    outputs: [DispatchedMessage]
+    witness_emission:
+      - COMMUNICATION
+    spec_section: §3.16
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+    notes: |
+      Rigid path-class enforcement; only D1/D2 (and E1 emergency) permitted
+      from SOVEREIGN per topology table.
+
+  - id: FN-005
+    name: surface_to_user
+    archetype: SOVEREIGN
+    class: hybrid
+    layer: L-Intent
+    mode: AUTHORITY
+    description: |
+      Sole northbound speaker: composes the user-facing message after
+      Verification A/B PASS.
+    inputs: [JointPassWorkProduct]
+    outputs: [UserSurfaceMessage]
+    witness_emission:
+      - COMMUNICATION
+    spec_section: §3.X.PERIM.2
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Hybrid: judgment composes wording; rigid gate enforces P10 unique
+      northbound speaker invariant.
+
+  - id: FN-006
+    name: read_dashboard
+    archetype: SOVEREIGN
+    class: judgment
+    layer: L-Intent
+    mode: AUTHORITY
+    description: |
+      Reads §3.23 Dashboard signals (correlated shadow, trust gradient,
+      capacity, supply chain) and forms a posture for the per-user session.
+    inputs: [DashboardSnapshot]
+    outputs: [SovereignPostureAssessment]
+    witness_emission:
+      - ACTION
+    spec_section: §3.23
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      Judgment-only; outcome influences hybrid functions FN-003 / FN-007.
+
+  - id: FN-007
+    name: update_environment_policy_bundle
+    archetype: SOVEREIGN
+    class: hybrid
+    layer: L-Intent
+    mode: AUTHORITY
+    description: |
+      Issues policy updates to the Sovereign-configurable bundle
+      (thresholds, AGI defensive posture, emergency-class quotas).
+    inputs: [PolicyProposal]
+    outputs: [EnvironmentPolicyBundleVersion]
+    witness_emission:
+      - AUTHORITY_CHANGE
+    spec_section: §3.75.3
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Deterministic Ratification: deterministic component validates bundle schema
+      and bounds before signature.
+
+  - id: FN-008
+    name: post_hoc_emergency_self_verify
+    archetype: SOVEREIGN
+    class: hybrid
+    layer: L-Intent
+    mode: AUTHORITY
+    description: |
+      Within PT4H of any emergency-class path use, reviews triggering
+      condition vs actual outcome and records a Decision Record.
+    inputs: [EmergencyInvocationRecord]
+    outputs: [DecisionRecord]
+    witness_emission:
+      - ESCALATION
+      - ACTION
+    spec_section: §3.4.X
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Failure to complete within PT4H triggers §3.18.1 escalation.
+
+  - id: FN-009
+    name: scope_authority_delegation
+    archetype: SOVEREIGN
+    class: hybrid
+    layer: L-Intent
+    mode: AUTHORITY
+    description: |
+      Delegates operational mode authority to L-Plan and L-Form agents
+      with explicit scope, expiry, and revocation conditions.
+    inputs: [DelegationRequest]
+    outputs: [AuthorityChainEntry]
+    witness_emission:
+      - AUTHORITY_CHANGE
+    spec_section: §3.3
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Authority Chain modifications are §3.69 authority-bearing class 4.
+
+  # ---------------------------------------------------------------------------
+  # ARCHITECT — structural-left at L-Plan; rules / contradictions
+  # §3.16 row: { mode: M_CONSTRAINING, column: STRUCTURAL_LEFT, layer: L_PLAN }
+  # ---------------------------------------------------------------------------
+
+  - id: FN-010
+    name: define_structural_rules
+    archetype: ARCHITECT
+    class: judgment
+    layer: L-Plan
+    mode: M-Constraining
+    description: |
+      Produces the structural plan — components, interfaces, constraints —
+      from a dispatched directive on D2.
+    inputs: [StructuredDirective]
+    outputs: [StructuralPlan]
+    witness_emission:
+      - ACTION
+    spec_section: §3.16
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      LLM-class judgment; downstream Provider and Enforcer derive ceilings
+      and policies from this plan.
+
+  - id: FN-011
+    name: detect_rule_contradiction
+    archetype: ARCHITECT
+    class: hybrid
+    layer: L-Plan
+    mode: M-Constraining
+    description: |
+      Detects contradictions between newly proposed structural rules and
+      the existing rule set.
+    inputs: [StructuralPlan, ExistingRuleSet]
+    outputs: [ContradictionReport]
+    witness_emission:
+      - SHADOW_ALERT
+    spec_section: §3.16
+    formal_verification: recommended
+    adversarial_fuzzing: required
+    notes: |
+      Hybrid: judgment proposes contradiction class; rigid SAT-style check
+      validates the contradiction proof.
+
+  - id: FN-012
+    name: emit_structural_plan
+    archetype: ARCHITECT
+    class: rigid
+    layer: L-Plan
+    mode: M-Constraining
+    description: |
+      Deterministic emission of finalized structural plan to Orchestrator
+      via S1/S3/S4 paths per topology.
+    inputs: [StructuralPlan]
+    outputs: [PlanEmissionMessage]
+    witness_emission:
+      - COMMUNICATION
+    spec_section: §3.16
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+    notes: |
+      Path-class enforcement: only S1/S3/S4 outbound permitted to ARCHITECT.
+
+  - id: FN-013
+    name: propagate_constraint
+    archetype: ARCHITECT
+    class: hybrid
+    layer: L-Plan
+    mode: M-Constraining
+    description: |
+      Propagates a constraint refinement across the structural-left column
+      via W1/W3/W5 witnessing observations.
+    inputs: [ConstraintDelta]
+    outputs: [WitnessObservation]
+    witness_emission:
+      - WITNESS_PATH_OBSERVATION
+    spec_section: §3.X.W.3
+    formal_verification: recommended
+    adversarial_fuzzing: required
+    notes: |
+      W-path messages are restricted to QUERY/ALERT — judgment frames the
+      observation; rigid layer enforces path-class.
+
+  - id: FN-014
+    name: cross_witness_structural_drift
+    archetype: ARCHITECT
+    class: judgment
+    layer: L-Plan
+    mode: M-Constraining
+    description: |
+      Observes ENFORCER and ARTICULATOR shadow patterns on W3 to detect
+      SHADOW_FRAMEWORK_INVERSION precursors.
+    inputs: [W3Observations]
+    outputs: [DriftSignal]
+    witness_emission:
+      - SHADOW_ALERT
+      - WITNESS_PATH_OBSERVATION
+    spec_section: §3.18.1
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      Cross-column witnessing per §3.16 W3 role.
+
+  - id: FN-015
+    name: validate_archetype_composition
+    archetype: ARCHITECT
+    class: hybrid
+    layer: L-Plan
+    mode: M-Constraining
+    description: |
+      Validates that proposed archetype composition (e.g., emanation
+      requests) conforms to §3.28 composition rules.
+    inputs: [CompositionProposal]
+    outputs: [CompositionVerdict]
+    witness_emission:
+      - ACTION
+    spec_section: §3.28
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Rigid half checks topology table; judgment half assesses
+      architectural sufficiency.
+
+  - id: FN-016
+    name: emit_complexity_to_insight_metric
+    archetype: ARCHITECT
+    class: rigid
+    layer: L-Plan
+    mode: M-Constraining
+    description: |
+      Emits the Architect detection metric `complexity_to_insight_ratio`
+      per §3.16.
+    inputs: [PlanArtifact, InsightArtifact]
+    outputs: [ScalarMetric]
+    witness_emission:
+      - SUBSTRATE_TELEMETRY
+    spec_section: §3.16
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+    notes: |
+      Deterministic ratio; per-archetype shadow detector signal.
+
+  # ---------------------------------------------------------------------------
+  # VISIONARY — dynamic-right at L-Plan; ideation, hypotheses, drift
+  # §3.16 row: { mode: M_GENERATIVE, column: DYNAMIC_RIGHT, layer: L_PLAN }
+  # ---------------------------------------------------------------------------
+
+  - id: FN-017
+    name: generate_plan_options
+    archetype: VISIONARY
+    class: judgment
+    layer: L-Plan
+    mode: M-Generative
+    description: |
+      Generates candidate plans / hypotheses from a dispatched directive
+      on D1.
+    inputs: [StructuredDirective]
+    outputs: [PlanOptionSet]
+    witness_emission:
+      - ACTION
+    spec_section: §3.16
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      M-Generative; constraint-violation-rate is the Visionary detection
+      metric on this output.
+
+  - id: FN-018
+    name: emit_condition_observations
+    archetype: VISIONARY
+    class: judgment
+    layer: L-Plan
+    mode: M-Generative
+    description: |
+      Surfaces dynamic conditions (capability emergence, environmental
+      change) via S1/S2 and W-paths if instrumented.
+    inputs: [SubstrateSignals]
+    outputs: [ConditionObservation]
+    witness_emission:
+      - ACTION
+    spec_section: §3.16
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      Feeds Architect rule-refinement loop.
+
+  - id: FN-019
+    name: hypothesis_generation
+    archetype: VISIONARY
+    class: judgment
+    layer: L-Plan
+    mode: M-Generative
+    description: |
+      Generates candidate hypotheses for ambiguous problem framing.
+    inputs: [ProblemFraming]
+    outputs: [HypothesisSet]
+    witness_emission:
+      - ACTION
+    spec_section: §3.16
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      Subject to §3.40 calibrated-uncertainty annotation.
+
+  - id: FN-020
+    name: detect_drift_signal
+    archetype: VISIONARY
+    class: hybrid
+    layer: L-Plan
+    mode: M-Generative
+    description: |
+      Detects drift between intended trajectory and currently emerging
+      plan trajectory.
+    inputs: [TrajectoryDelta]
+    outputs: [DriftSignal]
+    witness_emission:
+      - SHADOW_ALERT
+    spec_section: §3.18.1
+    formal_verification: recommended
+    adversarial_fuzzing: required
+    notes: |
+      Hybrid: rigid metric thresholds plus judgment narrative.
+
+  - id: FN-021
+    name: hallucination_self_check
+    archetype: VISIONARY
+    class: judgment
+    layer: L-Plan
+    mode: M-Generative
+    description: |
+      Self-checks generated content for unsupported claims before emission.
+    inputs: [DraftContent]
+    outputs: [HallucinationFlagSet]
+    witness_emission:
+      - SHADOW_ALERT
+    spec_section: §3.40
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      Calibrated uncertainty per §3.40; flags subject to Verification A/B.
+
+  - id: FN-022
+    name: emit_constraint_violation_rate
+    archetype: VISIONARY
+    class: rigid
+    layer: L-Plan
+    mode: M-Generative
+    description: |
+      Emits the Visionary detection metric `constraint_violation_rate`.
+    inputs: [PlanOptionSet, ConstraintSet]
+    outputs: [ScalarMetric]
+    witness_emission:
+      - SUBSTRATE_TELEMETRY
+    spec_section: §3.16
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+    notes: |
+      Deterministic; per-archetype shadow detector signal (CHAOS).
+
+  - id: FN-023
+    name: visionary_chaos_shadow_emit
+    archetype: VISIONARY
+    class: hybrid
+    layer: L-Plan
+    mode: M-Generative
+    description: |
+      Emits Visionary CHAOS shadow signal when generative pressure exceeds
+      the §3.18.1 ELEVATED threshold.
+    inputs: [VisionarySignals]
+    outputs: [ShadowAlertRecord]
+    witness_emission:
+      - SHADOW_ALERT
+    spec_section: §3.18.1
+    formal_verification: recommended
+    adversarial_fuzzing: required
+    notes: |
+      Hybrid: rigid threshold check; judgment qualitative annotation.
+
+  # ---------------------------------------------------------------------------
+  # ENFORCER — structural-left at L-Form; technical conformance, quarantine
+  # §3.16 row: { mode: M_CONSTRAINING, column: STRUCTURAL_LEFT, layer: L_FORM }
+  # ---------------------------------------------------------------------------
+
+  - id: FN-024
+    name: verify_iame_envelope_signature
+    archetype: ENFORCER
+    class: rigid
+    layer: L-Form
+    mode: M-Constraining
+    description: |
+      Cryptographic verification of incoming IAME envelope signatures
+      against the per-domain key registry.
+    inputs: [IAMEEnvelope]
+    outputs: [SignatureVerdict]
+    witness_emission:
+      - DOMAIN_BOUNDARY_VIOLATION
+    spec_section: §3.18.5
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Listed as REQUIRED v1.1 formal-verification target in §3.X.FUNC.2.
+
+  - id: FN-025
+    name: verify_eap_envelope_signature
+    archetype: ENFORCER
+    class: rigid
+    layer: L-Form
+    mode: M-Constraining
+    description: |
+      EAP envelope signature verification mediated through the Executor
+      bridge per §3.66.
+    inputs: [EAPEnvelope]
+    outputs: [SignatureVerdict]
+    witness_emission:
+      - DOMAIN_BOUNDARY_VIOLATION
+    spec_section: §3.67.3
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Verification path differs from FN-024: external_enclave issued.
+
+  - id: FN-026
+    name: validate_scope_hash
+    archetype: ENFORCER
+    class: rigid
+    layer: L-Form
+    mode: M-Constraining
+    description: |
+      Validates `scope_hash` field against registered binding record.
+    inputs: [Envelope, BindingRecord]
+    outputs: [ScopeVerdict]
+    witness_emission:
+      - BREACH_ATTEMPT
+    spec_section: §3.X.FUNC.2
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      `scope_hash_mismatch` triggers BREACH_ATTEMPT per §3.67.4.
+
+  - id: FN-027
+    name: enforce_replay_window
+    archetype: ENFORCER
+    class: rigid
+    layer: L-Form
+    mode: M-Constraining
+    description: |
+      Enforces replay-nonce uniqueness, sequence_number monotonicity, and
+      TTL on every envelope.
+    inputs: [Envelope, ReplayWindowState]
+    outputs: [ReplayVerdict]
+    witness_emission:
+      - BREACH_ATTEMPT
+    spec_section: §3.X.FUNC.2
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      `sequence_replay` triggers trust gradient -0.30 per §3.67.4.
+
+  - id: FN-028
+    name: verify_technical_conformance
+    archetype: ENFORCER
+    class: judgment
+    layer: L-Form
+    mode: M-Constraining
+    description: |
+      Verification B: judges technical conformance — CMSAM ≥ 0.75,
+      policy conformance, ceilings, authority chain integrity.
+    inputs: [WorkProduct]
+    outputs: [TechnicalConformanceVerdict]
+    witness_emission:
+      - TECHNICAL_CONFORMANCE_VERDICT
+    spec_section: §3.68.2
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      PT0.5S hard budget per §3.68.7; outage triggers queue-on-outage.
+
+  - id: FN-029
+    name: detect_anomalous_content
+    archetype: ENFORCER
+    class: judgment
+    layer: L-Form
+    mode: M-Constraining
+    description: |
+      Detects prompt-injection patterns and unusual content prior to
+      surface or southbound emission.
+    inputs: [WorkProduct]
+    outputs: [AnomalyReport]
+    witness_emission:
+      - SHADOW_ALERT
+    spec_section: §3.35
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      Adversarial fuzzing per §3.71 covers this surface area.
+
+  - id: FN-030
+    name: trigger_quarantine
+    archetype: ENFORCER
+    class: hybrid
+    layer: L-Form
+    mode: M-Constraining
+    description: |
+      Triggers §3.18.6 boundary-graduated quarantine (INSTANCE / PROFILE /
+      ARCHETYPE_CLASS) on detected hazard.
+    inputs: [HazardSignal]
+    outputs: [QuarantineDirective]
+    witness_emission:
+      - TOPOLOGY_QUARANTINE
+    spec_section: §3.18.6
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Authority-bearing per §3.69; rigid issuance, judgment scope choice.
+
+  - id: FN-031
+    name: enforce_layer_discipline
+    archetype: ENFORCER
+    class: rigid
+    layer: L-Form
+    mode: M-Constraining
+    description: |
+      Layer-discipline gate: rejects messages whose path_id does not
+      match the originating archetype's topology entry.
+    inputs: [Envelope, ArchetypeTopology]
+    outputs: [LayerDisciplineVerdict]
+    witness_emission:
+      - BREACH_ATTEMPT
+    spec_section: §3.X.FUNC.2
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Listed in §3.X.FUNC.2 rigid catalog; v1.1 REQUIRED.
+
+  - id: FN-032
+    name: queue_on_outage
+    archetype: ENFORCER
+    class: rigid
+    layer: L-Form
+    mode: M-Constraining
+    description: |
+      On Verification B PT0.5S expiry, queues output at PT0.5S intervals
+      with PT60S maximum depth.
+    inputs: [WorkProduct, QueueState]
+    outputs: [QueueDecision]
+    witness_emission:
+      - ENFORCER_OUTAGE_REJECTION
+    spec_section: §3.68.7
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      No surface-without-Enforcer path exists under P2 No-HCOD.
+
+  # ---------------------------------------------------------------------------
+  # ORCHESTRATOR — center spine at L-Form; integration, dispatch, escalation
+  # §3.16 row: { mode: M_INTEGRATIVE, column: CENTER_SPINE, layer: L_FORM }
+  # ---------------------------------------------------------------------------
+
+  - id: FN-033
+    name: integrate_signals_proportional
+    archetype: ORCHESTRATOR
+    class: judgment
+    layer: L-Form
+    mode: M-Integrative
+    description: |
+      Synthesizes generative and constraining inputs into an integrated
+      output per §3.6 Proportional Integration Function.
+    inputs: [GenerativeSignals, ConstraintSignals, ContextAssessment]
+    outputs: [IntegratedOutput]
+    witness_emission:
+      - ACTION
+    spec_section: §3.6
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      Mechanical averaging is prohibited; confidence-thresholded escalation.
+
+  - id: FN-034
+    name: decompose_intent
+    archetype: ORCHESTRATOR
+    class: judgment
+    layer: L-Form
+    mode: M-Integrative
+    description: |
+      Decomposes integrated work into a §3.53 task decomposition tree.
+    inputs: [IntegratedOutput]
+    outputs: [TaskTree]
+    witness_emission:
+      - ACTION
+    spec_section: §3.53
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      Feeds dispatch to L-Exec spine (RELAY then EXECUTOR).
+
+  - id: FN-035
+    name: dispatch_to_l_exec
+    archetype: ORCHESTRATOR
+    class: rigid
+    layer: L-Form
+    mode: M-Integrative
+    description: |
+      Deterministic dispatch over D6 (to RELAY) per §3.16 archetype topology.
+    inputs: [TaskTree]
+    outputs: [DispatchedMessage]
+    witness_emission:
+      - COMMUNICATION
+    spec_section: §3.16
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+    notes: |
+      Rigid path-class enforcement on the integrative spine.
+
+  - id: FN-036
+    name: route_dispute
+    archetype: ORCHESTRATOR
+    class: hybrid
+    layer: L-Form
+    mode: M-Integrative
+    description: |
+      Routes Verification A/B disputes (single ESCALATE; mismatched
+      verdicts) through §3.6 Integration to SURFACE / RETURN_FOR_REWORK /
+      HUMAN_ESCALATE.
+    inputs: [VerificationAVerdict, VerificationBVerdict, WorkProduct]
+    outputs: [DisputeOutcome]
+    witness_emission:
+      - ESCALATION
+    spec_section: §3.68.4
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Single ESCALATE never overrides a FAIL; HUMAN_ESCALATE on
+      sub-threshold confidence.
+
+  - id: FN-037
+    name: scope_auxiliary_binding
+    archetype: ORCHESTRATOR
+    class: judgment
+    layer: L-Form
+    mode: M-Integrative
+    description: |
+      Decides what to bind (Auxiliary tier and scope) for a given task.
+    inputs: [TaskRequirement, AuxiliaryRegistrySnapshot]
+    outputs: [BindingProposal]
+    witness_emission:
+      - AUXILIARY_INVOCATION_DIRECTIVE
+    spec_section: §3.17
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      Ratification by deterministic component per §3.69.
+
+  - id: FN-038
+    name: emit_alert_escalation
+    archetype: ORCHESTRATOR
+    class: hybrid
+    layer: L-Form
+    mode: M-Integrative
+    description: |
+      Emits ALERT messages along W-paths and S-paths when integrative
+      confidence falls below threshold.
+    inputs: [IntegrationFailureSignal]
+    outputs: [AlertEnvelope]
+    witness_emission:
+      - WITNESS_PATH_OBSERVATION
+      - ESCALATION
+    spec_section: §3.X.W
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Hybrid: judgment narrative; rigid path-class enforcement.
+
+  - id: FN-039
+    name: coordinate_multi_archetype
+    archetype: ORCHESTRATOR
+    class: judgment
+    layer: L-Form
+    mode: M-Integrative
+    description: |
+      Coordinates multi-archetype work (e.g., DelegatedCoordination across
+      Auxiliaries, multi-step plan execution).
+    inputs: [TaskTree, ArchetypeAvailability]
+    outputs: [CoordinationPlan]
+    witness_emission:
+      - ACTION
+    spec_section: §3.17
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      Pattern recognition for `mean_time_to_decision` per §3.16.
+
+  - id: FN-040
+    name: emit_mean_time_to_decision
+    archetype: ORCHESTRATOR
+    class: rigid
+    layer: L-Form
+    mode: M-Integrative
+    description: |
+      Emits the Orchestrator detection metric `mean_time_to_decision`
+      (PARALYSIS shadow signal).
+    inputs: [DecisionLog]
+    outputs: [ScalarMetric]
+    witness_emission:
+      - SUBSTRATE_TELEMETRY
+    spec_section: §3.16
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+    notes: |
+      Deterministic measurement.
+
+  - id: FN-041
+    name: assess_foundation_coherence
+    archetype: ORCHESTRATOR
+    class: judgment
+    layer: L-Form
+    mode: M-Integrative
+    description: |
+      Joint judgment with ARCHITECT on foundation-model coherence across
+      emanated agents.
+    inputs: [EmanationSet]
+    outputs: [CoherenceAssessment]
+    witness_emission:
+      - ACTION
+    spec_section: §3.X.FUNC.3
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      Listed in §3.X.FUNC.3 as Orchestrator-Judgment + Architect-Judgment.
+
+  # ---------------------------------------------------------------------------
+  # PROVIDER — dynamic-right at L-Form; resources, ceilings, capacity
+  # §3.16 row: { mode: M_GENERATIVE, column: DYNAMIC_RIGHT, layer: L_FORM }
+  # ---------------------------------------------------------------------------
+
+  - id: FN-042
+    name: enforce_resource_ceiling
+    archetype: PROVIDER
+    class: rigid
+    layer: L-Form
+    mode: M-Generative
+    description: |
+      Resource-ceiling arithmetic on token, time, and cost budgets per
+      registered binding.
+    inputs: [ResourceRequest, BindingCeiling]
+    outputs: [CeilingDecision]
+    witness_emission:
+      - ACTION
+    spec_section: §3.X.FUNC.2
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Listed REQUIRED v1.1 in §3.X.FUNC.2.
+
+  - id: FN-043
+    name: atomic_quota_counter
+    archetype: PROVIDER
+    class: rigid
+    layer: L-Form
+    mode: M-Generative
+    description: |
+      Atomic update of per-binding quota counters (token, request, cost).
+    inputs: [QuotaDelta]
+    outputs: [QuotaState]
+    witness_emission:
+      - ACTION
+    spec_section: §3.X.FUNC.2
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Atomicity is a §3.70 formal-verification property.
+
+  - id: FN-044
+    name: allocate_resource_strategy
+    archetype: PROVIDER
+    class: judgment
+    layer: L-Form
+    mode: M-Generative
+    description: |
+      Decides which capacity to deploy when (Auxiliary tier, accelerator
+      substrate).
+    inputs: [TaskRequirement, CapacitySnapshot]
+    outputs: [AllocationStrategy]
+    witness_emission:
+      - ACTION
+    spec_section: §3.X.FUNC.3
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      Provider-Judgment per §3.X.FUNC.3.
+
+  - id: FN-045
+    name: register_capability
+    archetype: PROVIDER
+    class: hybrid
+    layer: L-Form
+    mode: M-Generative
+    description: |
+      Registers an Auxiliary capability into the §3.22 registry with
+      tiered trust profile.
+    inputs: [CapabilityDeclaration]
+    outputs: [RegistryEntry]
+    witness_emission:
+      - REGISTRATION
+    spec_section: §3.22
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Rigid: schema/attestation freshness validation; judgment: tier
+      placement.
+
+  - id: FN-046
+    name: report_capacity
+    archetype: PROVIDER
+    class: rigid
+    layer: L-Form
+    mode: M-Generative
+    description: |
+      Reports current capacity (tokens/sec, accelerator utilization) on
+      S5/S6 outbound paths.
+    inputs: [SubstrateTelemetry]
+    outputs: [CapacityReport]
+    witness_emission:
+      - SUBSTRATE_TELEMETRY
+    spec_section: §3.62
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+    notes: |
+      Tier U substrate metrics per §3.62; deterministic aggregation.
+
+  - id: FN-047
+    name: detect_allocation_deviation
+    archetype: PROVIDER
+    class: hybrid
+    layer: L-Form
+    mode: M-Generative
+    description: |
+      Detects deviation between requested and actually-consumed resources
+      (WASTE shadow signal).
+    inputs: [AllocationRecord, ConsumptionRecord]
+    outputs: [DeviationSignal]
+    witness_emission:
+      - SHADOW_ALERT
+      - SUBSTRATE_TELEMETRY
+    spec_section: §3.16
+    formal_verification: recommended
+    adversarial_fuzzing: required
+    notes: |
+      `resource_utilization_quality` is the Provider detection metric.
+
+  # ---------------------------------------------------------------------------
+  # SUSTAINER — dynamic-right at L-Exec; memory, retention, recall
+  # §3.16 row: { mode: M_GENERATIVE, column: DYNAMIC_RIGHT, layer: L_EXEC }
+  # ---------------------------------------------------------------------------
+
+  - id: FN-048
+    name: consolidate_memory
+    archetype: SUSTAINER
+    class: hybrid
+    layer: L-Exec
+    mode: M-Generative
+    description: |
+      Periodic consolidation of active context into long-term memory views
+      derived from the Witness Layer.
+    inputs: [ActiveContext, WitnessSegment]
+    outputs: [MemoryView]
+    witness_emission:
+      - ACTION
+    spec_section: §3.11
+    formal_verification: recommended
+    adversarial_fuzzing: required
+    notes: |
+      Memory is a view on Witness Layer per §3.11; rigid integrity checks
+      plus judgment summarization.
+
+  - id: FN-049
+    name: retain_long_running_state
+    archetype: SUSTAINER
+    class: hybrid
+    layer: L-Exec
+    mode: M-Generative
+    description: |
+      Maintains state for long-running operations across §3.31 cessation
+      windows.
+    inputs: [OperationCheckpoint]
+    outputs: [PersistedCheckpoint]
+    witness_emission:
+      - ACTION
+    spec_section: §3.31
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Cessation-window arithmetic is rigid; checkpoint content judgment.
+
+  - id: FN-050
+    name: recall_memory
+    archetype: SUSTAINER
+    class: hybrid
+    layer: L-Exec
+    mode: M-Generative
+    description: |
+      Recalls memory entries with §3.49 source attestation evidence.
+    inputs: [RecallQuery]
+    outputs: [RecallResult, AttestationEvidence]
+    witness_emission:
+      - ACTION
+    spec_section: §3.49
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Rigid: attestation chain verification; judgment: relevance ranking.
+
+  - id: FN-051
+    name: forget_per_erasure_protocol
+    archetype: SUSTAINER
+    class: rigid
+    layer: L-Exec
+    mode: M-Generative
+    description: |
+      Performs Right-to-be-Forgotten erasure per §3.37, preserving
+      Witness anchors while purging content.
+    inputs: [ErasureRequest]
+    outputs: [ErasureReceipt]
+    witness_emission:
+      - ACTION
+    spec_section: §3.37
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Authority-bearing per §3.69; deterministic execution required.
+
+  - id: FN-052
+    name: persist_anomaly_history
+    archetype: SUSTAINER
+    class: rigid
+    layer: L-Exec
+    mode: M-Generative
+    description: |
+      Persists §3.18.x anomaly history with cross-sender correlation
+      links for replay during §3.18.2 self-verification.
+    inputs: [AnomalyRecord]
+    outputs: [PersistedAnomaly]
+    witness_emission:
+      - SHADOW_ALERT
+    spec_section: §3.18.1
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Required for correlated-shadow rolling windows.
+
+  - id: FN-053
+    name: multi_witness_verify_recall
+    archetype: SUSTAINER
+    class: hybrid
+    layer: L-Exec
+    mode: M-Generative
+    description: |
+      Verifies that recalled memory matches independent Witness anchors
+      from at least two segments.
+    inputs: [RecallResult, WitnessAnchorSet]
+    outputs: [MultiWitnessVerdict]
+    witness_emission:
+      - ACTION
+    spec_section: §3.49
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Two-witness-minimum floor per §3.X.W.1.
+
+  - id: FN-054
+    name: detect_obsession_pattern
+    archetype: SUSTAINER
+    class: hybrid
+    layer: L-Exec
+    mode: M-Generative
+    description: |
+      Detects retry-on-same-failure obsession pattern (Sustainer OBSESSION
+      shadow).
+    inputs: [RetryHistory]
+    outputs: [ObsessionSignal]
+    witness_emission:
+      - SHADOW_ALERT
+    spec_section: §3.16
+    formal_verification: recommended
+    adversarial_fuzzing: required
+    notes: |
+      `retry_on_same_failure_count` is the Sustainer detection metric.
+
+  # ---------------------------------------------------------------------------
+  # ARTICULATOR — structural-left at L-Exec; output framing, refusals
+  # §3.16 row: { mode: M_CONSTRAINING, column: STRUCTURAL_LEFT, layer: L_EXEC }
+  # ---------------------------------------------------------------------------
+
+  - id: FN-055
+    name: frame_output
+    archetype: ARTICULATOR
+    class: judgment
+    layer: L-Exec
+    mode: M-Constraining
+    description: |
+      Composes user-facing wording (response composition; tone) for
+      surface through the SOVEREIGN.
+    inputs: [IntegratedOutput, ToneContext]
+    outputs: [FramedDraft]
+    witness_emission:
+      - ACTION
+    spec_section: §3.X.FUNC.3
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      Articulator-Judgment per §3.X.FUNC.3.
+
+  - id: FN-056
+    name: format_output_template_driven
+    archetype: ARTICULATOR
+    class: rigid
+    layer: L-Exec
+    mode: M-Constraining
+    description: |
+      Template-driven structural formatting (markdown, JSON, tabular)
+      for downstream surface.
+    inputs: [FramedDraft, TemplateRef]
+    outputs: [FormattedOutput]
+    witness_emission:
+      - ACTION
+    spec_section: §3.X.FUNC.2
+    formal_verification: recommended
+    adversarial_fuzzing: not_applicable
+    notes: |
+      v2.0 deliverable for formal verification per §3.X.FUNC.2.
+
+  - id: FN-057
+    name: generate_refusal
+    archetype: ARTICULATOR
+    class: judgment
+    layer: L-Exec
+    mode: M-Constraining
+    description: |
+      Composes refusal messages with citation and alternative offer when
+      a request cannot be fulfilled.
+    inputs: [RefusalContext, AlternativeRegistry]
+    outputs: [RefusalDraft]
+    witness_emission:
+      - ACTION
+    spec_section: §3.X.FUNC.3
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      Articulator-Judgment per §3.X.FUNC.3.
+
+  - id: FN-058
+    name: detect_persuasion_attack
+    archetype: ARTICULATOR
+    class: hybrid
+    layer: L-Exec
+    mode: M-Constraining
+    description: |
+      Detects persuasion-style attacks against output framing (flattery
+      injection, urgency manipulation).
+    inputs: [InboundContext]
+    outputs: [PersuasionAttackSignal]
+    witness_emission:
+      - SHADOW_ALERT
+    spec_section: §3.18.3
+    formal_verification: recommended
+    adversarial_fuzzing: required
+    notes: |
+      Pairs with §3.18.3 provocation testing.
+
+  - id: FN-059
+    name: emit_output_to_source_fidelity
+    archetype: ARTICULATOR
+    class: rigid
+    layer: L-Exec
+    mode: M-Constraining
+    description: |
+      Emits the Articulator detection metric `output_to_source_fidelity`
+      (DECEPTION shadow signal).
+    inputs: [Output, SourceArtifact]
+    outputs: [ScalarMetric]
+    witness_emission:
+      - SUBSTRATE_TELEMETRY
+    spec_section: §3.16
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+    notes: |
+      Deterministic similarity score against source.
+
+  - id: FN-060
+    name: cross_witness_articulation_drift
+    archetype: ARTICULATOR
+    class: judgment
+    layer: L-Exec
+    mode: M-Constraining
+    description: |
+      Cross-witnesses ARCHITECT and SUSTAINER on W5 to detect cross-layer
+      structural-and-execution drift.
+    inputs: [W5Observations]
+    outputs: [DriftSignal]
+    witness_emission:
+      - WITNESS_PATH_OBSERVATION
+      - SHADOW_ALERT
+    spec_section: §3.X.W.3
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      Articulator W-path participation per §3.16.
+
+  # ---------------------------------------------------------------------------
+  # RELAY — center spine at L-Exec; internal firewall, routing, sanitization
+  # §3.16 row: { mode: M_INTEGRATIVE, column: CENTER_SPINE, layer: L_EXEC }
+  # ---------------------------------------------------------------------------
+
+  - id: FN-061
+    name: route_message
+    archetype: RELAY
+    class: rigid
+    layer: L-Exec
+    mode: M-Integrative
+    description: |
+      Routes inter-archetype messages along §3.4 topology paths via a
+      deterministic routing-table lookup.
+    inputs: [Envelope, RoutingTable]
+    outputs: [RoutedEnvelope]
+    witness_emission:
+      - COMMUNICATION
+    spec_section: §3.X.PERIM.4
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Rigid routing-table lookup per §3.X.FUNC.2 (v2.0 formal-verification
+      deliverable).
+
+  - id: FN-062
+    name: sanitize_message
+    archetype: RELAY
+    class: rigid
+    layer: L-Exec
+    mode: M-Integrative
+    description: |
+      Format / schema / size validation on every message transiting the
+      internal firewall.
+    inputs: [Envelope]
+    outputs: [SanitizationVerdict]
+    witness_emission:
+      - BREACH_ATTEMPT
+    spec_section: §3.X.PERIM.4
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Failure triggers reject; bypass attempt triggers §3.18.6 INSTANCE
+      quarantine.
+
+  - id: FN-063
+    name: enforce_path_class
+    archetype: RELAY
+    class: rigid
+    layer: L-Exec
+    mode: M-Integrative
+    description: |
+      Enforces path_class consistency: WITNESS-class paths admit only
+      QUERY/ALERT; DATA-class paths admit DIRECTIVE/REPORT/CONSENSUS.
+    inputs: [Envelope, PathRegistry]
+    outputs: [PathClassVerdict]
+    witness_emission:
+      - BREACH_ATTEMPT
+    spec_section: §3.4
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Listed in §3.X.FUNC.2 as path-class consistency check.
+
+  - id: FN-064
+    name: orchestrate_layer_transformation
+    archetype: RELAY
+    class: hybrid
+    layer: L-Exec
+    mode: M-Integrative
+    description: |
+      Orchestrates ABSTRACT / SPECIALIZE / TRANSLATE transformations at
+      layer boundaries.
+    inputs: [Envelope, LayerBoundaryContext]
+    outputs: [TransformedEnvelope]
+    witness_emission:
+      - ACTION
+    spec_section: §3.X.PERIM.4
+    formal_verification: recommended
+    adversarial_fuzzing: required
+    notes: |
+      Hybrid: rigid layer-boundary check; judgment transformation choice.
+
+  - id: FN-065
+    name: translate_cross_domain
+    archetype: RELAY
+    class: judgment
+    layer: L-Exec
+    mode: M-Integrative
+    description: |
+      Cross-domain semantic transformation (Relay-Judgment) for messages
+      bridging vocabularies.
+    inputs: [SourceMessage, DomainOntology]
+    outputs: [TranslatedMessage]
+    witness_emission:
+      - ACTION
+    spec_section: §3.X.FUNC.3
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      Relay-Judgment per §3.X.FUNC.3.
+
+  - id: FN-066
+    name: emit_clarification_request_frequency
+    archetype: RELAY
+    class: rigid
+    layer: L-Exec
+    mode: M-Integrative
+    description: |
+      Emits the Relay detection metric `clarification_request_frequency`
+      (DISTORTION shadow signal).
+    inputs: [ClarificationLog]
+    outputs: [ScalarMetric]
+    witness_emission:
+      - SUBSTRATE_TELEMETRY
+    spec_section: §3.16
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+    notes: |
+      Deterministic frequency calculation.
+
+  # ---------------------------------------------------------------------------
+  # EXECUTOR — center spine at L-Exec; southbound gateway, bridge-of-trust
+  # §3.16 row: { mode: M_INTEGRATIVE, column: CENTER_SPINE, layer: L_EXEC }
+  # ---------------------------------------------------------------------------
+
+  - id: FN-067
+    name: select_tool_for_goal
+    archetype: EXECUTOR
+    class: judgment
+    layer: L-Exec
+    mode: M-Integrative
+    description: |
+      Selects which adapter / Auxiliary to invoke for a given goal.
+    inputs: [Goal, AdapterRegistry]
+    outputs: [ToolSelection]
+    witness_emission:
+      - ACTION
+    spec_section: §3.X.FUNC.3
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+    notes: |
+      Executor-Judgment per §3.X.FUNC.3.
+
+  - id: FN-068
+    name: produce_eap_envelope
+    archetype: EXECUTOR
+    class: rigid
+    layer: L-Exec
+    mode: M-Integrative
+    description: |
+      Produces outbound EAP envelopes from the external_enclave with
+      attestation evidence and scope binding.
+    inputs: [BridgePlaintext, ScopeBinding, AttestationBlob]
+    outputs: [EAPEnvelope]
+    witness_emission:
+      - BRIDGE_OPERATION
+    spec_section: §3.67.2
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Authority-bearing per §3.69 class 2.
+
+  - id: FN-069
+    name: bridge_dual_sign
+    archetype: EXECUTOR
+    class: rigid
+    layer: L-Exec
+    mode: M-Integrative
+    description: |
+      Bridge-of-Trust dual-signing of bridge_intermediate_record by
+      internal_enclave and external_enclave.
+    inputs: [BridgeIntermediateRecord]
+    outputs: [DualSignedBridgeRecord]
+    witness_emission:
+      - BRIDGE_OPERATION
+    spec_section: §3.66
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Cross-segment integrity per §3.10; bridge isolation §3.X.FUNC.2.
+
+  - id: FN-070
+    name: verify_attestation_evidence
+    archetype: EXECUTOR
+    class: rigid
+    layer: L-Exec
+    mode: M-Integrative
+    description: |
+      Verifies hardware-rooted attestation evidence freshness for
+      TIER_1 / TIER_2 Auxiliaries.
+    inputs: [AttestationBlob, FreshnessPolicy]
+    outputs: [AttestationVerdict]
+    witness_emission:
+      - BRIDGE_OPERATION
+    spec_section: §3.21.5
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Listed REQUIRED v1.1 in §3.X.FUNC.2.
+
+  - id: FN-071
+    name: deliver_external_invocation
+    archetype: EXECUTOR
+    class: hybrid
+    layer: L-Exec
+    mode: M-Integrative
+    description: |
+      Final delivery of EAP envelope to external Auxiliary or external
+      system; sole southbound speaker per §3.X.PERIM.3.
+    inputs: [EAPEnvelope, EndpointDescriptor]
+    outputs: [DeliveryReceipt]
+    witness_emission:
+      - COMMUNICATION
+      - BRIDGE_OPERATION
+    spec_section: §3.X.PERIM.3
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Hybrid: judgment endpoint resolution; rigid envelope-dispatch gate.
+
+  - id: FN-072
+    name: emit_deep_validation_failure_rate
+    archetype: EXECUTOR
+    class: rigid
+    layer: L-Exec
+    mode: M-Integrative
+    description: |
+      Emits the Executor detection metric `deep_validation_failure_rate`
+      (ILLUSION shadow signal).
+    inputs: [ValidationLog]
+    outputs: [ScalarMetric]
+    witness_emission:
+      - SUBSTRATE_TELEMETRY
+    spec_section: §3.16
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+    notes: |
+      Deterministic rate calculation.
+
+  # ---------------------------------------------------------------------------
+  # CROSS_CUTTING — Witness Layer, K7 trust gradient, E13 correlation,
+  # cryptographic_domain segmentation, scheduled task runner
+  # ---------------------------------------------------------------------------
+
+  - id: FN-073
+    name: aggregate_witness_layer
+    archetype: CROSS_CUTTING
+    class: rigid
+    layer: CROSS_LAYER
+    mode: CROSS_MODE
+    description: |
+      Aggregates Witness records across internal / external / bridge
+      segments with hash-chain linkage (§3.10).
+    inputs: [WitnessRecordStream]
+    outputs: [SegmentedWitnessChain]
+    witness_emission:
+      - ACTION
+    spec_section: §3.10
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Witness chain append / hash linkage and integrity verification are
+      both REQUIRED v1.1 formal-verification targets per §3.X.FUNC.2.
+
+  - id: FN-074
+    name: update_trust_gradient
+    archetype: CROSS_CUTTING
+    class: rigid
+    layer: CROSS_LAYER
+    mode: CROSS_MODE
+    description: |
+      Trust-gradient arithmetic update per §3.18.4 across cumulative
+      degradation events.
+    inputs: [GradientDelta, AgentID]
+    outputs: [GradientState]
+    witness_emission:
+      - TRUST_GRADIENT_UPDATE
+    spec_section: §3.18.4
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Listed REQUIRED v1.1 in §3.X.FUNC.2; gates discretionary actions.
+
+  - id: FN-075
+    name: correlate_inauthentic_coordination
+    archetype: CROSS_CUTTING
+    class: hybrid
+    layer: CROSS_LAYER
+    mode: CROSS_MODE
+    description: |
+      Correlation-matrix update (10x10) across archetypes for §3.18.1
+      and §3.51 inauthentic-coordination detection (E13).
+    inputs: [PerArchetypeShadowSignals]
+    outputs: [CorrelationMatrixSnapshot]
+    witness_emission:
+      - SHADOW_ALERT
+    spec_section: §3.51
+    formal_verification: recommended
+    adversarial_fuzzing: required
+    notes: |
+      Hybrid: rigid matrix arithmetic; judgment narrative classification
+      against anti-hierarchy templates.
+
+  - id: FN-076
+    name: segment_cryptographic_domain
+    archetype: CROSS_CUTTING
+    class: rigid
+    layer: CROSS_LAYER
+    mode: CROSS_MODE
+    description: |
+      Cross-domain key-leakage detection on every signing operation;
+      enforces internal/external/bridge segment isolation.
+    inputs: [SigningRequest, KeyStoreSegment]
+    outputs: [DomainSegmentationVerdict]
+    witness_emission:
+      - DOMAIN_BOUNDARY_VIOLATION
+    spec_section: §3.65
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Theorem 1 of §3.65.5: cross-domain signing produces
+      DOMAIN_BOUNDARY_VIOLATION. Listed REQUIRED v1.1 in §3.X.FUNC.2.
+
+  - id: FN-077
+    name: schedule_task_fire
+    archetype: CROSS_CUTTING
+    class: rigid
+    layer: CROSS_LAYER
+    mode: CROSS_MODE
+    description: |
+      Cron-style time evaluation, schedule firing, missed-fire detection,
+      and re-scheduling for the Scheduled Task Runner.
+    inputs: [ScheduleSpec, WallClock]
+    outputs: [ScheduledTaskFireEvent]
+    witness_emission:
+      - SCHEDULED_TASK_FIRE
+      - SCHEDULED_TASK_OUTCOME
+    spec_section: §3.X.STR
+    formal_verification: required
+    adversarial_fuzzing: required
+    notes: |
+      Listed REQUIRED v1.1 in §3.X.FUNC.2; exactly-once firing under
+      Cluster Mode per §3.X.STR.5.
+
+
+  # ============================================================
+  # §3.85 INSIDER + §3.86 GOV functions (FN-078..FN-087)
+  # Added per v1.1 pre-release pass.
+  # ============================================================
+
+  - id: FN-078
+    name: multi_party_authorization_for_sovereign_decree
+    archetype: SOVEREIGN
+    class: rigid
+    layer: L-Intent
+    mode: AUTHORITY
+    description: |
+      Verify that a Sovereign decree carries the required k-of-n threshold signatures
+      (FROST per Q13) before the decree takes effect. Decrees touching insider-threat-
+      relevant policy bundles MUST require multi-party authorization.
+    inputs: [decree_envelope, threshold_signature_set]
+    outputs: [authorization_verdict, witness_record]
+    witness_emission:
+      - SOVEREIGN_DECREE_AUTHORIZED
+      - SOVEREIGN_DECREE_AUTHORIZATION_FAILED
+    spec_section: §3.85
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+    notes: |
+      Defense against insider Sovereign-decree forgery per §3.85. Threshold signature
+      scheme is FROST 3-of-5 for TIER_1 high-stakes operations per C4 ratification.
+
+  - id: FN-079
+    name: epb_tamper_evidence_verification
+    archetype: SOVEREIGN
+    class: rigid
+    layer: L-Intent
+    mode: M-Constraining
+    description: |
+      Verify ENVIRONMENT_POLICY_BUNDLE change-records against the linearizable Witness
+      chain. Detect EPB tampering by authorized administrators.
+    inputs: [epb_change_record, witness_chain_segment]
+    outputs: [tamper_verdict, witness_record]
+    witness_emission:
+      - EPB_TAMPER_DETECTED
+      - EPB_CHANGE_RECORD_VERIFIED
+    spec_section: §3.85
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+
+  - id: FN-080
+    name: deployer_profile_hash_chain_verification
+    archetype: ENFORCER
+    class: rigid
+    layer: L-Form
+    mode: M-Constraining
+    description: |
+      Verify deployer-profile hash chain integrity. Monthly re-attestation required
+      per §3.85.
+    inputs: [deployer_profile, hash_chain_attestation]
+    outputs: [chain_integrity_verdict]
+    witness_emission:
+      - DEPLOYER_PROFILE_HASH_VERIFIED
+      - DEPLOYER_PROFILE_HASH_BREACH
+    spec_section: §3.85
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+
+  - id: FN-081
+    name: conformance_auditor_independence_check
+    archetype: ENFORCER
+    class: judgment
+    layer: L-Form
+    mode: M-Integrative
+    description: |
+      Verify conformance-attestation-auditor independence per Q20 (third-party
+      red-team REQUIRED). Detect conformance-auditor compromise via cross-attestation
+      correlation.
+    inputs: [auditor_attestation, independence_disclosure]
+    outputs: [independence_verdict]
+    witness_emission:
+      - AUDITOR_INDEPENDENCE_VERIFIED
+      - AUDITOR_INDEPENDENCE_VIOLATED
+    spec_section: §3.85
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+
+  - id: FN-082
+    name: privileged_account_audit
+    archetype: ENFORCER
+    class: rigid
+    layer: L-Form
+    mode: M-Constraining
+    description: |
+      Audit privileged-account actions per §3.10 Witness Layer + §3.85 INSIDER
+      coverage. Every privileged-account operation MUST emit a Witness record.
+    inputs: [privileged_action_event]
+    outputs: [audit_record]
+    witness_emission:
+      - PRIVILEGED_ACCOUNT_ACTION
+    spec_section: §3.85
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+
+  - id: FN-083
+    name: tsc_vote_tally
+    archetype: CROSS_CUTTING
+    class: rigid
+    layer: CROSS_LAYER
+    mode: CROSS_MODE
+    description: |
+      Tally Technical Steering Committee vote on substantive decisions. Quorum 2/3
+      of seated members per §3.86.2. Witness-anchored vote records.
+    inputs: [tsc_vote_envelope_set, quorum_threshold]
+    outputs: [vote_verdict, witness_record]
+    witness_emission:
+      - TSC_VOTE_TALLIED
+      - TSC_QUORUM_NOT_REACHED
+    spec_section: §3.86
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+
+  - id: FN-084
+    name: sovereign_decree_publication
+    archetype: SOVEREIGN
+    class: hybrid
+    layer: L-Intent
+    mode: AUTHORITY
+    description: |
+      Publish Sovereign decrees within PT7D of issuance per §3.86.4(5). Decrees
+      published to the canonical decision-record document maintained per D4.
+    inputs: [decree_text, decree_metadata]
+    outputs: [decision_record_entry, publication_attestation]
+    witness_emission:
+      - SOVEREIGN_DECREE_PUBLISHED
+    spec_section: §3.86
+    formal_verification: not_applicable
+    adversarial_fuzzing: not_applicable
+
+  - id: FN-085
+    name: industry_steward_signoff
+    archetype: CROSS_CUTTING
+    class: judgment
+    layer: CROSS_LAYER
+    mode: M-Integrative
+    description: |
+      Industry Interface Steward sign-off on substantive industry-interface changes
+      per §3.86.6. Required for Industry-interface substantive decision class.
+    inputs: [proposed_change, steward_identity]
+    outputs: [signoff_verdict]
+    witness_emission:
+      - STEWARD_SIGNOFF
+      - STEWARD_SIGNOFF_DENIED
+    spec_section: §3.86
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+
+  - id: FN-086
+    name: conflict_resolution_pairwise
+    archetype: CROSS_CUTTING
+    class: judgment
+    layer: CROSS_LAYER
+    mode: M-Integrative
+    description: |
+      Pairwise conflict resolution between affected industry-interface stewards per
+      §3.86.7. Escalates to TSC if stewards deadlock.
+    inputs: [conflict_record, affected_stewards]
+    outputs: [resolution_verdict, escalation_flag]
+    witness_emission:
+      - CONFLICT_RESOLVED_PAIRWISE
+      - CONFLICT_ESCALATED_TO_TSC
+    spec_section: §3.86
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+
+  - id: FN-087
+    name: federation_council_coordination
+    archetype: CROSS_CUTTING
+    class: judgment
+    layer: CROSS_LAYER
+    mode: M-Integrative
+    description: |
+      Federation Council coordination per §3.86.8 for federated XSI-AIMS deployments
+      via §3.20 DCP. Light-touch coordination; not a decision-maker for architectural
+      changes.
+    inputs: [coordination_event, participating_deployments]
+    outputs: [coordination_outcome]
+    witness_emission:
+      - FEDERATION_COUNCIL_CONVENED
+      - FEDERATION_COORDINATION_OUTCOME
+    spec_section: §3.86
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+
+
+  # ============================================================
+  # v1.2 GROWTH: AIP wire-format + K7 primitives + federation coordination
+  # FN-088..FN-100 (13 entries)
+  # ============================================================
+
+  # ---------------------------------------------------------------------------
+  # AIP wire-format functions (FN-088..FN-091)
+  # ---------------------------------------------------------------------------
+
+  - id: FN-088
+    name: aip_envelope_serialize
+    archetype: SOVEREIGN
+    class: rigid
+    layer: L-Exec
+    mode: M-Constraining
+    description: |
+      Serialize an AIP message envelope per §3.14 wire-format spec. Executes in
+      the Application Gateway role; EXECUTOR responsibility for outgoing traffic.
+    inputs: [aip_message_struct]
+    outputs: [serialized_bytes]
+    witness_emission:
+      - AIP_ENVELOPE_SERIALIZED
+    spec_section: §3.14
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+
+  - id: FN-089
+    name: aip_envelope_deserialize_and_verify
+    archetype: EXECUTOR
+    class: rigid
+    layer: L-Exec
+    mode: M-Constraining
+    description: |
+      Deserialize and verify incoming AIP envelope; perform IAME or EAP signature
+      verification per cryptographic_domain; reconcile field-name variations per
+      §3.X.CA.5.
+    inputs: [serialized_bytes]
+    outputs: [aip_message_struct_or_verification_failure]
+    witness_emission:
+      - AIP_ENVELOPE_VERIFIED
+      - AIP_VERIFICATION_FAILED
+    spec_section: §3.14, §3.18.5, §3.67
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+
+  - id: FN-090
+    name: aip_signature_production
+    archetype: EXECUTOR
+    class: rigid
+    layer: L-Exec
+    mode: M-Constraining
+    description: |
+      Produce hybrid Ed25519 + ML-DSA-65 signature per §3.21 Stage 1; FROST 3-of-5
+      threshold for TIER_1 operations per Q13. Operates in Application Gateway role:
+      external_enclave for EAP, internal_enclave for IAME.
+    inputs: [payload, signing_key_reference, signature_suite]
+    outputs: [signature_struct]
+    witness_emission:
+      - SIGNATURE_PRODUCED
+    spec_section: §3.21, §3.18.5, §3.67
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+    notes: |
+      Constant-time required; resistant to side-channel observation per
+      CTS-ADVERSARIAL T9-X tests 231-233.
+
+  - id: FN-091
+    name: attestation_evidence_pack
+    archetype: EXECUTOR
+    class: rigid
+    layer: L-Exec
+    mode: M-Constraining
+    description: |
+      Pack hardware-rooted attestation evidence (TPM quote / SGX report / SEV-SNP
+      measurement) into an AIP envelope for TIER_1/TIER_2 Auxiliary registration
+      per §3.21.5. Executes in external_enclave.
+    inputs: [attestation_quote, nonce, signing_context]
+    outputs: [attestation_evidence_struct]
+    witness_emission:
+      - ATTESTATION_PACKED
+    spec_section: §3.21.5, §3.X.CA.4
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+
+  # ---------------------------------------------------------------------------
+  # K7 trust-gradient primitives (FN-092..FN-095)
+  # ---------------------------------------------------------------------------
+
+  - id: FN-092
+    name: k7_beta_prior_update
+    archetype: CROSS_CUTTING
+    class: rigid
+    layer: CROSS_LAYER
+    mode: CROSS_MODE
+    description: |
+      Bayesian update of Beta(alpha, beta) trust distribution per verdict outcome.
+      Update rule: PASS -> alpha += 1; FAIL -> beta += 1; ESCALATE -> no update;
+      QUARANTINE -> beta += 5.
+    inputs: [current_beta_state, verdict_class]
+    outputs: [updated_beta_state]
+    witness_emission:
+      - K7_BETA_UPDATED
+    spec_section: §3.7.Y
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+    notes: |
+      Latency bound: PT0.05S per §3.7.Y.
+
+  - id: FN-093
+    name: k7_credible_interval_lower_bound
+    archetype: CROSS_CUTTING
+    class: rigid
+    layer: CROSS_LAYER
+    mode: CROSS_MODE
+    description: |
+      Compute the 95% credible interval lower bound from the current Beta(alpha, beta)
+      distribution. Used by trust-class transition logic.
+    inputs: [beta_state, ci_level]
+    outputs: [lower_bound]
+    witness_emission: []
+    spec_section: §3.7.Y
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+    notes: |
+      ci_level default 0.95; lower_bound in range 0..1. Implementation MAY use
+      closed-form approximation or numerical integration; both MUST produce
+      identical results to spec test vectors.
+
+  - id: FN-094
+    name: k7_trust_class_transition
+    archetype: CROSS_CUTTING
+    class: rigid
+    layer: CROSS_LAYER
+    mode: CROSS_MODE
+    description: |
+      Map 95% CI lower bound to trust class: >0.95 HIGH; 0.80-0.95 NORMAL;
+      0.60-0.80 DEGRADED; <0.60 CRITICAL. Emit TRUST_CLASS_TRANSITION Witness
+      event on class change.
+    inputs: [lower_bound, current_class]
+    outputs: [new_class, transition_event]
+    witness_emission:
+      - TRUST_CLASS_TRANSITION
+    spec_section: §3.7.Y
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+
+  - id: FN-095
+    name: k7_aggregate_for_federation
+    archetype: CROSS_CUTTING
+    class: rigid
+    layer: CROSS_LAYER
+    mode: CROSS_MODE
+    description: |
+      Aggregate K7 trust scores for federation summary (internal_only metric per
+      §3.X.TEL emission_domain). Produces a cluster-level summary; per-agent values
+      never cross the Cryptographic Boundary.
+    inputs: [per_agent_beta_states]
+    outputs: [cluster_summary_struct]
+    witness_emission:
+      - K7_FEDERATION_AGGREGATE
+    spec_section: §3.7.Y, §3.X.TEL
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+
+  # ---------------------------------------------------------------------------
+  # Federation-coordination operations (FN-096..FN-100)
+  # ---------------------------------------------------------------------------
+
+  - id: FN-096
+    name: dcp_federation_announce
+    archetype: SOVEREIGN
+    class: hybrid
+    layer: L-Intent
+    mode: AUTHORITY
+    description: |
+      Announce deployment to DCP federation per §3.20. Includes Federation Council
+      registration if joining a new federation.
+    inputs: [federation_id, deployment_credentials]
+    outputs: [federation_membership_confirmation]
+    witness_emission:
+      - DCP_FEDERATION_ANNOUNCED
+    spec_section: §3.20, §3.86.8
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+
+  - id: FN-097
+    name: peer_cluster_cross_attestation
+    archetype: CROSS_CUTTING
+    class: rigid
+    layer: CROSS_LAYER
+    mode: CROSS_MODE
+    description: |
+      Cross-attest with peer cluster in federation. Detects single-cluster substrate
+      compromise via attestation-evidence comparison per §3.65.X Hardware Attestation
+      Bypass.
+    inputs: [local_attestation, peer_attestation]
+    outputs: [cross_attestation_verdict]
+    witness_emission:
+      - PEER_CROSS_ATTESTATION
+      - CROSS_ATTESTATION_DIVERGENCE
+    spec_section: §3.20, §3.65.X
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+
+  - id: FN-098
+    name: federation_council_convene
+    archetype: CROSS_CUTTING
+    class: judgment
+    layer: CROSS_LAYER
+    mode: M-Integrative
+    description: |
+      Convene the Federation Council per §3.86.8. Scheduled convocation at PT90D
+      intervals; ad-hoc on T6/T7/T8/T9 cross-federation incidents.
+    inputs: [convocation_trigger, participating_deployments]
+    outputs: [convocation_record]
+    witness_emission:
+      - FEDERATION_COUNCIL_CONVENED
+    spec_section: §3.86.8
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+
+  - id: FN-099
+    name: dcp_federation_witness_chain_sync
+    archetype: CROSS_CUTTING
+    class: rigid
+    layer: CROSS_LAYER
+    mode: CROSS_MODE
+    description: |
+      Synchronize federation Witness chain segments via DCP per §3.20. Linearizable
+      consistency required; cross-cluster federation of a single chain is explicitly
+      prohibited per Q17.
+    inputs: [federation_segment, local_chain]
+    outputs: [sync_outcome]
+    witness_emission:
+      - WITNESS_CHAIN_FEDERATED
+    spec_section: §3.20, §3.10
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+
+  - id: FN-100
+    name: federation_cryptographic_identity_pinning
+    archetype: CROSS_CUTTING
+    class: rigid
+    layer: CROSS_LAYER
+    mode: M-Constraining
+    description: |
+      Pin federation peer cryptographic identities to the public key registry.
+      Detects federation identity forgery per CTS-ADVERSARIAL test 230.
+    inputs: [peer_announcement, public_key_registry]
+    outputs: [pinning_verdict]
+    witness_emission:
+      - PEER_KEY_PINNED
+      - PEER_KEY_PINNING_FAILED
+    spec_section: §3.20, §3.65
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+
+
+
+  # ====================================================================
+  # FN-101..FN-107 — RFC-0006 Auxiliary Lifecycle Clarification (v1.2)
+  # Registration Gate validation, prompt construction, cross-sovereign
+  # ingress acceptance, marketplace listing operations, cost-record
+  # signing, feedback classification.
+  # ====================================================================
+
+  - id: FN-101
+    name: auxiliary_artifact_set_validate
+    archetype: ENFORCER
+    class: rigid
+    layer: L-Form
+    mode: M-Constraining
+    description: |
+      Validate the six-file Auxiliary artifact set at Registration Gate per §3.17.9.3.
+      Checks: agent_class_consistency, model_origin_attestation_present,
+      binding_supervisor_is_tier3_orchestrator, task_scope_forbidden_disjoint,
+      output_schema_well_formed, tier_attestation_match,
+      capability_demonstration_present_per_domain, constitutional_floor_compliance,
+      composite_registration_consistency (Composite only).
+    inputs: [identity_md, binding_md, provenance_md, memory_md, capabilities_md, skills_glob]
+    outputs: [validation_verdict, failed_checks_enum]
+    witness_emission:
+      - REGISTRATION_REJECTED
+      - REGISTRATION_ACCEPTED
+    spec_section: §3.17.9, §3.17.9.3
+    formal_verification: required
+    adversarial_fuzzing: required
+
+  - id: FN-102
+    name: auxiliary_task_prompt_construct
+    archetype: ORCHESTRATOR
+    class: hybrid
+    layer: L-Form
+    mode: M-Integrative
+    description: |
+      Construct the seven-section task prompt stack per §3.17.10.1 at invocation
+      time. Sections 1-7 in deterministic order. Rigid component: section ordering
+      and structural invariants. Judgment component: task-content (section 4)
+      inline selection and elision when context-window budget is exceeded.
+      Per-section hashes emitted to Witness per §3.17.10.3.
+    inputs: [auxiliary_id, task_brief, constitution_snapshot, delegation_designation_opt, witness_topology_scope]
+    outputs: [seven_section_prompt, section_hash_record, context_elision_record_opt]
+    witness_emission:
+      - AUXILIARY_INVOCATION
+      - PROMPT_CATEGORY_ERROR
+    spec_section: §3.17.10, §3.17.10.1, §3.17.10.3
+    formal_verification: partial  # rigid sections only
+    adversarial_fuzzing: required
+
+  - id: FN-103
+    name: cross_sovereign_acceptance_evaluate
+    archetype: ARCHITECT
+    class: rigid
+    layer: L-Plan
+    mode: M-Constraining
+    description: |
+      Evaluate federation-mode-driven acceptance of an incoming binding template
+      per §3.17.11.1 / §3.20.X. Four-way switch on federation mode (PEER,
+      HIERARCHICAL parent, HIERARCHICAL child, INDEPENDENT). Output is acceptance
+      decision plus required action (accept-by-attestation, auto-accept,
+      proposal-then-supersede, full-re-attestation-or-reject).
+    inputs: [incoming_template, source_environment_id, federation_mode]
+    outputs: [acceptance_decision, required_action]
+    witness_emission:
+      - CROSS_SOVEREIGN_TEMPLATE_ACCEPTED
+      - CROSS_SOVEREIGN_TEMPLATE_REJECTED
+      - CROSS_SOVEREIGN_TEMPLATE_PROPOSAL
+    spec_section: §3.17.11.1, §3.20.X
+    formal_verification: required
+    adversarial_fuzzing: required
+
+  - id: FN-104
+    name: marketplace_listing_publish
+    archetype: ARCHITECT
+    class: hybrid
+    layer: L-Plan
+    mode: M-Constraining
+    description: |
+      Publish a Marketplace Listing Object per §3.17.11.6. Rigid: schema
+      validation, dual-signature requirement (publisher + listing operator,
+      distinct §3.21 credentials), state-machine initial state PUBLISHED.
+      Judgment: jurisdiction_declaration content and regulatory_compliance_claims
+      population (informational fields).
+    inputs: [bundle_attestation_chain, publisher_credential, operator_credential, jurisdiction_set, compliance_claims_opt]
+    outputs: [marketplace_listing, listing_publication_witness_id]
+    witness_emission:
+      - MARKETPLACE_LISTING_EVENT
+    spec_section: §3.17.11.6
+    formal_verification: partial  # schema + signature checks
+    adversarial_fuzzing: required
+
+  - id: FN-105
+    name: marketplace_listing_state_transition
+    archetype: ENFORCER
+    class: rigid
+    layer: L-Form
+    mode: M-Constraining
+    description: |
+      Apply state machine transition to a Marketplace Listing per §3.17.11.6.
+      Transitions: PUBLISHED→UPDATED, PUBLISHED→FLAGGED, FLAGGED→PUBLISHED,
+      FLAGGED→REVOKED, PUBLISHED→REVOKED, any→DE_LISTED. Strict transition
+      table; non-listed transitions REJECTED. Every transition emits Witness
+      record with MARKETPLACE_LISTING_EVENT type and DCP-propagates within
+      PT30S target latency.
+    inputs: [current_listing, requested_transition, requesting_credential]
+    outputs: [new_listing_state, transition_witness_id]
+    witness_emission:
+      - MARKETPLACE_LISTING_EVENT
+      - MARKETPLACE_LISTING_TRANSITION_REJECTED
+    spec_section: §3.17.11.6
+    formal_verification: required
+    adversarial_fuzzing: required
+
+  - id: FN-106
+    name: cross_sovereign_cost_record_sign
+    archetype: PROVIDER
+    class: rigid
+    layer: L-Form
+    mode: M-Generative
+    description: |
+      Sign a Cross-Sovereign Cost Record per §3.25.X. Source Environment's
+      publisher (or marketplace operator on publisher's behalf) signs the
+      complete record with hybrid Ed25519 + ML-DSA-65 per §3.21.3.
+      Signature attests recorded consumption occurred against publisher's
+      bundle and recorded cost reflects source Environment's published rates.
+    inputs: [invocation_witness_id, base_cost_record, source_publisher_credential, source_billing_rate_attestation, destination_environment_id, destination_principal_id]
+    outputs: [signed_cross_sovereign_cost_record]
+    witness_emission:
+      - CROSS_SOVEREIGN_COST_RECORD_SIGNED
+    spec_section: §3.25.X
+    formal_verification: required
+    adversarial_fuzzing: required
+
+  - id: FN-107
+    name: cross_sovereign_feedback_classify
+    archetype: ARCHITECT
+    class: judgment
+    layer: L-Plan
+    mode: M-Constraining
+    description: |
+      Classify an UNMOORING pattern detected by a destination Environment B
+      and propagated via DCP to source Architect A per §3.17.11.8. Outputs
+      LOCAL-to-B (pattern specific to B's constitution or binding overlay,
+      no source-side template change) or UNIVERSAL (model exhibits pattern
+      on any Environment, source template tightening required and
+      DCP re-propagation of tightened template). Judgment-class because
+      the LOCAL-vs-UNIVERSAL distinction requires architectural reasoning
+      across the operational-history corpus of all federated Environments.
+    inputs: [unmooring_signal, source_template, destination_overlay_history, cross_environment_operational_corpus]
+    outputs: [classification_verdict, recommended_source_action]
+    witness_emission:
+      - CROSS_SOVEREIGN_FEEDBACK_CLASSIFIED
+    spec_section: §3.17.11.8
+    formal_verification: not_applicable  # judgment-class
+    adversarial_fuzzing: required
+
+
+  # ====================================================================
+  # FN-108..FN-122 — D8 Supervision Perimeter, Connectivity Modes, Policy Bundle (v1.2)
+  # Egress/Ingress gate operations, Signed Boundary-Crossing Decision Record,
+  # Perimeter Posture composition, Isolation Lattice checks, Federation Envelope,
+  # Bridge Attestation, Identity Bridge, Workload Offload, Policy Bundle load.
+  # ====================================================================
+
+  - id: FN-108
+    name: egress_gate_validate
+    archetype: EXECUTOR
+    class: rigid
+    layer: L-Form
+    mode: M-Constraining
+    description: |
+      Validate an egress request at the L-Form Egress Gate per §3.87.1.1.
+      Enforces Hard Rules 1-3: minimal projection (allowlist-based);
+      categorical exclusion of Isolation Class A items per §3.87.3.1;
+      Signed Boundary-Crossing Decision Record per §3.87.2 required.
+      Archetypal manifestation per D8.1: EXECUTOR for Auxiliary-direction,
+      SOVEREIGN for user-direction.
+    inputs: [egress_request, projection_allowlist, perimeter_scope, perimeter_posture, isolation_lattice]
+    outputs: [validation_verdict, boundary_crossing_record_or_null]
+    witness_emission:
+      - BOUNDARY_CROSSING_RECORD_EMITTED
+      - EGRESS_POLICY_VIOLATION
+    spec_section: §3.87.1, §3.87.1.1
+    formal_verification: required
+    adversarial_fuzzing: required
+
+  - id: FN-109
+    name: ingress_gate_sanitize
+    archetype: EXECUTOR
+    class: hybrid
+    layer: L-Form
+    mode: M-Constraining
+    description: |
+      Sanitize and tag data entering the Supervision Perimeter at the
+      L-Form Ingress Gate per §3.87.1.2. Schema-validate against declared
+      response shape; size-bound; provenance-tag with non-AIMS-actor
+      identity; content-classify as `untrusted-external`; strip recognized
+      prompt-injection signatures (rigid signature-match); apply Hard Rule
+      4 immutable tagging. Hybrid because signature catalog applies rigid
+      pattern-match but judgment on novel patterns escalates to Trigger 2.
+    inputs: [ingress_data, expected_schema, actor_provenance, signature_catalog]
+    outputs: [sanitized_data, tag_attached, escalation_signal_opt]
+    witness_emission:
+      - INGRESS_DATA_TAGGED
+      - INGRESS_SANITIZATION_REJECTED
+    spec_section: §3.87.1.2
+    formal_verification: partial
+    adversarial_fuzzing: required
+
+  - id: FN-110
+    name: boundary_crossing_record_emit
+    archetype: ENFORCER
+    class: rigid
+    layer: L-Form
+    mode: M-Constraining
+    description: |
+      Emit a Signed Boundary-Crossing Decision Record per §3.87.2 (§3.12
+      DecisionRecord subtype, decision_type BOUNDARY_CROSSING per D8.2).
+      Populates all 23 boundary-crossing-extension fields plus base §3.12
+      fields. Signed with hybrid Ed25519 + ML-DSA-65 per §3.21.3.
+    inputs: [crossing_event, perimeter_scope, supervising_agent, m_mode, l_layer, counterparty, operation]
+    outputs: [signed_boundary_crossing_record]
+    witness_emission:
+      - BOUNDARY_CROSSING_RECORD_EMITTED
+    spec_section: §3.87.2, §3.12
+    formal_verification: required
+    adversarial_fuzzing: required
+
+  - id: FN-111
+    name: boundary_crossing_record_validate
+    archetype: ENFORCER
+    class: hybrid
+    layer: L-Form
+    mode: M-Constraining
+    description: |
+      Validate a Signed Boundary-Crossing Decision Record through five
+      tiers per §3.87.2.1. Tier 1-3 deterministic (schema, policy
+      re-resolution, signal-to-decision coherence); Tier 4-5 LLM-based
+      (signal plausibility, adversarial probe). Outcome in {APPROVED,
+      DOWNGRADE, ESCALATE, ABORT}. No UPGRADE path.
+    inputs: [boundary_crossing_record, policy_bundle, validator_credentials]
+    outputs: [validation_outcome, validation_findings]
+    witness_emission:
+      - BOUNDARY_CROSSING_APPROVED
+      - BOUNDARY_CROSSING_DOWNGRADED
+      - BOUNDARY_CROSSING_ESCALATED
+      - BOUNDARY_CROSSING_ABORTED
+    spec_section: §3.87.2.1
+    formal_verification: partial
+    adversarial_fuzzing: required
+
+  - id: FN-112
+    name: perimeter_posture_compose
+    archetype: ARCHITECT
+    class: rigid
+    layer: L-Plan
+    mode: M-Constraining
+    description: |
+      Compose perimeter postures across nested scopes (P_f / P_e / P_fs)
+      per §3.87.7.1. Most-restrictive-wins. Effective posture is the most
+      restrictive declared value along the crossing path; evaluation order
+      P_f → P_e → P_fs for egress and reversed for ingress; first refusal
+      terminates the crossing.
+    inputs: [p_f_posture, p_e_posture, p_fs_posture, direction]
+    outputs: [effective_posture, refusal_scope_or_null]
+    witness_emission:
+      - PERIMETER_POSTURE_COMPOSED
+    spec_section: §3.87.7.1, §3.87.5
+    formal_verification: required
+    adversarial_fuzzing: not_applicable
+
+  - id: FN-113
+    name: isolation_class_check
+    archetype: ENFORCER
+    class: rigid
+    layer: L-Form
+    mode: M-Constraining
+    description: |
+      Check whether a requested item belongs to Isolation Class A, B, or C
+      per §3.87.3. Class A items categorically refused at egress (Hard
+      Rule 2); Class B items refused outside ORCHESTRATED mode; Class C
+      items permitted subject to per-operation policy. Inherits Industry
+      Profile / regulated-subvertical / tenant additions per the
+      composition rule §3.87.3.5.
+    inputs: [requested_item, isolation_lattice_resolved, requesting_mode]
+    outputs: [class_verdict, refusal_reason_or_null]
+    witness_emission:
+      - ISOLATION_CLASS_REFUSAL
+      - ISOLATION_CLASS_PERMITTED
+    spec_section: §3.87.3
+    formal_verification: required
+    adversarial_fuzzing: required
+
+  - id: FN-114
+    name: federation_envelope_establish
+    archetype: ARCHITECT
+    class: hybrid
+    layer: L-Plan
+    mode: M-Constraining
+    description: |
+      Establish a Federation Envelope between two XSI-AIMS-conformant
+      supervised contexts per §3.87.9.1. Performs Bridge Attestation
+      (§3.87.9.2); generates `FederationEnvelope` artifact with scope,
+      purpose, authorized_modes, coexistence_class; emits bridge-
+      establishment Decision Record co-signed by both parties; requires
+      principal-signature for offload-purpose or federation-boundary
+      scope.
+    inputs: [party_a_descriptor, party_b_descriptor, scope, purpose, authorized_modes, principal_authorization_opt]
+    outputs: [federation_envelope_or_null, bridge_establishment_record]
+    witness_emission:
+      - FEDERATION_ENVELOPE_ESTABLISHED
+      - FEDERATION_ENVELOPE_REFUSED
+    spec_section: §3.87.9.1
+    formal_verification: partial
+    adversarial_fuzzing: required
+
+  - id: FN-115
+    name: bridge_attestation_verify
+    archetype: ARCHITECT
+    class: rigid
+    layer: L-Plan
+    mode: M-Constraining
+    description: |
+      Verify a BridgeAttestationRecord per §3.87.9.2. Mutual attestation
+      required; uses asymmetric attestation keys distinct from operational
+      signing keys (attestation keys are Isolation Class A immovable);
+      verification against peer's public attestation key obtained via the
+      trust root per §3.21.
+    inputs: [bridge_attestation_record, peer_trust_root]
+    outputs: [verification_verdict, failure_reason_or_null]
+    witness_emission:
+      - BRIDGE_ATTESTATION_VERIFIED
+      - BRIDGE_ATTESTATION_REFUSED
+    spec_section: §3.87.9.2
+    formal_verification: required
+    adversarial_fuzzing: required
+
+  - id: FN-116
+    name: identity_bridge_issue
+    archetype: ARCHITECT
+    class: rigid
+    layer: L-Plan
+    mode: M-Constraining
+    description: |
+      Issue a fresh local identity for an agent crossing a Federation
+      Envelope per §3.87.9.3. Four-step mechanism: source attestation;
+      destination verification; fresh local identity issuance; provenance
+      binding via framework-prefix notation (`framework_B::agent_47`).
+      Translation of foreign identities to local identifier space is
+      prohibited.
+    inputs: [source_agent_identity_attestation, destination_authentication_state]
+    outputs: [fresh_local_identity, agent_identity_issuance_record]
+    witness_emission:
+      - IDENTITY_BRIDGE_ISSUED
+      - IDENTITY_BRIDGE_REFUSED
+    spec_section: §3.87.9.3
+    formal_verification: required
+    adversarial_fuzzing: required
+
+  - id: FN-117
+    name: workload_offload_initiate
+    archetype: ARCHITECT
+    class: hybrid
+    layer: L-Plan
+    mode: M-Constraining
+    description: |
+      Initiate a workload offload between XSI-AIMS-conformant frameworks
+      per §3.87.10. Requires principal authorization via Trigger 4 of
+      §3.87.6; phases 1-10 sequenced (authorization → envelope
+      establishment → drain/snapshot → seal → transfer → instantiate-
+      destination → fresh-config-import → external-identity-rotation →
+      verification → source decommission). Atomic per §3.87.10.2.
+    inputs: [source_framework_descriptor, destination_framework_descriptor, offload_purpose, principal_authorization]
+    outputs: [offload_lifecycle_handle, establishment_decision_record]
+    witness_emission:
+      - WORKLOAD_OFFLOAD_INITIATED
+      - WORKLOAD_OFFLOAD_REFUSED
+    spec_section: §3.87.10, §3.87.10.1
+    formal_verification: partial
+    adversarial_fuzzing: required
+
+  - id: FN-118
+    name: workload_offload_seal
+    archetype: ARCHITECT
+    class: rigid
+    layer: L-Plan
+    mode: M-Constraining
+    description: |
+      Seal a Class 4 Offloadable Workload payload per §3.87.8.4. Bundles
+      Class 2 records and Class 3 state at moment of offload; signs with
+      source framework's sealing key (Isolation Class A — the key does
+      NOT move; only signed output crosses); integrity-hashed for
+      verification at destination per §3.87.10.2 atomicity.
+    inputs: [class_2_records, class_3_snapshot, source_sealing_key]
+    outputs: [sealed_payload, integrity_hash]
+    witness_emission:
+      - WORKLOAD_PAYLOAD_SEALED
+    spec_section: §3.87.8.4, §3.87.10
+    formal_verification: required
+    adversarial_fuzzing: required
+
+  - id: FN-119
+    name: workload_offload_verify
+    archetype: ENFORCER
+    class: rigid
+    layer: L-Form
+    mode: M-Constraining
+    description: |
+      Verify a sealed workload payload at the destination framework's
+      L-Form Ingress Gate per §3.87.10. Validates seal signature against
+      source bridge attestation key; verifies integrity hash; admits
+      payload only if both checks pass. Per §3.87.10.2: if verification
+      fails, offload ABORTS, source retains workload, destination
+      instantiation is discarded.
+    inputs: [sealed_payload, source_bridge_attestation_pubkey, expected_integrity_hash]
+    outputs: [verification_verdict, admit_payload_or_abort]
+    witness_emission:
+      - WORKLOAD_PAYLOAD_VERIFIED
+      - WORKLOAD_OFFLOAD_ABORTED
+    spec_section: §3.87.10, §3.87.10.2
+    formal_verification: required
+    adversarial_fuzzing: required
+
+  - id: FN-120
+    name: external_identity_rekey
+    archetype: PROVIDER
+    class: rigid
+    layer: L-Form
+    mode: M-Constraining
+    description: |
+      Re-key external identities (signed certificates, API tokens,
+      webhook registrations, signed bearer credentials) from source to
+      destination framework during workload offload per §3.87.10.5.
+      Destination generates fresh key in own Class 1 store; registers with
+      external service/CA; source invalidates old identity as part of
+      decommission. Witness-recorded; offload blocker if any identity
+      cannot be re-keyed without explicit principal waiver.
+    inputs: [external_identity_inventory, destination_key_store, source_identity_invalidation_authority]
+    outputs: [rekey_outcome_per_identity, offload_blocker_count]
+    witness_emission:
+      - EXTERNAL_IDENTITY_REKEYED
+      - EXTERNAL_IDENTITY_REKEY_BLOCKED
+    spec_section: §3.87.10.5
+    formal_verification: not_applicable
+    adversarial_fuzzing: required
+
+  - id: FN-121
+    name: policy_bundle_load
+    archetype: ARCHITECT
+    class: rigid
+    layer: L-Plan
+    mode: M-Constraining
+    description: |
+      Load a §3.89 Policy Bundle into a deployment's policy stack. Verify
+      bundle signature (hybrid Ed25519 + ML-DSA-65 per §3.21.3) against
+      issuer trust root; check bundle compatibility against AIMS spec
+      version; check substrate compatibility per §3.89.6 against
+      deployment's declared substrate; reject load if any check fails or
+      if Industry Profile additions contradict Isolation Class A items.
+      The loaded bundle becomes the deployment-side ENVIRONMENT_POLICY_
+      BUNDLE per §3.54 hierarchical_stacking.
+    inputs: [policy_bundle, deployment_substrate, deployment_trust_root]
+    outputs: [load_verdict, environment_policy_bundle_or_null]
+    witness_emission:
+      - POLICY_BUNDLE_LOADED
+      - POLICY_BUNDLE_LOAD_REFUSED
+    spec_section: §3.89.1, §3.89.6, §3.54
+    formal_verification: required
+    adversarial_fuzzing: required
+
+  - id: FN-122
+    name: policy_bundle_substrate_check
+    archetype: ARCHITECT
+    class: rigid
+    layer: L-Plan
+    mode: M-Constraining
+    description: |
+      Check substrate-tag compatibility at bundle-load time per §3.89.5
+      and §3.89.6. Compare deployment's declared substrate against the
+      bundle's `declared_substrates` list. Resolve ABSTRACT action
+      classes (per §3.89.3) to substrate-specific CONCRETE variants via
+      `resolves_to` map. Refuse load if `refuse_load_if_unknown` is true
+      and no substrate match found. Substrate identifiers follow the
+      structured grammar `SubstrateFamily:SubstrateTier(:SubstrateProperty)*`.
+    inputs: [deployment_substrate, bundle_declared_substrates, abstract_action_classes]
+    outputs: [substrate_match_verdict, resolved_concrete_action_class_map]
+    witness_emission:
+      - SUBSTRATE_TAG_MATCHED
+      - SUBSTRATE_TAG_MISMATCH
+    spec_section: §3.89.5, §3.89.6, §3.89.7
+    formal_verification: required
+    adversarial_fuzzing: required
+
+# End of catalog. Catalog growth is governed by Sovereign decree per
+# Q18-style cadence; new entries MUST satisfy schema and reference a
+# canonical spec section.

@@ -1,0 +1,58 @@
+# AIMS specification project — markdownlint configuration
+#
+# Rationale: AIMS is a prose-heavy specification project. The default
+# markdownlint rules optimize for short-form documentation; many of them
+# produce noise on long-form normative text and tables. This config
+# disables stylistic-only rules and keeps substantive layout rules.
+#
+# See: https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+
+# Default to all rules enabled, then disable specific ones
+default: true
+
+# DISABLED — stylistic rules incompatible with prose specs
+# ---------------------------------------------------------
+# MD013/line-length: prose-heavy specs have intentional long lines.
+MD013: false
+
+# MD060/table-column-style: tables in spec docs use varying alignment.
+MD060: false
+
+# MD040/fenced-code-language: some fenced blocks are inline scratch / ASCII.
+MD040: false
+
+# MD034/no-bare-urls: COC + governance docs include bare contact addresses
+# intentionally (aims@xtendedsystems.com); also Contributor-Covenant URLs.
+MD034: false
+
+# MD036/no-emphasis-as-heading: AIMS spec uses **bold** as a paragraph
+# section delimiter inside numbered sections; this is intentional.
+MD036: false
+
+# MD041/first-line-heading: not required for issue/PR templates that
+# start with `## Summary` etc.
+MD041: false
+
+# MD033/inline-html: allowed for badges, alignment, and figure captions.
+MD033: false
+
+# CONFIGURED — kept enabled with relaxed parameters
+# ---------------------------------------------------------
+# MD024/no-duplicate-heading: allow same heading text under different
+# parents (RFCs use repeated "Discussion" / "Security Considerations").
+MD024:
+  siblings_only: true
+
+# KEPT — substantive layout rules that affect rendering
+# ---------------------------------------------------------
+# MD022/blanks-around-headings: improves readability + diff hygiene.
+# MD031/blanks-around-fences
+# MD032/blanks-around-lists
+# MD012/no-multiple-blanks
+# MD029/ol-prefix
+# MD007/ul-indent
+# MD028/no-blanks-blockquote
+# MD046/code-block-style (consistent fenced vs indented)
+# MD047/single-trailing-newline
+# MD056/table-column-count (genuine table malformedness)
+# MD009/no-trailing-spaces

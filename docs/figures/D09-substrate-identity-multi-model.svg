@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 1100" font-family="Helvetica, Arial, sans-serif">
+  <!-- AIMS D09 - Substrate Identity and Multi-Model Governance -->
+  <!-- Educational diagram. Sanitized: canonical AIMS engineering lexicon only. -->
+
+  <defs>
+    <marker id="arrow_d9" viewBox="0 0 12 8" refX="11" refY="4" markerWidth="12" markerHeight="8" orient="auto">
+      <polygon points="0,0 12,4 0,8" fill="black"/>
+    </marker>
+  </defs>
+
+  <!-- Header -->
+  <text x="270" y="285" font-size="18" font-weight="bold">D09</text>
+  <text x="270" y="310" font-size="13" font-style="italic">Substrate Identity and Multi-Model Governance</text>
+  <text x="270" y="332" font-size="10">Source: AIMS specification §3.8 (Differentiation), §3.17 (Multi-Model + Auxiliary Binding), §3.22 (aims_auxiliary_tier)</text>
+
+  <!-- Foundation model substrate (left side) -->
+  <text x="265" y="370" font-size="11" font-weight="bold">FOUNDATION</text>
+  <text x="265" y="383" font-size="11" font-weight="bold">SUBSTRATE</text>
+  <text x="265" y="397" font-size="9" font-style="italic">shared model</text>
+  <text x="265" y="410" font-size="9" font-style="italic">(e.g., a foundation model)</text>
+
+  <rect x="370" y="358" width="160" height="62" fill="none" stroke="black" stroke-width="2.5"/>
+  <text x="450" y="378" font-size="11" font-weight="bold" text-anchor="middle">FOUNDATION MODEL</text>
+  <text x="450" y="395" font-size="9" text-anchor="middle">single substrate; agents</text>
+  <text x="450" y="407" font-size="9" text-anchor="middle">differentiated by contraction</text>
+
+  <!-- Differentiation arrow downward -->
+  <line x1="450" y1="420" x2="450" y2="442" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d9)"/>
+  <text x="465" y="436" font-size="9" font-style="italic">differentiate (§3.8)</text>
+
+  <!-- Emanated agents block -->
+  <text x="265" y="470" font-size="11" font-weight="bold">EMANATED</text>
+  <text x="265" y="483" font-size="9" font-style="italic">share substrate;</text>
+  <text x="265" y="495" font-size="9" font-style="italic">subject to coherence;</text>
+  <text x="265" y="507" font-size="9" font-style="italic">archetype-derived</text>
+  <text x="265" y="519" font-size="9" font-style="italic">shadow</text>
+
+  <rect x="370" y="447" width="220" height="92" fill="none" stroke="black" stroke-width="2"/>
+  <text x="480" y="464" font-size="11" font-weight="bold" text-anchor="middle">EMANATED AGENTS</text>
+  <text x="378" y="481" font-size="8">substrate: foundationModel (shared)</text>
+  <text x="378" y="494" font-size="8">coherence: MEMBER (5 dims + adversarial)</text>
+  <text x="378" y="507" font-size="8">topologyAccess: FULL (22-path, §3.4)</text>
+  <text x="378" y="520" font-size="8">archetypeAssignment: REQUIRED (1 of 10)</text>
+  <text x="378" y="533" font-size="8">managementProtocol: DIFFERENTIATION (§3.8)</text>
+
+  <!-- Identity preservation across model substitution callout -->
+  <text x="700" y="478" font-size="8" font-style="italic" text-anchor="end">identity is preserved</text>
+  <text x="700" y="489" font-size="8" font-style="italic" text-anchor="end">across model</text>
+  <text x="700" y="500" font-size="8" font-style="italic" text-anchor="end">substitution via</text>
+  <text x="700" y="511" font-size="8" font-style="italic" text-anchor="end">archetype + IDENTITY.md</text>
+  <text x="700" y="522" font-size="8" font-style="italic" text-anchor="end">(read-only at runtime)</text>
+
+  <!-- Auxiliary binding section -->
+  <text x="265" y="585" font-size="11" font-weight="bold">AUXILIARY</text>
+  <text x="265" y="598" font-size="9" font-style="italic">foreign model;</text>
+  <text x="265" y="610" font-size="9" font-style="italic">communicates ONLY</text>
+  <text x="265" y="622" font-size="9" font-style="italic">via binding supervisor</text>
+
+  <rect x="370" y="565" width="220" height="92" fill="none" stroke="black" stroke-width="2"/>
+  <text x="480" y="582" font-size="11" font-weight="bold" text-anchor="middle">AUXILIARY AGENTS</text>
+  <text x="378" y="599" font-size="8">substrate: foreignModel (different)</text>
+  <text x="378" y="612" font-size="8">coherence: EXCLUDED (no shared origin)</text>
+  <text x="378" y="625" font-size="8">topologyAccess: NONE (no direct paths)</text>
+  <text x="378" y="638" font-size="8">archetypeAssignment: NONE (foreign model)</text>
+  <text x="378" y="651" font-size="8">managementProtocol: BINDING (§3.17.3) + §3.22 tier</text>
+
+  <!-- Binding supervisor channel: Orchestrator mediates -->
+  <text x="700" y="592" font-size="9" font-weight="bold" text-anchor="end">BINDING</text>
+  <text x="700" y="604" font-size="9" font-weight="bold" text-anchor="end">SUPERVISOR</text>
+  <text x="700" y="617" font-size="8" font-style="italic" text-anchor="end">user's Orchestrator</text>
+  <text x="700" y="628" font-size="8" font-style="italic" text-anchor="end">(per-user)</text>
+
+  <!-- Binding channel arrow from Auxiliary box to Orchestrator -->
+  <line x1="590" y1="611" x2="700" y2="611" stroke="black" stroke-width="2" stroke-dasharray="4,2"/>
+  <text x="700" y="660" font-size="8" font-style="italic" text-anchor="end">scoped channel only</text>
+
+  <!-- Channel back from Orchestrator to Emanated topology -->
+  <line x1="700" y1="498" x2="700" y2="611" stroke="black" stroke-width="2" stroke-dasharray="4,2"/>
+  <line x1="700" y1="498" x2="594" y2="498" stroke="black" stroke-width="2" stroke-dasharray="4,2" marker-end="url(#arrow_d9)"/>
+  <text x="700" y="540" font-size="8" font-style="italic" text-anchor="end">Orchestrator</text>
+  <text x="700" y="551" font-size="8" font-style="italic" text-anchor="end">validates</text>
+
+  <!-- Tier hierarchy callout for Auxiliary registry -->
+  <rect x="245" y="685" width="465" height="92" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="255" y="703" font-size="11" font-weight="bold">aims_auxiliary_tier (§3.22 - 7-tier hierarchy + 36-domain capability matrix)</text>
+  <text x="255" y="722" font-size="9">TIER_1_BROAD_AUTHORITY: may be task-lead in DelegatedCoordination (§3.17.6); P7D revalidation</text>
+  <text x="255" y="734" font-size="9">TIER_2_HIGH_SPECIALIST: narrow delegation; P14D revalidation</text>
+  <text x="255" y="746" font-size="9">TIER_3-5_GENERALISTS_AND_MID: no delegation; P14-P30D revalidation</text>
+  <text x="255" y="758" font-size="9">TIER_6_NARROW_TASK / TIER_7_EPHEMERAL: per-invocation validation; starting trust 0.4</text>
+  <text x="255" y="770" font-size="9" font-style="italic">domain_affiliations: {vision_12, language_12, structured_data_12} - declared at registration</text>
+
+  <!-- Binding protocol steps callout -->
+  <rect x="245" y="790" width="465" height="92" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="255" y="808" font-size="11" font-weight="bold">BINDING PROTOCOL STEPS (§3.17.3)</text>
+  <text x="255" y="826" font-size="9">1. REGISTER - Full Disclosure (§3.2) with model_origin = foreign; gate routes to binding</text>
+  <text x="255" y="838" font-size="9">2. BIND - Orchestrator assigns self as supervisor; scopes task; sets ceilings</text>
+  <text x="255" y="850" font-size="9">3. INVOKE - Orchestrator calls Auxiliary as a capability; scoped input -&gt; output</text>
+  <text x="255" y="862" font-size="9">4. VALIDATE - Orchestrator (with Enforcer per §3.17.6) checks ontological + scope conformance</text>
+  <text x="255" y="874" font-size="9">5. DISMISS - Clean deactivation with context purge (§3.9 Activation Environment)</text>
+
+  <!-- Auxiliary shadow callout -->
+  <rect x="245" y="895" width="465" height="56" fill="none" stroke="black" stroke-width="1.5"/>
+  <text x="255" y="913" font-size="11" font-weight="bold">AUXILIARY-SPECIFIC SHADOWS (§3.17.4)</text>
+  <text x="255" y="930" font-size="9">UNMOORING - Auxiliary output internally coherent but ontologically incompatible with foundation</text>
+  <text x="255" y="942" font-size="9">CAPTURE - Orchestrator stops validating; rubber-stamps Auxiliary output uncritically</text>
+
+  <!-- Bottom legend -->
+  <text x="270" y="990" font-size="8">All Auxiliary output enters the Witness Layer tagged with model_origin for forensic tracing. The Auxiliary never speaks</text>
+  <text x="270" y="1002" font-size="8">directly to other Emanated agents - the Orchestrator participates in §3.6 consensus on the Auxiliary's behalf.</text>
+</svg>
