@@ -15,6 +15,7 @@
 </p>
 
 <p align="center">
+  <a href="https://extended-systems-intelligence.github.io/aims/">Documentation site</a> &nbsp;·&nbsp;
   <a href="spec/XSI-AIMS-specification.md">Read the Specification</a> &nbsp;·&nbsp;
   <a href="#key-concepts">Key Concepts</a> &nbsp;·&nbsp;
   <a href="#conformance">Conformance</a> &nbsp;·&nbsp;
@@ -134,4 +135,4 @@ See [`TRADEMARKS.md`](TRADEMARKS.md). Referential use ("conforms to XSI-AIMS") i
 
 ## About
 
-XSI-AIMS is published and stewarded by **Extended Systems Intelligence Corporation (XSI)**, https://xtendedsystems.com.
+XSI-AIMS is published and stewarded by **Extended Systems Intelligence Corporation (XSI)**, https://xtendedsystems.com/?utm_source=github&utm_medium=readme.
