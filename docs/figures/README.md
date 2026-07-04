@@ -1,40 +1,37 @@
-# AIMS Implementation Diagrams — Staging Directory
+# XSI-AIMS Figures
 
-**Status:** Set complete — D01 pilot 2026-04-29 + D02–D11 generated 2026-04-29 against the locked visual style.
-**Sanitization rule:** canonical AIMS engineering lexicon only.
+Educational diagrams that accompany the XSI-AIMS specification. They are approachable entry points to the
+normative text — for implementers, researchers, standards bodies, and reviewers — and are published under
+the same CC-BY-4.0 license as the specification.
 
-These diagrams are **educational / implementation aids** intended for distribution alongside the public AIMS specification — design partners, NIST CAISI, standards bodies, downstream implementers.
+## Diagram set
 
-## Diagram set (11 diagrams)
+| ID | Title | Type |
+|---|---|---|
+| D01 | AIMS Stacked Architecture | Stacked architecture |
+| D02 | AIP Wire Format Envelope | Record layout |
+| D03 | IAME Envelope | Record layout |
+| D04 | The Ten Archetypes Taxonomy | Taxonomy tree |
+| D05 | Witness Chain Formation | Sequence diagram |
+| D06 | Trust Gradient | Concept + decision flow |
+| D07 | Shadow Detection Process Flow | Process flow |
+| D08 | AIP Conformance Levels | Comparison table |
+| D09 | Substrate Identity & Multi-Model Governance | Block diagram |
+| D10 | Three Principles | Concept diagram |
+| D11 | Four-Layer Memory Architecture | Stacked architecture |
 
-| ID | Title | Type | Status |
-|---|---|---|---|
-| D01 | AIMS Stacked Architecture | Stacked Architecture | **Pilot complete** |
-| D02 | AIP Wire Format Envelope | Record Layout | **Complete** |
-| D03 | IAME Envelope | Record Layout | **Complete** |
-| D04 | The Ten Archetypes Taxonomy | Taxonomy Tree | **Complete** |
-| D05 | Witness Chain Formation | Sequence Diagram | **Complete** |
-| D06 | Trust Gradient | Concept + Decision Flow | **Complete** |
-| D07 | Shadow Detection Process Flow | Process Flow | **Complete** |
-| D08 | AIP Conformance Levels | Comparison Table | **Complete** |
-| D09 | Substrate Identity & Multi-Model Governance | Block Diagram | **Complete** |
-| D10 | Three Principles Concept Diagram | Concept Diagram | **Complete** |
-| D11 | Four-Layer Memory Architecture | Stacked Architecture | **Complete** |
-
-## Recommended reading sequence in the AIMS spec appendix
+## Suggested reading order
 
 D10 → D01 → D04 → D09 → D11 → D02 → D03 → D05 → D06 → D07 → D08
 
-(Three Principles → Architecture → Archetypes → Substrate Identity → Memory → AIP wire format → IAME envelope → Witness chain → Trust gradient → Shadow detection → Conformance levels.)
+Three Principles → architecture → archetypes → substrate identity → memory → AIP wire format → IAME
+envelope → witness chain → trust gradient → shadow detection → conformance levels.
 
 ## Notes
 
-- D01 reflects the **canonical AIMS structure**: 4 operational layers (L-Intent / L-Plan / L-Form / L-Exec) + 3 functional modes (M-Generative / M-Constraining / M-Integrative) + 6-pattern safety substrate. The earlier informal phrasing of "8 functional layers" does not match the spec — the canonical count is 4 layers + 3 modes.
-- Style: black-only strokes, sans-serif labels, no fills.
-- D02–D11 generated 2026-04-29 against the same `viewBox="0 0 850 1100"` US Letter geometry, unique `arrow_dNN` marker IDs per file (no clashes if embedded together), header pattern matching D01 (`DXX` 18pt bold + italic title + source-section line), numerals placed outside component boxes, and ASCII-only content with the single carryover `§` glyph (matching D01's pilot precedent — renders cleanly via xmllint + ImageMagick).
-- All 10 SVGs validate via `xmllint --noout` and render to PNG via ImageMagick `convert`. Rendered PNGs are written to `rendered/` for visual review.
-
-## Generation history
-
-- 2026-04-29 — D01 pilot generated and visual style locked (numeral placement outside boxes, hash-arrow channel routing, ASCII-only constraint to avoid Write-tool unicode truncation, single-`§` carryover for spec section references).
-- 2026-04-29 — D02–D11 generated in a single session against the locked style. All files xmllint-clean, terminate with `</svg>\n`, and render via ImageMagick. Sanitization clean: only canonical AIMS engineering lexicon (`L-Intent` / `L-Plan` / `L-Form` / `L-Exec`, `M-Generative` / `M-Constraining` / `M-Integrative`, `IAME`, `AIP`, `Trust Gradient`, `aims_auxiliary_tier`, `domain_affiliations`, `path_id`, `shadow_seed.archetype`, `Three Principles`).
+- D01 reflects the canonical XSI-AIMS structure: four operational layers (`L-Intent` / `L-Plan` /
+  `L-Form` / `L-Exec`), three functional modes (`M-Generative` / `M-Constraining` / `M-Integrative`), and
+  the six-pattern safety substrate.
+- The diagrams use a consistent line-based visual style and validate as standalone SVG.
+- These figures are illustrative companions to the specification; where a figure and the normative text
+  differ, the specification text governs.

@@ -5,7 +5,7 @@
 <p align="center">
   <a href="LICENSE"><img alt="Spec license: CC BY 4.0" src="https://img.shields.io/badge/spec-CC--BY--4.0-1f6feb.svg"></a>
   <a href="LICENSE-CODE"><img alt="Code license: MIT" src="https://img.shields.io/badge/code-MIT-2ea043.svg"></a>
-  <img alt="Status: v2.0 Public Review Draft" src="https://img.shields.io/badge/status-v2.0%20public%20review%20draft-d4a017.svg">
+  <img alt="Status: v2.1.0 Public Review Draft" src="https://img.shields.io/badge/status-v2.1.0%20public%20review%20draft-d4a017.svg">
   <img alt="Conformance: FULL | PARTIAL | OBSERVER" src="https://img.shields.io/badge/conformance-FULL%20%7C%20PARTIAL%20%7C%20OBSERVER-8a1521.svg">
 </p>
 
