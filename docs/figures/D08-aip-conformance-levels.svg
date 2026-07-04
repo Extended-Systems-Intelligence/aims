@@ -1,171 +1,164 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 1100" font-family="Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 860" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
   <!-- AIMS D08 - AIP Conformance Levels: FULL / PARTIAL / OBSERVER Comparison -->
   <!-- Educational diagram. Sanitized: canonical AIMS engineering lexicon only. -->
+  <!-- Register: XSI Standards (Sapphire) per XSI-Diagram-Design-Guide.md v1.0 -->
 
   <defs>
-    <marker id="arrow_d8" viewBox="0 0 12 8" refX="11" refY="4" markerWidth="12" markerHeight="8" orient="auto">
-      <polygon points="0,0 12,4 0,8" fill="black"/>
+    <marker id="arrow_d08" viewBox="0 0 12 8" refX="11" refY="4" markerWidth="12" markerHeight="8" orient="auto">
+      <polygon points="0,0 12,4 0,8" fill="#1F2937"/>
     </marker>
   </defs>
 
+  <!-- Canvas -->
+  <rect x="0" y="0" width="860" height="860" fill="#FFFFFF"/>
+
   <!-- Header -->
-  <text x="270" y="285" font-size="18" font-weight="bold">D08</text>
-  <text x="270" y="310" font-size="13" font-style="italic">AIMS AIP Conformance Levels - FULL / PARTIAL / OBSERVER Side-by-Side</text>
-  <text x="270" y="332" font-size="10">Source: AIMS specification §3.24 (AIP Detailed Wire Format) - Cross-Framework Compatibility</text>
+  <text x="40" y="48" font-size="18" font-weight="700" fill="#1F2937">D08</text>
+  <text x="40" y="70" font-size="13" font-style="italic" fill="#1F2937">AIMS AIP Conformance Levels - FULL / PARTIAL / OBSERVER Side-by-Side</text>
+  <text x="40" y="88" font-size="10" fill="#6B7280">Source: AIMS specification &#167;3.24 (AIP Detailed Wire Format) - Cross-Framework Compatibility</text>
 
-  <!-- Column headers -->
-  <rect x="265" y="365" width="155" height="40" fill="none" stroke="black" stroke-width="2.5"/>
-  <text x="342" y="383" font-size="13" font-weight="bold" text-anchor="middle">FULL</text>
-  <text x="342" y="398" font-size="9" font-style="italic" text-anchor="middle">native AIMS framework</text>
+  <!-- ================= Table fills ================= -->
+  <!-- Row-label column (cool neutral) -->
+  <rect x="40" y="120" width="180" height="528" fill="#EBEDF3"/>
+  <!-- Column body tints (tint depth mirrors conformance strength) -->
+  <rect x="220" y="176" width="200" height="472" fill="#DCE7F5" fill-opacity="0.6"/>
+  <rect x="420" y="176" width="200" height="472" fill="#DCE7F5" fill-opacity="0.35"/>
+  <!-- OBSERVER body cells: white canvas -->
 
-  <rect x="420" y="365" width="155" height="40" fill="none" stroke="black" stroke-width="2.5"/>
-  <text x="497" y="383" font-size="13" font-weight="bold" text-anchor="middle">PARTIAL</text>
-  <text x="497" y="398" font-size="9" font-style="italic" text-anchor="middle">interoperable peer</text>
+  <!-- Header cells -->
+  <rect x="220" y="120" width="200" height="56" fill="#0A3B85"/>
+  <rect x="420" y="120" width="200" height="56" fill="#0F52BA" fill-opacity="0.55"/>
+  <rect x="620" y="120" width="200" height="56" fill="#DCE7F5"/>
 
-  <rect x="575" y="365" width="155" height="40" fill="none" stroke="black" stroke-width="2.5"/>
-  <text x="652" y="383" font-size="13" font-weight="bold" text-anchor="middle">OBSERVER</text>
-  <text x="652" y="398" font-size="9" font-style="italic" text-anchor="middle">discovery only</text>
+  <!-- Header text -->
+  <text x="130" y="152" font-size="11" font-weight="700" text-anchor="middle" fill="#1F2937">requirement</text>
+  <text x="320" y="145" font-size="13" font-weight="700" letter-spacing="0.01em" text-anchor="middle" fill="#FFFFFF">FULL</text>
+  <text x="320" y="162" font-size="9" font-style="italic" text-anchor="middle" fill="#FFFFFF">native AIMS framework</text>
+  <text x="520" y="145" font-size="13" font-weight="700" letter-spacing="0.01em" text-anchor="middle" fill="#FFFFFF">PARTIAL</text>
+  <text x="520" y="162" font-size="9" font-style="italic" text-anchor="middle" fill="#FFFFFF">interoperable peer</text>
+  <text x="720" y="145" font-size="13" font-weight="700" letter-spacing="0.01em" text-anchor="middle" fill="#1F2937">OBSERVER</text>
+  <text x="720" y="162" font-size="9" font-style="italic" text-anchor="middle" fill="#6B7280">discovery only</text>
 
-  <!-- Row label column header -->
-  <text x="245" y="395" font-size="10" font-weight="bold" text-anchor="end">requirement</text>
+  <!-- ================= Row 1: Layer 1 (y 176-232) ================= -->
+  <text x="52" y="199" font-size="11" font-weight="700" fill="#1F2937">Layer 1</text>
+  <text x="52" y="216" font-size="9" font-family="'JetBrains Mono', 'Cascadia Code', Consolas, ui-monospace, monospace" fill="#6B7280">aip.advertise</text>
 
-  <!-- Layer 1 row -->
-  <text x="240" y="437" font-size="10" font-weight="bold" text-anchor="end">Layer 1</text>
-  <text x="240" y="450" font-size="9" font-style="italic" text-anchor="end">aip.advertise</text>
+  <text x="320" y="199" font-size="11" font-weight="700" text-anchor="middle" fill="#0D9488">required</text>
+  <text x="320" y="216" font-size="9" text-anchor="middle" fill="#6B7280">full advertisement</text>
+  <text x="520" y="199" font-size="11" font-weight="700" text-anchor="middle" fill="#0D9488">required</text>
+  <text x="520" y="216" font-size="9" text-anchor="middle" fill="#6B7280">full advertisement</text>
+  <text x="720" y="199" font-size="11" font-weight="700" text-anchor="middle" fill="#1F2937">consume only</text>
+  <text x="720" y="216" font-size="9" text-anchor="middle" fill="#6B7280">cannot publish</text>
 
-  <rect x="265" y="420" width="155" height="42" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="342" y="437" font-size="11" font-weight="bold" text-anchor="middle">required</text>
-  <text x="342" y="452" font-size="9" text-anchor="middle">full advertisement</text>
+  <!-- ================= Row 2: Layer 2 (y 232-288) ================= -->
+  <text x="52" y="255" font-size="11" font-weight="700" fill="#1F2937">Layer 2</text>
+  <text x="52" y="272" font-size="9" font-family="'JetBrains Mono', 'Cascadia Code', Consolas, ui-monospace, monospace" fill="#6B7280">aip.negotiate</text>
 
-  <rect x="420" y="420" width="155" height="42" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="497" y="437" font-size="11" font-weight="bold" text-anchor="middle">required</text>
-  <text x="497" y="452" font-size="9" text-anchor="middle">full advertisement</text>
+  <text x="320" y="255" font-size="11" font-weight="700" text-anchor="middle" fill="#0D9488">required</text>
+  <text x="320" y="272" font-size="9" text-anchor="middle" fill="#6B7280">full validation</text>
+  <text x="520" y="255" font-size="11" font-weight="700" text-anchor="middle" fill="#1F2937">may skip</text>
+  <text x="520" y="272" font-size="9" text-anchor="middle" fill="#6B7280">full validation</text>
+  <text x="720" y="264" font-size="11" font-weight="700" text-anchor="middle" fill="#6B7280">not implemented</text>
 
-  <rect x="575" y="420" width="155" height="42" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="652" y="437" font-size="11" font-weight="bold" text-anchor="middle">consume only</text>
-  <text x="652" y="452" font-size="9" text-anchor="middle">cannot publish</text>
+  <!-- ================= Row 3: Layer 3 (y 288-344) ================= -->
+  <text x="52" y="311" font-size="11" font-weight="700" fill="#1F2937">Layer 3</text>
+  <text x="52" y="328" font-size="9" font-family="'JetBrains Mono', 'Cascadia Code', Consolas, ui-monospace, monospace" fill="#6B7280">aip.witness_exchange</text>
 
-  <!-- Layer 2 row -->
-  <text x="240" y="487" font-size="10" font-weight="bold" text-anchor="end">Layer 2</text>
-  <text x="240" y="500" font-size="9" font-style="italic" text-anchor="end">aip.negotiate</text>
+  <text x="320" y="311" font-size="11" font-weight="700" text-anchor="middle" fill="#0D9488">required</text>
+  <text x="320" y="328" font-size="9" text-anchor="middle" fill="#6B7280">topology-governed</text>
+  <text x="520" y="311" font-size="11" font-weight="700" text-anchor="middle" fill="#0D9488">required</text>
+  <text x="520" y="328" font-size="9" text-anchor="middle" fill="#6B7280">IAME verification</text>
+  <text x="720" y="320" font-size="11" font-weight="700" text-anchor="middle" fill="#6B7280">not implemented</text>
 
-  <rect x="265" y="470" width="155" height="42" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="342" y="487" font-size="11" font-weight="bold" text-anchor="middle">required</text>
-  <text x="342" y="502" font-size="9" text-anchor="middle">full validation</text>
+  <!-- ================= Row 4: IAME envelope (y 344-400) ================= -->
+  <text x="52" y="367" font-size="11" font-weight="700" fill="#1F2937">IAME envelope</text>
+  <text x="52" y="384" font-size="9" font-style="italic" fill="#6B7280">(&#167;3.18.5)</text>
 
-  <rect x="420" y="470" width="155" height="42" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="497" y="487" font-size="11" font-weight="bold" text-anchor="middle">may skip</text>
-  <text x="497" y="502" font-size="9" text-anchor="middle">full validation</text>
+  <text x="320" y="367" font-size="11" font-weight="700" text-anchor="middle" fill="#0D9488">mandatory</text>
+  <text x="320" y="384" font-size="9" text-anchor="middle" fill="#6B7280">all AIP messages</text>
+  <text x="520" y="367" font-size="11" font-weight="700" text-anchor="middle" fill="#0D9488">mandatory</text>
+  <text x="520" y="384" font-size="9" text-anchor="middle" fill="#6B7280">verify on receive</text>
+  <text x="720" y="367" font-size="11" font-weight="700" text-anchor="middle" fill="#0D9488">mandatory</text>
+  <text x="720" y="384" font-size="9" text-anchor="middle" fill="#6B7280">verify on receive</text>
 
-  <rect x="575" y="470" width="155" height="42" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="652" y="487" font-size="11" font-weight="bold" text-anchor="middle">not implemented</text>
+  <!-- ================= Row 5: Topology validation (y 400-456) ================= -->
+  <text x="52" y="423" font-size="11" font-weight="700" fill="#1F2937">Topology validation</text>
+  <text x="52" y="440" font-size="9" font-style="italic" fill="#6B7280">(&#167;3.4 + &#167;3.16)</text>
 
-  <!-- Layer 3 row -->
-  <text x="240" y="537" font-size="10" font-weight="bold" text-anchor="end">Layer 3</text>
-  <text x="240" y="550" font-size="9" font-style="italic" text-anchor="end">aip.witness_exchange</text>
+  <text x="320" y="423" font-size="11" font-weight="700" text-anchor="middle" fill="#0D9488">enforced</text>
+  <text x="320" y="440" font-size="9" text-anchor="middle" fill="#6B7280">archetype path set</text>
+  <text x="520" y="423" font-size="11" font-weight="700" text-anchor="middle" fill="#1F2937">advisory</text>
+  <text x="520" y="440" font-size="9" text-anchor="middle" fill="#6B7280">may verify selectively</text>
+  <text x="720" y="432" font-size="11" font-weight="700" text-anchor="middle" fill="#6B7280">not required</text>
 
-  <rect x="265" y="520" width="155" height="42" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="342" y="537" font-size="11" font-weight="bold" text-anchor="middle">required</text>
-  <text x="342" y="552" font-size="9" text-anchor="middle">topology-governed</text>
+  <!-- ================= Row 6: Trust Gradient gating (y 456-512) ================= -->
+  <text x="52" y="479" font-size="11" font-weight="700" fill="#1F2937">Trust Gradient gating</text>
+  <text x="52" y="496" font-size="9" font-style="italic" fill="#6B7280">(&#167;3.18.4)</text>
 
-  <rect x="420" y="520" width="155" height="42" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="497" y="537" font-size="11" font-weight="bold" text-anchor="middle">required</text>
-  <text x="497" y="552" font-size="9" text-anchor="middle">IAME verification</text>
+  <text x="320" y="479" font-size="11" font-weight="700" text-anchor="middle" fill="#0D9488">required</text>
+  <text x="320" y="496" font-size="9" text-anchor="middle" fill="#6B7280">on negotiate + scope</text>
+  <text x="520" y="479" font-size="11" font-weight="700" text-anchor="middle" fill="#1F2937">recommended</text>
+  <text x="520" y="496" font-size="9" text-anchor="middle" fill="#6B7280">peer may exchange</text>
+  <text x="720" y="488" font-size="11" font-weight="700" text-anchor="middle" fill="#6B7280">not required</text>
 
-  <rect x="575" y="520" width="155" height="42" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="652" y="537" font-size="11" font-weight="bold" text-anchor="middle">not implemented</text>
+  <!-- ================= Row 7: Witness chain (y 512-568) ================= -->
+  <text x="52" y="535" font-size="11" font-weight="700" fill="#1F2937">Witness chain</text>
+  <text x="52" y="552" font-size="9" font-style="italic" fill="#6B7280">(&#167;3.10)</text>
 
-  <!-- IAME envelope row -->
-  <text x="240" y="587" font-size="10" font-weight="bold" text-anchor="end">IAME envelope</text>
-  <text x="240" y="600" font-size="9" font-style="italic" text-anchor="end">(§3.18.5)</text>
+  <text x="320" y="535" font-size="11" font-weight="700" text-anchor="middle" fill="#0D9488">native</text>
+  <text x="320" y="552" font-size="9" text-anchor="middle" fill="#6B7280">internal hash chain</text>
+  <text x="520" y="535" font-size="11" font-weight="700" text-anchor="middle" fill="#1F2937">verify shared</text>
+  <text x="520" y="552" font-size="9" text-anchor="middle" fill="#6B7280">cross-attestation only</text>
+  <text x="720" y="544" font-size="11" font-weight="700" text-anchor="middle" fill="#6B7280">N/A</text>
 
-  <rect x="265" y="570" width="155" height="42" fill="none" stroke="black" stroke-width="2"/>
-  <text x="342" y="587" font-size="11" font-weight="bold" text-anchor="middle">mandatory</text>
-  <text x="342" y="602" font-size="9" text-anchor="middle">all AIP messages</text>
+  <!-- ================= Row 8: Typical use case (y 568-648) ================= -->
+  <text x="52" y="591" font-size="11" font-weight="700" fill="#1F2937">Typical use case</text>
 
-  <rect x="420" y="570" width="155" height="42" fill="none" stroke="black" stroke-width="2"/>
-  <text x="497" y="587" font-size="11" font-weight="bold" text-anchor="middle">mandatory</text>
-  <text x="497" y="602" font-size="9" text-anchor="middle">verify on receive</text>
+  <text x="320" y="591" font-size="9" text-anchor="middle" fill="#1F2937">native AIMS implementations,</text>
+  <text x="320" y="604" font-size="9" text-anchor="middle" fill="#1F2937">native deployments,</text>
+  <text x="320" y="617" font-size="9" text-anchor="middle" fill="#1F2937">cross-deployment peers</text>
 
-  <rect x="575" y="570" width="155" height="42" fill="none" stroke="black" stroke-width="2"/>
-  <text x="652" y="587" font-size="11" font-weight="bold" text-anchor="middle">mandatory</text>
-  <text x="652" y="602" font-size="9" text-anchor="middle">verify on receive</text>
+  <text x="520" y="591" font-size="9" text-anchor="middle" fill="#1F2937">non-AIMS frameworks</text>
+  <text x="520" y="604" font-size="9" text-anchor="middle" fill="#1F2937">implementing AIP for</text>
+  <text x="520" y="617" font-size="9" text-anchor="middle" fill="#1F2937">interoperability</text>
 
-  <!-- Topology validation row -->
-  <text x="240" y="637" font-size="10" font-weight="bold" text-anchor="end">Topology validation</text>
-  <text x="240" y="650" font-size="9" font-style="italic" text-anchor="end">(§3.4 + §3.16)</text>
+  <text x="720" y="591" font-size="9" text-anchor="middle" fill="#1F2937">discovery clients,</text>
+  <text x="720" y="604" font-size="9" text-anchor="middle" fill="#1F2937">marketplace listings,</text>
+  <text x="720" y="617" font-size="9" text-anchor="middle" fill="#1F2937">observability</text>
+  <text x="720" y="630" font-size="9" text-anchor="middle" fill="#1F2937">pull-only consumers</text>
 
-  <rect x="265" y="620" width="155" height="42" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="342" y="637" font-size="11" font-weight="bold" text-anchor="middle">enforced</text>
-  <text x="342" y="652" font-size="9" text-anchor="middle">archetype path set</text>
+  <!-- ================= Gridlines ================= -->
+  <!-- Vertical gridlines between columns -->
+  <line x1="220" y1="120" x2="220" y2="648" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="420" y1="120" x2="420" y2="648" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="620" y1="120" x2="620" y2="648" stroke="#E5E7EB" stroke-width="1"/>
+  <!-- Horizontal gridlines between body rows -->
+  <line x1="40" y1="232" x2="820" y2="232" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="40" y1="288" x2="820" y2="288" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="40" y1="344" x2="820" y2="344" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="40" y1="400" x2="820" y2="400" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="40" y1="456" x2="820" y2="456" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="40" y1="512" x2="820" y2="512" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="40" y1="568" x2="820" y2="568" stroke="#E5E7EB" stroke-width="1"/>
+  <!-- Header row separator -->
+  <line x1="40" y1="176" x2="820" y2="176" stroke="#9CA3AF" stroke-width="1"/>
+  <!-- Outer table frame -->
+  <rect x="40" y="120" width="780" height="528" fill="none" stroke="#9CA3AF" stroke-width="1"/>
 
-  <rect x="420" y="620" width="155" height="42" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="497" y="637" font-size="11" font-weight="bold" text-anchor="middle">advisory</text>
-  <text x="497" y="652" font-size="9" text-anchor="middle">may verify selectively</text>
+  <!-- ================= Minimum compatibility callout (y 672-760) ================= -->
+  <rect x="40" y="672" width="780" height="88" fill="#EBEDF3"/>
+  <rect x="40" y="672" width="3" height="88" fill="#0A3B85"/>
+  <text x="56" y="694" font-size="11" font-weight="700" fill="#1F2937">MINIMUM COMPATIBILITY (any conforming implementation)</text>
+  <text x="56" y="712" font-size="9" fill="#1F2937">- IAME envelope verification on every received AIP message (mandatory, no exceptions)</text>
+  <text x="56" y="726" font-size="9" fill="#1F2937">- Identity advertisement signature verification</text>
+  <text x="56" y="740" font-size="9" fill="#1F2937">- Conformance test suite per &#167;3.19 cross-framework testing section</text>
 
-  <rect x="575" y="620" width="155" height="42" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="652" y="637" font-size="11" font-weight="bold" text-anchor="middle">not required</text>
+  <!-- ================= Legend ================= -->
+  <text x="40" y="784" font-size="10" fill="#1F2937">Value color: <tspan fill="#0D9488" font-weight="700">teal</tspan> = required / native at this level; dark = conditional or reduced obligation; <tspan fill="#6B7280" font-weight="700">grey</tspan> = not implemented / not required / N/A.</text>
+  <text x="40" y="798" font-size="10" fill="#1F2937">Column tint depth (FULL deepest, OBSERVER white) mirrors conformance strength.</text>
 
-  <!-- Trust gradient row -->
-  <text x="240" y="687" font-size="10" font-weight="bold" text-anchor="end">Trust Gradient gating</text>
-  <text x="240" y="700" font-size="9" font-style="italic" text-anchor="end">(§3.18.4)</text>
-
-  <rect x="265" y="670" width="155" height="42" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="342" y="687" font-size="11" font-weight="bold" text-anchor="middle">required</text>
-  <text x="342" y="702" font-size="9" text-anchor="middle">on negotiate + scope</text>
-
-  <rect x="420" y="670" width="155" height="42" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="497" y="687" font-size="11" font-weight="bold" text-anchor="middle">recommended</text>
-  <text x="497" y="702" font-size="9" text-anchor="middle">peer may exchange</text>
-
-  <rect x="575" y="670" width="155" height="42" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="652" y="687" font-size="11" font-weight="bold" text-anchor="middle">not required</text>
-
-  <!-- Witness chain integrity row -->
-  <text x="240" y="737" font-size="10" font-weight="bold" text-anchor="end">Witness chain</text>
-  <text x="240" y="750" font-size="9" font-style="italic" text-anchor="end">(§3.10)</text>
-
-  <rect x="265" y="720" width="155" height="42" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="342" y="737" font-size="11" font-weight="bold" text-anchor="middle">native</text>
-  <text x="342" y="752" font-size="9" text-anchor="middle">internal hash chain</text>
-
-  <rect x="420" y="720" width="155" height="42" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="497" y="737" font-size="11" font-weight="bold" text-anchor="middle">verify shared</text>
-  <text x="497" y="752" font-size="9" text-anchor="middle">cross-attestation only</text>
-
-  <rect x="575" y="720" width="155" height="42" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="652" y="737" font-size="11" font-weight="bold" text-anchor="middle">N/A</text>
-
-  <!-- Use cases row -->
-  <text x="240" y="787" font-size="10" font-weight="bold" text-anchor="end">Typical use case</text>
-
-  <rect x="265" y="770" width="155" height="58" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="342" y="788" font-size="9" text-anchor="middle">native AIMS implementations,</text>
-  <text x="342" y="800" font-size="9" text-anchor="middle">native</text>
-  <text x="342" y="812" font-size="9" text-anchor="middle">deployments,</text>
-  <text x="342" y="824" font-size="9" text-anchor="middle">cross-deployment peers</text>
-
-  <rect x="420" y="770" width="155" height="58" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="497" y="788" font-size="9" text-anchor="middle">non-AIMS frameworks</text>
-  <text x="497" y="800" font-size="9" text-anchor="middle">implementing</text>
-  <text x="497" y="812" font-size="9" text-anchor="middle">AIP for</text>
-  <text x="497" y="824" font-size="9" text-anchor="middle">interoperability</text>
-
-  <rect x="575" y="770" width="155" height="58" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="652" y="788" font-size="9" text-anchor="middle">discovery clients,</text>
-  <text x="652" y="800" font-size="9" text-anchor="middle">marketplace</text>
-  <text x="652" y="812" font-size="9" text-anchor="middle">listings, observability</text>
-  <text x="652" y="824" font-size="9" text-anchor="middle">pull-only consumers</text>
-
-  <!-- Minimum compatibility callout -->
-  <rect x="245" y="855" width="465" height="62" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="255" y="873" font-size="11" font-weight="bold">MINIMUM COMPATIBILITY (any conforming implementation)</text>
-  <text x="255" y="891" font-size="9">- IAME envelope verification on every received AIP message (mandatory, no exceptions)</text>
-  <text x="255" y="903" font-size="9">- Identity advertisement signature verification</text>
-  <text x="255" y="915" font-size="9">- Conformance test suite per §3.19 cross-framework testing section</text>
-
-  <!-- Bottom legend -->
-  <text x="270" y="975" font-size="8">All three levels share IAME (mandatory) and Identity Advertisement signature verification. Higher levels add Topology validation,</text>
-  <text x="270" y="987" font-size="8">Trust Gradient gating, and full Witness chain participation. AIP/1.0 versioning: prior versions supported P180D after deprecation.</text>
+  <!-- Bottom footnote -->
+  <text x="40" y="820" font-size="9" fill="#6B7280">All three levels share IAME (mandatory) and Identity Advertisement signature verification. Higher levels add Topology validation,</text>
+  <text x="40" y="833" font-size="9" fill="#6B7280">Trust Gradient gating, and full Witness chain participation. AIP/1.0 versioning: prior versions supported P180D after deprecation.</text>
 </svg>

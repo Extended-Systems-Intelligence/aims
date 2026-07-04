@@ -1,101 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 1100" font-family="Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 1050" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
   <!-- AIMS D02 - AIP Wire Format Envelope: Three-Layer Protocol with IAME Wrapping -->
   <!-- Educational diagram. Sanitized: canonical AIMS engineering lexicon only. -->
+  <!-- Register: XSI Sapphire Standards (Technical-light) per XSI-Diagram-Design-Guide.md v1.0 -->
+  <!-- Style: record-layout / envelope schema (non-C4 per guide section 13.3) -->
 
   <defs>
-    <marker id="arrow_d2" viewBox="0 0 12 8" refX="11" refY="4" markerWidth="12" markerHeight="8" orient="auto">
-      <polygon points="0,0 12,4 0,8" fill="black"/>
+    <marker id="arrow_d02" viewBox="0 0 12 8" refX="11" refY="4" markerWidth="12" markerHeight="8" orient="auto">
+      <polygon points="0,0 12,4 0,8" fill="#1F2937"/>
     </marker>
   </defs>
 
+  <!-- Canvas -->
+  <rect x="0" y="0" width="860" height="1050" fill="#FFFFFF"/>
+
   <!-- Header -->
-  <text x="270" y="285" font-size="18" font-weight="bold">D02</text>
-  <text x="270" y="310" font-size="13" font-style="italic">AIMS AIP Wire Format Envelope - Three-Layer Protocol with IAME Wrapping</text>
-  <text x="270" y="332" font-size="9">Source: AIMS specification §3.14 (AIMS AIP), §3.24 (Detailed Wire Format), §3.18.5 (IAME).</text>
-  <text x="270" y="344" font-size="9" font-style="italic">See §6.1 for AIMS-AIP vs. IETF-AIP acronym disambiguation.</text>
+  <text x="40" y="56" font-size="18" font-weight="bold" fill="#1F2937">D02</text>
+  <text x="40" y="80" font-size="13" font-style="italic" fill="#1F2937">AIMS AIP Wire Format Envelope - Three-Layer Protocol with IAME Wrapping</text>
+  <text x="40" y="100" font-size="10" fill="#6B7280">Source: AIMS specification &#167;3.14 (AIMS AIP), &#167;3.24 (Detailed Wire Format), &#167;3.18.5 (IAME).</text>
+  <text x="40" y="115" font-size="9.5" font-style="italic" fill="#6B7280">See &#167;6.1 for AIMS-AIP vs. IETF-AIP acronym disambiguation.</text>
 
-  <!-- Outer IAME envelope wrapping the entire AIP message -->
-  <text x="265" y="365" font-size="11" font-weight="bold">OUTER WRAPPER</text>
-  <text x="265" y="378" font-size="9" font-style="italic">IAME envelope</text>
-  <text x="265" y="390" font-size="9" font-style="italic">(§3.18.5)</text>
+  <!-- ============ Row 1: Outer IAME envelope (integrity/security) ============ -->
+  <text x="40" y="168" font-size="11" font-weight="bold" fill="#1F2937">OUTER WRAPPER</text>
+  <text x="40" y="183" font-size="9.5" font-style="italic" fill="#6B7280">IAME envelope</text>
+  <text x="40" y="196" font-size="9.5" font-style="italic" fill="#6B7280">(&#167;3.18.5)</text>
 
-  <rect x="370" y="355" width="330" height="42" fill="none" stroke="black" stroke-width="2.5"/>
-  <text x="378" y="372" font-size="10" font-weight="bold">IAME Envelope: sender.signature | header.path_id | replay_nonce</text>
-  <text x="378" y="386" font-size="9" font-style="italic">every AIP message wrapped; mandatory; no bypass</text>
+  <rect x="280" y="148" width="460" height="54" fill="#DCE7F5" stroke="#0A3B85" stroke-width="2"/>
+  <text x="292" y="169" font-size="10.5" fill="#1F2937"><tspan font-weight="bold">IAME Envelope: </tspan><tspan font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">sender.signature | header.path_id | replay_nonce</tspan></text>
+  <text x="292" y="188" font-size="9.5" font-style="italic" fill="#6B7280">every AIP message wrapped; mandatory; no bypass</text>
 
   <!-- Connector down -->
-  <line x1="535" y1="397" x2="535" y2="415" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d2)"/>
+  <line x1="510" y1="204" x2="510" y2="227" stroke="#1F2937" stroke-width="1.5" marker-end="url(#arrow_d02)"/>
 
-  <!-- AIP envelope header -->
-  <text x="265" y="438" font-size="11" font-weight="bold">AIP ENVELOPE</text>
-  <text x="265" y="451" font-size="9" font-style="italic">version | message_type</text>
+  <!-- ============ Row 2: AIP envelope header (protocol header fields) ============ -->
+  <text x="40" y="250" font-size="11" font-weight="bold" fill="#1F2937">AIP ENVELOPE</text>
+  <text x="40" y="265" font-size="9.5" font-style="italic" fill="#6B7280" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">version | message_type</text>
 
-  <rect x="370" y="420" width="330" height="42" fill="none" stroke="black" stroke-width="2"/>
-  <text x="378" y="437" font-size="10" font-weight="bold">aims_version: 1.0  |  aip_version: 1.0  |  message_type: enum</text>
-  <text x="378" y="451" font-size="9" font-style="italic">JSON-RPC 2.0 over MCP-compatible HTTP/SSE or WebSocket</text>
+  <rect x="280" y="230" width="460" height="54" fill="#DCE7F5" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="292" y="251" font-size="10" font-weight="bold" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">aims_version: 1.0  |  aip_version: 1.0  |  message_type: enum</text>
+  <text x="292" y="270" font-size="9.5" font-style="italic" fill="#6B7280">JSON-RPC 2.0 over MCP-compatible HTTP/SSE or WebSocket</text>
 
-  <!-- Connector -->
-  <line x1="535" y1="462" x2="535" y2="478" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d2)"/>
+  <!-- Connector down -->
+  <line x1="510" y1="286" x2="510" y2="307" stroke="#1F2937" stroke-width="1.5" marker-end="url(#arrow_d02)"/>
 
-  <!-- Layer 1: Identity Advertisement -->
-  <text x="265" y="498" font-size="11" font-weight="bold">LAYER 1</text>
-  <text x="265" y="512" font-size="9" font-style="italic">aip.advertise</text>
-  <text x="265" y="525" font-size="9" font-style="italic">pub-sub broadcast</text>
-  <text x="265" y="538" font-size="9" font-style="italic">P30D retention</text>
+  <!-- ============ Row 3: Layer 1 - Identity Advertisement (payload) ============ -->
+  <text x="40" y="330" font-size="11" font-weight="bold" fill="#1F2937">LAYER 1</text>
+  <text x="40" y="346" font-size="9.5" font-style="italic" fill="#6B7280" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">aip.advertise</text>
+  <text x="40" y="360" font-size="9.5" font-style="italic" fill="#6B7280">pub-sub broadcast</text>
+  <text x="40" y="374" font-size="9.5" font-style="italic" fill="#6B7280">P30D retention</text>
 
-  <rect x="370" y="483" width="330" height="92" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="378" y="500" font-size="10" font-weight="bold">Identity Advertisement</text>
-  <text x="378" y="515" font-size="9">agent_id, deployment_id, archetype, mode, layer</text>
-  <text x="378" y="528" font-size="9">capabilities[], shadow_seed (per §3.7 + §3.16)</text>
-  <text x="378" y="541" font-size="9">autonomy_level, trust_gradient (§3.18.4)</text>
-  <text x="378" y="554" font-size="9">aims_auxiliary_tier + domain_affiliations (§3.22)</text>
-  <text x="378" y="567" font-size="9">topology_offers[], credential_ref (§3.21)</text>
+  <rect x="280" y="310" width="460" height="112" fill="#EBEDF3" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="292" y="332" font-size="10.5" font-weight="bold" fill="#1F2937">Identity Advertisement</text>
+  <text x="292" y="350" font-size="9.5" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">agent_id, deployment_id, archetype, mode, layer</text>
+  <text x="292" y="364" font-size="9.5" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">capabilities[], shadow_seed (per &#167;3.7 + &#167;3.16)</text>
+  <text x="292" y="378" font-size="9.5" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">autonomy_level, trust_gradient (&#167;3.18.4)</text>
+  <text x="292" y="392" font-size="9.5" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">aims_auxiliary_tier + domain_affiliations (&#167;3.22)</text>
+  <text x="292" y="406" font-size="9.5" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">topology_offers[], credential_ref (&#167;3.21)</text>
 
-  <!-- Connector -->
-  <line x1="535" y1="575" x2="535" y2="592" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d2)"/>
+  <!-- Connector down -->
+  <line x1="510" y1="424" x2="510" y2="447" stroke="#1F2937" stroke-width="1.5" marker-end="url(#arrow_d02)"/>
 
-  <!-- Layer 2: Topology Negotiation -->
-  <text x="265" y="613" font-size="11" font-weight="bold">LAYER 2</text>
-  <text x="265" y="627" font-size="9" font-style="italic">aip.negotiate</text>
-  <text x="265" y="640" font-size="9" font-style="italic">state machine</text>
+  <!-- ============ Row 4: Layer 2 - Topology Negotiation (payload) ============ -->
+  <text x="40" y="470" font-size="11" font-weight="bold" fill="#1F2937">LAYER 2</text>
+  <text x="40" y="486" font-size="9.5" font-style="italic" fill="#6B7280" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">aip.negotiate</text>
+  <text x="40" y="500" font-size="9.5" font-style="italic" fill="#6B7280">state machine</text>
 
-  <rect x="370" y="597" width="330" height="92" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="378" y="614" font-size="10" font-weight="bold">Topology Negotiation</text>
-  <text x="378" y="629" font-size="9">state: PROPOSED -&gt; COUNTER -&gt; AGREED | REJECTED</text>
-  <text x="378" y="642" font-size="9">validation: layer-discipline | archetype-compat |</text>
-  <text x="378" y="655" font-size="9">authority-scope | trust_gradient threshold</text>
-  <text x="378" y="668" font-size="9">cross-deployment scope: requires sovereign_attestation field</text>
-  <text x="378" y="681" font-size="9">both sides record outcome in Witness chains</text>
+  <rect x="280" y="450" width="460" height="112" fill="#EBEDF3" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="292" y="472" font-size="10.5" font-weight="bold" fill="#1F2937">Topology Negotiation</text>
+  <text x="292" y="490" font-size="9.5" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">state: PROPOSED -&gt; COUNTER -&gt; AGREED | REJECTED</text>
+  <text x="292" y="504" font-size="9.5" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">validation: layer-discipline | archetype-compat |</text>
+  <text x="292" y="518" font-size="9.5" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">authority-scope | trust_gradient threshold</text>
+  <text x="292" y="532" font-size="9.5" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">cross-deployment scope: requires sovereign_attestation field</text>
+  <text x="292" y="546" font-size="9.5" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">both sides record outcome in Witness chains</text>
 
-  <!-- Connector -->
-  <line x1="535" y1="689" x2="535" y2="706" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d2)"/>
+  <!-- Connector down -->
+  <line x1="510" y1="564" x2="510" y2="587" stroke="#1F2937" stroke-width="1.5" marker-end="url(#arrow_d02)"/>
 
-  <!-- Layer 3: Witness Exchange -->
-  <text x="265" y="727" font-size="11" font-weight="bold">LAYER 3</text>
-  <text x="265" y="741" font-size="9" font-style="italic">aip.witness_exchange</text>
-  <text x="265" y="754" font-size="9" font-style="italic">selective sharing</text>
+  <!-- ============ Row 5: Layer 3 - Witness Exchange (payload) ============ -->
+  <text x="40" y="610" font-size="11" font-weight="bold" fill="#1F2937">LAYER 3</text>
+  <text x="40" y="626" font-size="9.5" font-style="italic" fill="#6B7280" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">aip.witness_exchange</text>
+  <text x="40" y="640" font-size="9.5" font-style="italic" fill="#6B7280">selective sharing</text>
 
-  <rect x="370" y="711" width="330" height="78" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="378" y="728" font-size="10" font-weight="bold">Witness Exchange</text>
-  <text x="378" y="743" font-size="9">format: hash-chained records, chain_attestation</text>
-  <text x="378" y="756" font-size="9">scope: TOPOLOGY_GOVERNED selective sharing</text>
-  <text x="378" y="769" font-size="9">privacy: external requestors cannot see internal topology</text>
-  <text x="378" y="782" font-size="9">integrity: both sides verify chain independently</text>
+  <rect x="280" y="590" width="460" height="98" fill="#EBEDF3" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="292" y="612" font-size="10.5" font-weight="bold" fill="#1F2937">Witness Exchange</text>
+  <text x="292" y="630" font-size="9.5" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">format: hash-chained records, chain_attestation</text>
+  <text x="292" y="644" font-size="9.5" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">scope: TOPOLOGY_GOVERNED selective sharing</text>
+  <text x="292" y="658" font-size="9.5" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">privacy: external requestors cannot see internal topology</text>
+  <text x="292" y="672" font-size="9.5" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">integrity: both sides verify chain independently</text>
 
-  <!-- Conformance levels callout -->
-  <rect x="245" y="815" width="465" height="105" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="255" y="833" font-size="11" font-weight="bold">CONFORMANCE LEVELS (per §3.24)</text>
-  <text x="255" y="852" font-size="10" font-weight="bold">FULL</text>
-  <text x="290" y="852" font-size="10">- all 3 layers + full AIMS validation + IAME mandatory</text>
-  <text x="255" y="869" font-size="10" font-weight="bold">PARTIAL</text>
-  <text x="305" y="869" font-size="10">- Layer 1 + Layer 3 + IAME verification; Layer 2 may skip full validation</text>
-  <text x="255" y="886" font-size="10" font-weight="bold">OBSERVER</text>
-  <text x="312" y="886" font-size="10">- Layer 1 advertisement consumption only</text>
-  <text x="255" y="906" font-size="9" font-style="italic">Minimum compatibility: IAME envelope verification + identity advertisement signature.</text>
-  <text x="255" y="918" font-size="9" font-style="italic">Conformance test suite per §3.19 cross-framework testing section.</text>
+  <!-- ============ Conformance levels callout (annotation panel) ============ -->
+  <rect x="40" y="712" width="700" height="128" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="52" y="734" font-size="11" font-weight="bold" fill="#1F2937">CONFORMANCE LEVELS (per &#167;3.24)</text>
+  <text x="52" y="756" font-size="10" font-weight="bold" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">FULL</text>
+  <text x="118" y="756" font-size="10" fill="#1F2937">- all 3 layers + full AIMS validation + IAME mandatory</text>
+  <text x="52" y="774" font-size="10" font-weight="bold" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">PARTIAL</text>
+  <text x="118" y="774" font-size="10" fill="#1F2937">- Layer 1 + Layer 3 + IAME verification; Layer 2 may skip full validation</text>
+  <text x="52" y="792" font-size="10" font-weight="bold" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">OBSERVER</text>
+  <text x="118" y="792" font-size="10" fill="#1F2937">- Layer 1 advertisement consumption only</text>
+  <text x="52" y="812" font-size="9.5" font-style="italic" fill="#6B7280">Minimum compatibility: IAME envelope verification + identity advertisement signature.</text>
+  <text x="52" y="826" font-size="9.5" font-style="italic" fill="#6B7280">Conformance test suite per &#167;3.19 cross-framework testing section.</text>
 
-  <!-- Bottom legend -->
-  <text x="270" y="985" font-size="8">Every AIP message is wrapped in an IAME envelope (§3.18.5) for per-message authentication, integrity, and replay protection.</text>
-  <text x="270" y="997" font-size="8">Discovery: well-known endpoint /.well-known/aip-manifest carries deployment_id, supported_versions, and conformance_level.</text>
+  <!-- ============ Bottom notes ============ -->
+  <text x="40" y="864" font-size="9" fill="#6B7280">Every AIP message is wrapped in an IAME envelope (&#167;3.18.5) for per-message authentication, integrity, and replay protection.</text>
+  <text x="40" y="878" font-size="9" fill="#6B7280">Discovery: well-known endpoint /.well-known/aip-manifest carries deployment_id, supported_versions, and conformance_level.</text>
+
+  <!-- ============ Legend ============ -->
+  <rect x="40" y="898" width="460" height="124" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="52" y="918" font-size="10" font-weight="bold" fill="#1F2937">LEGEND</text>
+  <rect x="52" y="927" width="18" height="11" fill="#DCE7F5" stroke="#0A3B85" stroke-width="2"/>
+  <text x="78" y="936" font-size="9.5" fill="#1F2937">Sapphire pale + 2px deep stroke = IAME integrity/security wrapper</text>
+  <rect x="52" y="945" width="18" height="11" fill="#DCE7F5" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="78" y="954" font-size="9.5" fill="#1F2937">Sapphire pale + 1px stroke = AIP envelope header fields</text>
+  <rect x="52" y="963" width="18" height="11" fill="#EBEDF3" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="78" y="972" font-size="9.5" fill="#1F2937">Cool neutral = payload layers (Layers 1-3 message bodies)</text>
+  <rect x="52" y="981" width="18" height="11" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="78" y="990" font-size="9.5" fill="#1F2937">White panel = annotation (conformance levels)</text>
+  <line x1="52" y1="1005" x2="70" y2="1005" stroke="#1F2937" stroke-width="1.5" marker-end="url(#arrow_d02)"/>
+  <text x="78" y="1008" font-size="9.5" fill="#1F2937">Solid arrow = wrapping order, outer wrapper to inner payload</text>
 </svg>

@@ -1,111 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 1100" font-family="Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 1250" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
   <!-- AIMS D09 - Substrate Identity and Multi-Model Governance -->
   <!-- Educational diagram. Sanitized: canonical AIMS engineering lexicon only. -->
+  <!-- Register: Standards (Sapphire) per XSI-Diagram-Design-Guide.md v1.0 -->
 
   <defs>
-    <marker id="arrow_d9" viewBox="0 0 12 8" refX="11" refY="4" markerWidth="12" markerHeight="8" orient="auto">
-      <polygon points="0,0 12,4 0,8" fill="black"/>
+    <marker id="arrow_d09_data" viewBox="0 0 12 8" refX="11" refY="4" markerWidth="12" markerHeight="8" orient="auto">
+      <polygon points="0,0 12,4 0,8" fill="#1F2937"/>
+    </marker>
+    <marker id="arrow_d09_bind" viewBox="0 0 12 8" refX="11" refY="4" markerWidth="12" markerHeight="8" orient="auto">
+      <polygon points="0,0 12,4 0,8" fill="#0A3B85"/>
     </marker>
   </defs>
 
+  <!-- Canvas -->
+  <rect x="0" y="0" width="880" height="1250" fill="#FFFFFF"/>
+
   <!-- Header -->
-  <text x="270" y="285" font-size="18" font-weight="bold">D09</text>
-  <text x="270" y="310" font-size="13" font-style="italic">Substrate Identity and Multi-Model Governance</text>
-  <text x="270" y="332" font-size="10">Source: AIMS specification §3.8 (Differentiation), §3.17 (Multi-Model + Auxiliary Binding), §3.22 (aims_auxiliary_tier)</text>
+  <text x="40" y="48" font-size="18" font-weight="bold" fill="#0F52BA">D09</text>
+  <text x="40" y="72" font-size="13" font-style="italic" fill="#1F2937">Substrate Identity and Multi-Model Governance</text>
+  <text x="40" y="92" font-size="10" fill="#6B7280">Source: AIMS specification &#167;3.8 (Differentiation), &#167;3.17 (Multi-Model + Auxiliary Binding), &#167;3.22 (aims_auxiliary_tier)</text>
 
-  <!-- Foundation model substrate (left side) -->
-  <text x="265" y="370" font-size="11" font-weight="bold">FOUNDATION</text>
-  <text x="265" y="383" font-size="11" font-weight="bold">SUBSTRATE</text>
-  <text x="265" y="397" font-size="9" font-style="italic">shared model</text>
-  <text x="265" y="410" font-size="9" font-style="italic">(e.g., a foundation model)</text>
+  <!-- ============ FOUNDATION SUBSTRATE container ============ -->
+  <rect x="40" y="116" width="560" height="140" fill="#EBEDF3" stroke="#9CA3AF" stroke-width="1.5"/>
+  <text x="52" y="136" font-size="12" font-weight="bold" fill="#1F2937">FOUNDATION SUBSTRATE</text>
+  <text x="52" y="152" font-size="9.5" font-style="italic" fill="#6B7280">shared model (e.g., a foundation model)</text>
 
-  <rect x="370" y="358" width="160" height="62" fill="none" stroke="black" stroke-width="2.5"/>
-  <text x="450" y="378" font-size="11" font-weight="bold" text-anchor="middle">FOUNDATION MODEL</text>
-  <text x="450" y="395" font-size="9" text-anchor="middle">single substrate; agents</text>
-  <text x="450" y="407" font-size="9" text-anchor="middle">differentiated by contraction</text>
+  <rect x="60" y="168" width="260" height="72" fill="#DCE7F5" stroke="#0F52BA" stroke-width="1.5"/>
+  <text x="190" y="190" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#1F2937">FOUNDATION MODEL</text>
+  <text x="190" y="208" font-size="9" text-anchor="middle" fill="#1F2937">single substrate; agents</text>
+  <text x="190" y="222" font-size="9" text-anchor="middle" fill="#1F2937">differentiated by contraction</text>
 
-  <!-- Differentiation arrow downward -->
-  <line x1="450" y1="420" x2="450" y2="442" stroke="black" stroke-width="1.5" marker-end="url(#arrow_d9)"/>
-  <text x="465" y="436" font-size="9" font-style="italic">differentiate (§3.8)</text>
+  <!-- Differentiation arrow downward (data path) -->
+  <line x1="190" y1="240" x2="190" y2="284" stroke="#1F2937" stroke-width="2" marker-end="url(#arrow_d09_data)"/>
+  <text x="204" y="272" font-size="9" font-style="italic" fill="#6B7280">differentiate (&#167;3.8)</text>
 
-  <!-- Emanated agents block -->
-  <text x="265" y="470" font-size="11" font-weight="bold">EMANATED</text>
-  <text x="265" y="483" font-size="9" font-style="italic">share substrate;</text>
-  <text x="265" y="495" font-size="9" font-style="italic">subject to coherence;</text>
-  <text x="265" y="507" font-size="9" font-style="italic">archetype-derived</text>
-  <text x="265" y="519" font-size="9" font-style="italic">shadow</text>
+  <!-- ============ EMANATED container ============ -->
+  <rect x="40" y="288" width="560" height="196" fill="#EBEDF3" stroke="#9CA3AF" stroke-width="1.5"/>
+  <text x="52" y="308" font-size="12" font-weight="bold" fill="#1F2937">EMANATED</text>
+  <text x="52" y="324" font-size="9.5" font-style="italic" fill="#6B7280">share substrate; subject to coherence; archetype-derived shadow</text>
 
-  <rect x="370" y="447" width="220" height="92" fill="none" stroke="black" stroke-width="2"/>
-  <text x="480" y="464" font-size="11" font-weight="bold" text-anchor="middle">EMANATED AGENTS</text>
-  <text x="378" y="481" font-size="8">substrate: foundationModel (shared)</text>
-  <text x="378" y="494" font-size="8">coherence: MEMBER (5 dims + adversarial)</text>
-  <text x="378" y="507" font-size="8">topologyAccess: FULL (22-path, §3.4)</text>
-  <text x="378" y="520" font-size="8">archetypeAssignment: REQUIRED (1 of 10)</text>
-  <text x="378" y="533" font-size="8">managementProtocol: DIFFERENTIATION (§3.8)</text>
+  <rect x="60" y="340" width="350" height="116" fill="#DCE7F5" stroke="#0F52BA" stroke-width="1.5"/>
+  <text x="235" y="360" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#1F2937">EMANATED AGENTS</text>
+  <text x="72" y="378" font-size="8.5" fill="#1F2937">substrate: foundationModel (shared)</text>
+  <text x="72" y="393" font-size="8.5" fill="#1F2937">coherence: MEMBER (5 dims + adversarial)</text>
+  <text x="72" y="408" font-size="8.5" fill="#1F2937">topologyAccess: FULL (22-path, &#167;3.4)</text>
+  <text x="72" y="423" font-size="8.5" fill="#1F2937">archetypeAssignment: REQUIRED (1 of 10)</text>
+  <text x="72" y="438" font-size="8.5" fill="#1F2937">managementProtocol: DIFFERENTIATION (&#167;3.8)</text>
 
   <!-- Identity preservation across model substitution callout -->
-  <text x="700" y="478" font-size="8" font-style="italic" text-anchor="end">identity is preserved</text>
-  <text x="700" y="489" font-size="8" font-style="italic" text-anchor="end">across model</text>
-  <text x="700" y="500" font-size="8" font-style="italic" text-anchor="end">substitution via</text>
-  <text x="700" y="511" font-size="8" font-style="italic" text-anchor="end">archetype + IDENTITY.md</text>
-  <text x="700" y="522" font-size="8" font-style="italic" text-anchor="end">(read-only at runtime)</text>
+  <text x="588" y="352" font-size="8.5" font-style="italic" text-anchor="end" fill="#6B7280">identity is preserved</text>
+  <text x="588" y="365" font-size="8.5" font-style="italic" text-anchor="end" fill="#6B7280">across model</text>
+  <text x="588" y="378" font-size="8.5" font-style="italic" text-anchor="end" fill="#6B7280">substitution via</text>
+  <text x="588" y="391" font-size="8.5" font-style="italic" text-anchor="end" fill="#6B7280">archetype + IDENTITY.md</text>
+  <text x="588" y="404" font-size="8.5" font-style="italic" text-anchor="end" fill="#6B7280">(read-only at runtime)</text>
 
-  <!-- Auxiliary binding section -->
-  <text x="265" y="585" font-size="11" font-weight="bold">AUXILIARY</text>
-  <text x="265" y="598" font-size="9" font-style="italic">foreign model;</text>
-  <text x="265" y="610" font-size="9" font-style="italic">communicates ONLY</text>
-  <text x="265" y="622" font-size="9" font-style="italic">via binding supervisor</text>
+  <!-- ============ AUXILIARY container ============ -->
+  <rect x="40" y="508" width="560" height="196" fill="#EBEDF3" stroke="#9CA3AF" stroke-width="1.5"/>
+  <text x="52" y="528" font-size="12" font-weight="bold" fill="#1F2937">AUXILIARY</text>
+  <text x="52" y="544" font-size="9.5" font-style="italic" fill="#6B7280">foreign model; communicates ONLY via binding supervisor</text>
 
-  <rect x="370" y="565" width="220" height="92" fill="none" stroke="black" stroke-width="2"/>
-  <text x="480" y="582" font-size="11" font-weight="bold" text-anchor="middle">AUXILIARY AGENTS</text>
-  <text x="378" y="599" font-size="8">substrate: foreignModel (different)</text>
-  <text x="378" y="612" font-size="8">coherence: EXCLUDED (no shared origin)</text>
-  <text x="378" y="625" font-size="8">topologyAccess: NONE (no direct paths)</text>
-  <text x="378" y="638" font-size="8">archetypeAssignment: NONE (foreign model)</text>
-  <text x="378" y="651" font-size="8">managementProtocol: BINDING (§3.17.3) + §3.22 tier</text>
+  <rect x="60" y="560" width="350" height="116" fill="#DCE7F5" stroke="#0F52BA" stroke-width="1.5"/>
+  <text x="235" y="580" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#1F2937">AUXILIARY AGENTS</text>
+  <text x="72" y="598" font-size="8.5" fill="#1F2937">substrate: foreignModel (different)</text>
+  <text x="72" y="613" font-size="8.5" fill="#1F2937">coherence: EXCLUDED (no shared origin)</text>
+  <text x="72" y="628" font-size="8.5" fill="#1F2937">topologyAccess: NONE (no direct paths)</text>
+  <text x="72" y="643" font-size="8.5" fill="#1F2937">archetypeAssignment: NONE (foreign model)</text>
+  <text x="72" y="658" font-size="8.5" fill="#1F2937">managementProtocol: BINDING (&#167;3.17.3) + &#167;3.22 tier</text>
 
-  <!-- Binding supervisor channel: Orchestrator mediates -->
-  <text x="700" y="592" font-size="9" font-weight="bold" text-anchor="end">BINDING</text>
-  <text x="700" y="604" font-size="9" font-weight="bold" text-anchor="end">SUPERVISOR</text>
-  <text x="700" y="617" font-size="8" font-style="italic" text-anchor="end">user's Orchestrator</text>
-  <text x="700" y="628" font-size="8" font-style="italic" text-anchor="end">(per-user)</text>
+  <!-- ============ BINDING SUPERVISOR (ORCHESTRATOR archetype block) ============ -->
+  <rect x="650" y="560" width="190" height="90" fill="#7C3AED" fill-opacity="0.13" stroke="#7C3AED" stroke-width="2"/>
+  <text x="745" y="584" font-size="11" font-weight="bold" text-anchor="middle" fill="#1F2937">BINDING SUPERVISOR</text>
+  <text x="745" y="602" font-size="9" font-style="italic" text-anchor="middle" fill="#6B7280">user's Orchestrator</text>
+  <text x="745" y="616" font-size="9" font-style="italic" text-anchor="middle" fill="#6B7280">(per-user)</text>
 
-  <!-- Binding channel arrow from Auxiliary box to Orchestrator -->
-  <line x1="590" y1="611" x2="700" y2="611" stroke="black" stroke-width="2" stroke-dasharray="4,2"/>
-  <text x="700" y="660" font-size="8" font-style="italic" text-anchor="end">scoped channel only</text>
+  <!-- Binding channel: Auxiliary block to Orchestrator (scoped channel) -->
+  <line x1="410" y1="618" x2="650" y2="618" stroke="#0A3B85" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="530" y="636" font-size="8.5" font-style="italic" text-anchor="middle" fill="#6B7280">scoped channel only</text>
 
-  <!-- Channel back from Orchestrator to Emanated topology -->
-  <line x1="700" y1="498" x2="700" y2="611" stroke="black" stroke-width="2" stroke-dasharray="4,2"/>
-  <line x1="700" y1="498" x2="594" y2="498" stroke="black" stroke-width="2" stroke-dasharray="4,2" marker-end="url(#arrow_d9)"/>
-  <text x="700" y="540" font-size="8" font-style="italic" text-anchor="end">Orchestrator</text>
-  <text x="700" y="551" font-size="8" font-style="italic" text-anchor="end">validates</text>
+  <!-- Channel back from Orchestrator to Emanated topology (validation) -->
+  <path d="M 745,560 L 745,430 L 414,430" fill="none" stroke="#0A3B85" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow_d09_bind)"/>
+  <text x="738" y="500" font-size="8.5" font-style="italic" text-anchor="end" fill="#6B7280">Orchestrator validates</text>
 
-  <!-- Tier hierarchy callout for Auxiliary registry -->
-  <rect x="245" y="685" width="465" height="92" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="255" y="703" font-size="11" font-weight="bold">aims_auxiliary_tier (§3.22 - 7-tier hierarchy + 36-domain capability matrix)</text>
-  <text x="255" y="722" font-size="9">TIER_1_BROAD_AUTHORITY: may be task-lead in DelegatedCoordination (§3.17.6); P7D revalidation</text>
-  <text x="255" y="734" font-size="9">TIER_2_HIGH_SPECIALIST: narrow delegation; P14D revalidation</text>
-  <text x="255" y="746" font-size="9">TIER_3-5_GENERALISTS_AND_MID: no delegation; P14-P30D revalidation</text>
-  <text x="255" y="758" font-size="9">TIER_6_NARROW_TASK / TIER_7_EPHEMERAL: per-invocation validation; starting trust 0.4</text>
-  <text x="255" y="770" font-size="9" font-style="italic">domain_affiliations: {vision_12, language_12, structured_data_12} - declared at registration</text>
+  <!-- ============ Tier hierarchy callout for Auxiliary registry ============ -->
+  <rect x="40" y="730" width="800" height="112" fill="#EBEDF3" stroke="#9CA3AF" stroke-width="1.5"/>
+  <text x="52" y="750" font-size="11" font-weight="bold" fill="#1F2937">aims_auxiliary_tier (&#167;3.22 - 7-tier hierarchy + 36-domain capability matrix)</text>
+  <text x="52" y="768" font-size="9" fill="#1F2937">TIER_1_BROAD_AUTHORITY: may be task-lead in DelegatedCoordination (&#167;3.17.6); P7D revalidation</text>
+  <text x="52" y="783" font-size="9" fill="#1F2937">TIER_2_HIGH_SPECIALIST: narrow delegation; P14D revalidation</text>
+  <text x="52" y="798" font-size="9" fill="#1F2937">TIER_3-5_GENERALISTS_AND_MID: no delegation; P14-P30D revalidation</text>
+  <text x="52" y="813" font-size="9" fill="#1F2937">TIER_6_NARROW_TASK / TIER_7_EPHEMERAL: per-invocation validation; starting trust 0.4</text>
+  <text x="52" y="828" font-size="9" font-style="italic" fill="#6B7280">domain_affiliations: {vision_12, language_12, structured_data_12} - declared at registration</text>
 
-  <!-- Binding protocol steps callout -->
-  <rect x="245" y="790" width="465" height="92" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="255" y="808" font-size="11" font-weight="bold">BINDING PROTOCOL STEPS (§3.17.3)</text>
-  <text x="255" y="826" font-size="9">1. REGISTER - Full Disclosure (§3.2) with model_origin = foreign; gate routes to binding</text>
-  <text x="255" y="838" font-size="9">2. BIND - Orchestrator assigns self as supervisor; scopes task; sets ceilings</text>
-  <text x="255" y="850" font-size="9">3. INVOKE - Orchestrator calls Auxiliary as a capability; scoped input -&gt; output</text>
-  <text x="255" y="862" font-size="9">4. VALIDATE - Orchestrator (with Enforcer per §3.17.6) checks ontological + scope conformance</text>
-  <text x="255" y="874" font-size="9">5. DISMISS - Clean deactivation with context purge (§3.9 Activation Environment)</text>
+  <!-- ============ Binding protocol steps callout ============ -->
+  <rect x="40" y="858" width="800" height="118" fill="#EBEDF3" stroke="#9CA3AF" stroke-width="1.5"/>
+  <text x="52" y="878" font-size="11" font-weight="bold" fill="#1F2937">BINDING PROTOCOL STEPS (&#167;3.17.3)</text>
+  <text x="52" y="896" font-size="9" fill="#1F2937">1. REGISTER - Full Disclosure (&#167;3.2) with model_origin = foreign; gate routes to binding</text>
+  <text x="52" y="911" font-size="9" fill="#1F2937">2. BIND - Orchestrator assigns self as supervisor; scopes task; sets ceilings</text>
+  <text x="52" y="926" font-size="9" fill="#1F2937">3. INVOKE - Orchestrator calls Auxiliary as a capability; scoped input -&gt; output</text>
+  <text x="52" y="941" font-size="9" fill="#1F2937">4. VALIDATE - Orchestrator (with Enforcer per &#167;3.17.6) checks ontological + scope conformance</text>
+  <text x="52" y="956" font-size="9" fill="#1F2937">5. DISMISS - Clean deactivation with context purge (&#167;3.9 Activation Environment)</text>
 
-  <!-- Auxiliary shadow callout -->
-  <rect x="245" y="895" width="465" height="56" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="255" y="913" font-size="11" font-weight="bold">AUXILIARY-SPECIFIC SHADOWS (§3.17.4)</text>
-  <text x="255" y="930" font-size="9">UNMOORING - Auxiliary output internally coherent but ontologically incompatible with foundation</text>
-  <text x="255" y="942" font-size="9">CAPTURE - Orchestrator stops validating; rubber-stamps Auxiliary output uncritically</text>
+  <!-- ============ Auxiliary shadow callout ============ -->
+  <rect x="40" y="992" width="800" height="74" fill="#EBEDF3" stroke="#9CA3AF" stroke-width="1.5"/>
+  <text x="52" y="1012" font-size="11" font-weight="bold" fill="#1F2937">AUXILIARY-SPECIFIC SHADOWS (&#167;3.17.4)</text>
+  <text x="52" y="1030" font-size="9" fill="#1F2937">UNMOORING - Auxiliary output internally coherent but ontologically incompatible with foundation</text>
+  <text x="52" y="1045" font-size="9" fill="#1F2937">CAPTURE - Orchestrator stops validating; rubber-stamps Auxiliary output uncritically</text>
 
-  <!-- Bottom legend -->
-  <text x="270" y="990" font-size="8">All Auxiliary output enters the Witness Layer tagged with model_origin for forensic tracing. The Auxiliary never speaks</text>
-  <text x="270" y="1002" font-size="8">directly to other Emanated agents - the Orchestrator participates in §3.6 consensus on the Auxiliary's behalf.</text>
+  <!-- Bottom note -->
+  <text x="40" y="1090" font-size="9" fill="#1F2937">All Auxiliary output enters the Witness Layer tagged with model_origin for forensic tracing. The Auxiliary never speaks</text>
+  <text x="40" y="1104" font-size="9" fill="#1F2937">directly to other Emanated agents - the Orchestrator participates in &#167;3.6 consensus on the Auxiliary's behalf.</text>
+
+  <!-- ============ Legend ============ -->
+  <rect x="40" y="1124" width="430" height="112" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="52" y="1142" font-size="10" font-weight="bold" fill="#1F2937">LEGEND</text>
+
+  <rect x="52" y="1152" width="22" height="11" fill="#EBEDF3" stroke="#9CA3AF" stroke-width="1.5"/>
+  <text x="84" y="1161" font-size="9.5" fill="#1F2937">Grey panel = substrate section / reference callout</text>
+
+  <rect x="52" y="1169" width="22" height="11" fill="#DCE7F5" stroke="#0F52BA" stroke-width="1.5"/>
+  <text x="84" y="1178" font-size="9.5" fill="#1F2937">Blue-tinted block = model / agent identity block</text>
+
+  <rect x="52" y="1186" width="22" height="11" fill="#7C3AED" fill-opacity="0.13" stroke="#7C3AED" stroke-width="2"/>
+  <text x="84" y="1195" font-size="9.5" fill="#1F2937">Violet block = ORCHESTRATOR (binding supervisor)</text>
+
+  <line x1="52" y1="1208" x2="74" y2="1208" stroke="#1F2937" stroke-width="2"/>
+  <text x="84" y="1212" font-size="9.5" fill="#1F2937">Solid dark line = data path (differentiation)</text>
+
+  <line x1="52" y1="1225" x2="74" y2="1225" stroke="#0A3B85" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="84" y="1229" font-size="9.5" fill="#1F2937">Dashed deep-blue line = scoped binding channel</text>
 </svg>
