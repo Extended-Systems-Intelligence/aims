@@ -1,0 +1,81 @@
+# AIMS specification project — markdownlint configuration
+#
+# Rationale: AIMS is a prose-heavy specification project. The default
+# markdownlint rules optimize for short-form documentation; many of them
+# produce noise on long-form normative text and tables. This config
+# disables stylistic-only rules and keeps substantive layout rules.
+#
+# See: https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+
+# Default to all rules enabled, then disable specific ones
+default: true
+
+# DISABLED — stylistic rules incompatible with prose specs
+# ---------------------------------------------------------
+# MD013/line-length: prose-heavy specs have intentional long lines.
+MD013: false
+
+# MD060/table-column-style: tables in spec docs use varying alignment.
+MD060: false
+
+# MD040/fenced-code-language: some fenced blocks are inline scratch / ASCII.
+MD040: false
+
+# MD034/no-bare-urls: COC + governance docs include bare contact addresses
+# intentionally (aims@xtendedsystems.com); also Contributor-Covenant URLs.
+MD034: false
+
+# MD036/no-emphasis-as-heading: AIMS spec uses **bold** as a paragraph
+# section delimiter inside numbered sections; this is intentional.
+MD036: false
+
+# MD041/first-line-heading: not required for issue/PR templates that
+# start with `## Summary` etc.
+MD041: false
+
+# MD033/inline-html: allowed for badges, alignment, and figure captions.
+MD033: false
+
+# DISABLED — rules that would rewrite AUTHORED CHARACTERS in the frozen spec
+# ---------------------------------------------------------
+# The specification body is a certified, version-frozen normative artifact.
+# The rules below would change authored content (list numbering, heading
+# punctuation, emphasis delimiters, spacing inside code/emphasis spans) rather
+# than layout, so they are disabled to keep every content line byte-identical
+# to the certified text. All *structural* rules (blanks around fences / lists /
+# headings, indentation, trailing whitespace, hard tabs) remain enabled.
+
+# MD029/ol-prefix: the spec intentionally continues ordered-list numbering
+# across interrupting prose (e.g. Witness events 4-5 under "Rollback adds:").
+MD029: false
+
+# MD026/no-trailing-punctuation: some section headings intentionally end ':'.
+MD026: false
+
+# MD049/emphasis-style: authored text mixes underscore and asterisk emphasis.
+MD049: false
+
+# MD037/no-space-in-emphasis, MD038/no-space-in-code: preserve authored
+# spacing inside emphasis / code spans in the frozen normative text.
+MD037: false
+MD038: false
+
+# CONFIGURED — kept enabled with relaxed parameters
+# ---------------------------------------------------------
+# MD024/no-duplicate-heading: allow same heading text under different
+# parents (RFCs use repeated "Discussion" / "Security Considerations").
+MD024:
+  siblings_only: true
+
+# KEPT — substantive layout rules that affect rendering
+# ---------------------------------------------------------
+# MD022/blanks-around-headings: improves readability + diff hygiene.
+# MD031/blanks-around-fences
+# MD032/blanks-around-lists
+# MD012/no-multiple-blanks
+# MD007/ul-indent
+# MD028/no-blanks-blockquote
+# MD046/code-block-style (consistent fenced vs indented)
+# MD047/single-trailing-newline
+# MD056/table-column-count (genuine table malformedness)
+# MD009/no-trailing-spaces

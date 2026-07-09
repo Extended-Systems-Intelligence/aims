@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+AIMS Mark — simplified Radial Gateway, tuned to site crimson #8a1521.
+Three concentric rings (L-Plan / L-Form / L-Exec) at radii 65 / 57 / 50,
+the SOV→ORC→RELAY→EXEC vertical spine, and six diagonals from the EXEC
+node out to the lower-left (ARC / ENF / ART) and lower-right (VIS / PRV /
+SUS) archetypes. EXEC Gateway sits at center.
+Transparent background, 140×140 viewBox, scales freely.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 140 140" role="img" aria-label="AIMS">
+  <g transform="translate(70 70)">
+    <!-- Ambient ring bands -->
+    <circle r="65" fill="none" stroke="#8a1521" stroke-width="8" opacity="0.10"/>
+    <circle r="57" fill="none" stroke="#8a1521" stroke-width="8" opacity="0.10"/>
+    <circle r="50" fill="none" stroke="#8a1521" stroke-width="8" opacity="0.10"/>
+    <!-- Crisp rings -->
+    <circle r="65" fill="none" stroke="#8a1521" stroke-width="2.4" opacity="0.78"/>
+    <circle r="57" fill="none" stroke="#8a1521" stroke-width="2.4" opacity="0.78"/>
+    <circle r="50" fill="none" stroke="#8a1521" stroke-width="2.4" opacity="0.78"/>
+    <!-- Vertical spine: SOV → ORC → RELAY → EXEC center -->
+    <line x1="0" y1="-65" x2="0" y2="-4" stroke="#6f1019" stroke-width="3" stroke-linecap="round"/>
+    <!-- Six diagonals from EXEC out to the lower archetype columns.
+         Lower-left at math angle 150° (ARC / ENF / ART, PLAN / FORM / EXEC rings).
+         Lower-right at math angle 30° (VIS / PRV / SUS, PLAN / FORM / EXEC rings).
+         Lines start just outside the EXEC node (r=11) and end at each archetype radius. -->
+    <!-- Lower-left at 150°: cos≈-0.866, sin=0.5 -->
+    <line x1="-9.5" y1="5.5" x2="-56.3" y2="32.5" stroke="#8a1521" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+    <line x1="-9.5" y1="5.5" x2="-49.4" y2="28.5" stroke="#8a1521" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+    <line x1="-9.5" y1="5.5" x2="-43.3" y2="25.0" stroke="#8a1521" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+    <!-- Lower-right at 30°: cos≈0.866, sin=0.5 -->
+    <line x1="9.5"  y1="5.5" x2="56.3"  y2="32.5" stroke="#8a1521" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+    <line x1="9.5"  y1="5.5" x2="49.4"  y2="28.5" stroke="#8a1521" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+    <line x1="9.5"  y1="5.5" x2="43.3"  y2="25.0" stroke="#8a1521" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+    <!-- Spine archetype dots -->
+    <circle cx="0" cy="-65" r="3.4" fill="#8a1521"/>
+    <circle cx="0" cy="-57" r="3.4" fill="#a8323d"/>
+    <circle cx="0" cy="-50" r="3.4" fill="#c45562"/>
+    <!-- Lower-left archetype dots (ARC / ENF / ART) -->
+    <circle cx="-56.3" cy="32.5" r="3.4" fill="#8a1521"/>
+    <circle cx="-49.4" cy="28.5" r="3.4" fill="#a8323d"/>
+    <circle cx="-43.3" cy="25.0" r="3.4" fill="#c45562"/>
+    <!-- Lower-right archetype dots (VIS / PRV / SUS) -->
+    <circle cx="56.3" cy="32.5" r="3.4" fill="#8a1521"/>
+    <circle cx="49.4" cy="28.5" r="3.4" fill="#a8323d"/>
+    <circle cx="43.3" cy="25.0" r="3.4" fill="#c45562"/>
+    <!-- EXEC Gateway center node — drawn last so it sits above the diagonals -->
+    <circle r="9" fill="#f2ede6" stroke="#6f1019" stroke-width="2.4"/>
+  </g>
+</svg>

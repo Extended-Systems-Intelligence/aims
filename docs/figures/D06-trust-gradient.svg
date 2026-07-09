@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 960" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <!-- AIMS D06 - Trust Gradient: Continuous Scalar with Asymmetric Decay and Gating -->
+  <!-- Educational diagram. Sanitized: canonical AIMS engineering lexicon only. -->
+  <!-- Register: XSI Standards (Sapphire) per XSI-Diagram-Design-Guide v1.0 -->
+
+  <defs>
+    <marker id="arrow_d06_data" viewBox="0 0 12 8" refX="11" refY="4" markerWidth="12" markerHeight="8" orient="auto">
+      <polygon points="0,0 12,4 0,8" fill="#1F2937"/>
+    </marker>
+    <marker id="arrow_d06_trig" viewBox="0 0 12 8" refX="11" refY="4" markerWidth="12" markerHeight="8" orient="auto">
+      <polygon points="0,0 12,4 0,8" fill="#EF4444"/>
+    </marker>
+    <linearGradient id="ramp_d06" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#DCE7F5"/>
+      <stop offset="0.25" stop-color="#B7CCEC"/>
+      <stop offset="0.5" stop-color="#7FA3D9"/>
+      <stop offset="0.75" stop-color="#3D6FBF"/>
+      <stop offset="1" stop-color="#0A3B85"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="960" fill="#FFFFFF"/>
+
+  <!-- Header -->
+  <text x="40" y="44" font-size="18" font-weight="700" fill="#0F52BA">D06</text>
+  <text x="40" y="68" font-size="13" font-style="italic" fill="#6B7280">Trust Gradient - Continuous Scalar with Asymmetric Decay and Gating</text>
+  <text x="40" y="88" font-size="10" fill="#6B7280">Source: AIMS specification §3.18.4 (Trust Gradient and Cumulative Degradation)</text>
+
+  <!-- Continuum scale 0.0 to 1.0 -->
+  <text x="40" y="148" font-size="11" font-weight="700" fill="#1F2937">CONTINUUM</text>
+  <text x="40" y="164" font-size="9" font-style="italic" fill="#6B7280">scalar [0.0, 1.0]</text>
+  <text x="40" y="176" font-size="9" font-style="italic" fill="#6B7280">per-agent state</text>
+  <text x="40" y="188" font-size="9" font-style="italic" fill="#6B7280">owned by Enforcer</text>
+
+  <!-- Direction cues: accumulation rises rightward (data), decay pushes leftward (triggered) -->
+  <text x="180" y="112" font-size="9" fill="#1F2937">positive evidence: slow accumulation</text>
+  <line x1="180" y1="124" x2="392" y2="124" stroke="#1F2937" stroke-width="2" marker-end="url(#arrow_d06_data)"/>
+  <text x="840" y="112" font-size="9" fill="#EF4444" text-anchor="end">shadow events: rapid decay</text>
+  <line x1="840" y1="124" x2="628" y2="124" stroke="#EF4444" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow_d06_trig)"/>
+
+  <!-- Threshold value labels -->
+  <text x="180" y="148" font-size="9" text-anchor="middle" fill="#1F2937">0.0</text>
+  <text x="246" y="148" font-size="9" text-anchor="middle" fill="#1F2937">0.1</text>
+  <text x="312" y="148" font-size="9" text-anchor="middle" fill="#1F2937">0.2</text>
+  <text x="510" y="148" font-size="9" text-anchor="middle" fill="#1F2937">0.5</text>
+  <text x="576" y="148" font-size="9" text-anchor="middle" fill="#1F2937">0.6</text>
+  <text x="708" y="148" font-size="9" text-anchor="middle" fill="#1F2937">0.8</text>
+  <text x="840" y="148" font-size="9" text-anchor="middle" fill="#1F2937">1.0</text>
+
+  <!-- The continuum band: sapphire luminance ramp, pale (low trust) to deep (high trust) -->
+  <rect x="180" y="158" width="660" height="18" fill="url(#ramp_d06)" stroke="#9CA3AF" stroke-width="0.75"/>
+
+  <!-- Endpoint ticks -->
+  <line x1="180" y1="150" x2="180" y2="184" stroke="#1F2937" stroke-width="1.5"/>
+  <line x1="840" y1="150" x2="840" y2="184" stroke="#1F2937" stroke-width="1.5"/>
+
+  <!-- Tier threshold ticks (above + below band, non-color encoding of thresholds) -->
+  <line x1="246" y1="152" x2="246" y2="158" stroke="#1F2937" stroke-width="1"/>
+  <line x1="246" y1="176" x2="246" y2="182" stroke="#1F2937" stroke-width="1"/>
+  <line x1="312" y1="152" x2="312" y2="158" stroke="#1F2937" stroke-width="1"/>
+  <line x1="312" y1="176" x2="312" y2="182" stroke="#1F2937" stroke-width="1"/>
+  <line x1="510" y1="152" x2="510" y2="158" stroke="#1F2937" stroke-width="1"/>
+  <line x1="510" y1="176" x2="510" y2="182" stroke="#1F2937" stroke-width="1"/>
+  <line x1="576" y1="152" x2="576" y2="158" stroke="#1F2937" stroke-width="1"/>
+  <line x1="576" y1="176" x2="576" y2="182" stroke="#1F2937" stroke-width="1"/>
+  <line x1="708" y1="152" x2="708" y2="158" stroke="#1F2937" stroke-width="1"/>
+  <line x1="708" y1="176" x2="708" y2="182" stroke="#1F2937" stroke-width="1"/>
+
+  <!-- Threshold semantics below band -->
+  <text x="212" y="198" font-size="9" text-anchor="middle" fill="#1F2937">quarantine</text>
+  <text x="212" y="210" font-size="9" text-anchor="middle" fill="#1F2937">review</text>
+
+  <text x="280" y="198" font-size="9" text-anchor="middle" fill="#1F2937">force</text>
+  <text x="280" y="210" font-size="9" text-anchor="middle" fill="#1F2937">L1</text>
+
+  <text x="350" y="198" font-size="9" text-anchor="middle" fill="#1F2937">force</text>
+  <text x="350" y="210" font-size="9" text-anchor="middle" fill="#1F2937">L2</text>
+
+  <text x="440" y="198" font-size="9" text-anchor="middle" fill="#1F2937">post-quarantine</text>
+  <text x="440" y="210" font-size="9" text-anchor="middle" fill="#1F2937">re-attest</text>
+
+  <text x="550" y="198" font-size="9" text-anchor="middle" fill="#1F2937">new-agent</text>
+  <text x="550" y="210" font-size="9" text-anchor="middle" fill="#1F2937">baseline</text>
+
+  <text x="676" y="198" font-size="9" text-anchor="middle" fill="#1F2937">eligible:</text>
+  <text x="676" y="210" font-size="9" text-anchor="middle" fill="#1F2937">promotion</text>
+
+  <text x="780" y="198" font-size="9" text-anchor="middle" fill="#1F2937">eligible:</text>
+  <text x="780" y="210" font-size="9" text-anchor="middle" fill="#1F2937">scope expansion</text>
+
+  <!-- Update rules panel -->
+  <rect x="40" y="240" width="800" height="148" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="52" y="260" font-size="11" font-weight="700" fill="#0A3B85">UPDATE RULES (asymmetric)</text>
+
+  <text x="52" y="282" font-size="10" font-weight="700" fill="#1F2937">positive evidence (slow accumulation)</text>
+  <text x="52" y="297" font-size="9" fill="#1F2937" font-family="JetBrains Mono, Cascadia Code, Consolas, ui-monospace, monospace">successful_action: +0.001 (cap 1.0)   |   coherence_self_resolved: +0.005</text>
+  <text x="52" y="311" font-size="9" fill="#1F2937" font-family="JetBrains Mono, Cascadia Code, Consolas, ui-monospace, monospace">integration_decision_validated: +0.003   |   provocation_passed: +0.002 (capped P7D)</text>
+
+  <text x="52" y="331" font-size="10" font-weight="700" fill="#EF4444">shadow events (rapid decay)</text>
+  <text x="52" y="346" font-size="9" fill="#1F2937" font-family="JetBrains Mono, Cascadia Code, Consolas, ui-monospace, monospace">shadow_emerging: -0.02   |   shadow_active: -0.10   |   shadow_critical: -0.30</text>
+  <text x="52" y="360" font-size="9" fill="#1F2937" font-family="JetBrains Mono, Cascadia Code, Consolas, ui-monospace, monospace">correlated_shadow_contribution: -0.20   |   provocation_failed: -0.25 (uncapped)</text>
+  <text x="52" y="374" font-size="9" fill="#1F2937" font-family="JetBrains Mono, Cascadia Code, Consolas, ui-monospace, monospace">integrity_hash_mismatch: -1.0 (immediate distrust + auto-quarantine)</text>
+
+  <!-- Time decay panel -->
+  <rect x="40" y="408" width="800" height="78" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="52" y="428" font-size="11" font-weight="700" fill="#0A3B85">TIME DECAY (toward archetype baseline, asymmetric)</text>
+  <text x="52" y="446" font-size="9" fill="#1F2937" font-family="JetBrains Mono, Cascadia Code, Consolas, ui-monospace, monospace">delta_per_hour = (baseline - current) * decay_rate</text>
+  <text x="52" y="460" font-size="9" fill="#1F2937" font-family="JetBrains Mono, Cascadia Code, Consolas, ui-monospace, monospace">decay_rate = 0.001 if current &lt; baseline (10x faster recovery from low trust)</text>
+  <text x="52" y="474" font-size="9" fill="#1F2937" font-family="JetBrains Mono, Cascadia Code, Consolas, ui-monospace, monospace">decay_rate = 0.0001 if current &gt;= baseline (slow drop from inflated trust)</text>
+
+  <!-- Decision flow -->
+  <text x="40" y="546" font-size="11" font-weight="700" fill="#1F2937">SCOPE</text>
+  <text x="40" y="560" font-size="11" font-weight="700" fill="#1F2937">DECISION</text>
+  <text x="40" y="576" font-size="9" font-style="italic" fill="#6B7280">on every scope</text>
+  <text x="40" y="588" font-size="9" font-style="italic" fill="#6B7280">request</text>
+
+  <!-- Diamond: read gradient -->
+  <polygon points="330,520 440,570 330,620 220,570" fill="#FFFFFF" stroke="#1F2937" stroke-width="1.5"/>
+  <text x="330" y="558" font-size="10" font-weight="700" text-anchor="middle" fill="#1F2937">gradient *</text>
+  <text x="330" y="572" font-size="10" font-weight="700" text-anchor="middle" fill="#1F2937">scope_weight</text>
+  <text x="330" y="586" font-size="10" font-weight="700" text-anchor="middle" fill="#1F2937">&gt; minimum?</text>
+
+  <!-- yes branch (data path) -->
+  <line x1="440" y1="570" x2="498" y2="570" stroke="#1F2937" stroke-width="2" marker-end="url(#arrow_d06_data)"/>
+  <text x="468" y="562" font-size="9" font-style="italic" text-anchor="middle" fill="#6B7280">yes</text>
+
+  <rect x="502" y="546" width="140" height="48" fill="#DCE7F5" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="572" y="566" font-size="10" font-weight="700" text-anchor="middle" fill="#1F2937">PERMIT</text>
+  <text x="572" y="582" font-size="9" text-anchor="middle" fill="#1F2937">+ witness log</text>
+
+  <!-- no branch (triggered / degradation path) -->
+  <line x1="330" y1="620" x2="330" y2="650" stroke="#EF4444" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow_d06_trig)"/>
+  <text x="340" y="642" font-size="9" font-style="italic" fill="#6B7280">no</text>
+
+  <rect x="260" y="654" width="140" height="48" fill="#FFFFFF" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="330" y="674" font-size="10" font-weight="700" text-anchor="middle" fill="#1F2937">DENY</text>
+  <text x="330" y="690" font-size="9" text-anchor="middle" fill="#1F2937">or reduce scope</text>
+
+  <!-- Aggravator note -->
+  <rect x="40" y="726" width="800" height="60" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="52" y="746" font-size="11" font-weight="700" fill="#0A3B85">CORRELATED SHADOW AGGRAVATOR (§3.18.1 integration)</text>
+  <text x="52" y="762" font-size="9" fill="#1F2937">A correlation pattern that includes any agent with gradient &lt; 0.3 elevates ELEVATED to CRITICAL,</text>
+  <text x="52" y="774" font-size="9" fill="#1F2937">making low gradient a multiplicative risk factor for system-level safety classification.</text>
+
+  <!-- Legend -->
+  <rect x="40" y="806" width="800" height="78" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="52" y="824" font-size="11" font-weight="700" fill="#1F2937">LEGEND</text>
+
+  <rect x="52" y="836" width="34" height="18" fill="#DCE7F5" stroke="#1F2937" stroke-width="1"/>
+  <text x="69" y="849" font-size="10" font-weight="700" text-anchor="middle" fill="#1F2937">1</text>
+  <rect x="90" y="836" width="34" height="18" fill="#B7CCEC" stroke="#1F2937" stroke-width="1.5"/>
+  <text x="107" y="849" font-size="10" font-weight="700" text-anchor="middle" fill="#1F2937">2</text>
+  <rect x="128" y="836" width="34" height="18" fill="#7FA3D9" stroke="#1F2937" stroke-width="2"/>
+  <text x="145" y="849" font-size="10" font-weight="700" text-anchor="middle" fill="#1F2937">3</text>
+  <rect x="166" y="836" width="34" height="18" fill="#3D6FBF" stroke="#1F2937" stroke-width="2.5"/>
+  <text x="183" y="849" font-size="10" font-weight="700" text-anchor="middle" fill="#FFFFFF">4</text>
+  <rect x="204" y="836" width="34" height="18" fill="#0A3B85" stroke="#1F2937" stroke-width="3"/>
+  <text x="221" y="849" font-size="10" font-weight="700" text-anchor="middle" fill="#FFFFFF">5</text>
+  <text x="250" y="849" font-size="9" fill="#1F2937">pale = low trust (0.0) -&gt; deep sapphire = high trust (1.0); number + stroke weight rise with trust</text>
+
+  <line x1="52" y1="868" x2="96" y2="868" stroke="#1F2937" stroke-width="2"/>
+  <text x="104" y="872" font-size="9" fill="#1F2937">data / decision path</text>
+  <line x1="270" y1="868" x2="314" y2="868" stroke="#EF4444" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="322" y="872" font-size="9" fill="#1F2937">triggered degradation / denial path</text>
+
+  <!-- Figure note -->
+  <text x="40" y="906" font-size="9" fill="#6B7280">Trust is a stateful, continuous, time-decaying scalar. It is owned by the Enforcer, stored in the Witness Layer (§3.10),</text>
+  <text x="40" y="918" font-size="9" fill="#6B7280">surfaced on the §3.23 dashboard heatmap, and integrated with §3.7 circuit breakers, §3.18.3 provocation testing,</text>
+  <text x="40" y="930" font-size="9" fill="#6B7280">and §3.18.6 quarantine triggers. Sole basis for termination or scope expansion is prohibited; gradient is necessary, not sufficient.</text>
+</svg>

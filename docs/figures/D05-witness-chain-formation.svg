@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1060" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <!-- AIMS D05 - Witness Chain Formation: Sequence Diagram (Style-B) -->
+  <!-- Educational diagram. Sanitized: canonical AIMS engineering lexicon only. -->
+  <!-- Register: Standards (Sapphire) per XSI-Diagram-Design-Guide.md v1.0 -->
+  <!-- Flow direction (Guide 12.5): time flows top-to-bottom; explicit time axis at left. -->
+
+  <defs>
+    <marker id="arrow_d05_data" viewBox="0 0 12 8" refX="11" refY="4" markerWidth="10" markerHeight="7" orient="auto">
+      <polygon points="0,0 12,4 0,8" fill="#1F2937"/>
+    </marker>
+    <marker id="arrow_d05_witness" viewBox="0 0 12 8" refX="11" refY="4" markerWidth="10" markerHeight="7" orient="auto">
+      <polygon points="0,0 12,4 0,8" fill="#6B7280"/>
+    </marker>
+    <marker id="arrow_d05_chain" viewBox="0 0 12 8" refX="11" refY="4" markerWidth="10" markerHeight="7" orient="auto">
+      <polygon points="0,0 12,4 0,8" fill="#0A3B85"/>
+    </marker>
+    <marker id="arrow_d05_time" viewBox="0 0 12 8" refX="11" refY="4" markerWidth="9" markerHeight="6" orient="auto">
+      <polygon points="0,0 12,4 0,8" fill="#9CA3AF"/>
+    </marker>
+  </defs>
+
+  <!-- Canvas -->
+  <rect x="0" y="0" width="960" height="1060" fill="#FFFFFF"/>
+
+  <!-- Header -->
+  <text x="60" y="40" font-size="18" font-weight="bold" fill="#0F52BA">D05</text>
+  <text x="60" y="62" font-size="13" font-style="italic" fill="#1F2937">Witness Chain Formation - Per-Path Hash-Chained Audit Records</text>
+  <text x="60" y="80" font-size="10" fill="#6B7280">Source: AIMS specification §3.10 (Witness Layer), §3.18.5 (IAME), §3.11 (Memory)</text>
+
+  <!-- Actor / lifeline headers -->
+  <!-- SENDER (non-archetype actor) -->
+  <rect x="90" y="104" width="100" height="34" fill="#DCE7F5" stroke="#0A3B85" stroke-width="2"/>
+  <text x="140" y="125" font-size="11" font-weight="bold" letter-spacing="0.02em" text-anchor="middle" fill="#1F2937">SENDER</text>
+  <!-- RELAY (archetype: signature #475569, 13% tint + 2px full-strength stroke) -->
+  <rect x="290" y="104" width="100" height="34" fill="#475569" fill-opacity="0.13" stroke="#475569" stroke-width="2"/>
+  <text x="340" y="125" font-size="11" font-weight="bold" letter-spacing="0.02em" text-anchor="middle" fill="#1F2937">RELAY</text>
+  <!-- WITNESS LAYER (non-archetype actor / store) -->
+  <rect x="518" y="104" width="124" height="34" fill="#DCE7F5" stroke="#0A3B85" stroke-width="2"/>
+  <text x="580" y="125" font-size="11" font-weight="bold" letter-spacing="0.02em" text-anchor="middle" fill="#1F2937">WITNESS LAYER</text>
+  <!-- RECEIVER (non-archetype actor) -->
+  <rect x="790" y="104" width="100" height="34" fill="#DCE7F5" stroke="#0A3B85" stroke-width="2"/>
+  <text x="840" y="125" font-size="11" font-weight="bold" letter-spacing="0.02em" text-anchor="middle" fill="#1F2937">RECEIVER</text>
+
+  <!-- Lifelines (vertical dashed, cell-stroke grey) -->
+  <line x1="140" y1="138" x2="140" y2="672" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="3 2"/>
+  <line x1="340" y1="138" x2="340" y2="672" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="3 2"/>
+  <line x1="580" y1="138" x2="580" y2="672" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="3 2"/>
+  <line x1="840" y1="138" x2="840" y2="672" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="3 2"/>
+
+  <!-- Explicit flow-direction cue (Guide 12.5): time axis -->
+  <text x="40" y="156" font-size="9" text-anchor="middle" fill="#6B7280">time</text>
+  <line x1="40" y1="164" x2="40" y2="640" stroke="#9CA3AF" stroke-width="1" marker-end="url(#arrow_d05_time)"/>
+
+  <!-- Step 1: Sender constructs IAME envelope -->
+  <text x="78" y="175" font-size="10" font-weight="bold" text-anchor="end" fill="#1F2937">1</text>
+  <rect x="82" y="158" width="116" height="26" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <text x="140" y="175" font-size="10" text-anchor="middle" fill="#1F2937">construct IAME</text>
+
+  <!-- Step 2: Sender sends to Relay (data path: solid 2px) -->
+  <text x="78" y="215" font-size="10" font-weight="bold" text-anchor="end" fill="#1F2937">2</text>
+  <line x1="140" y1="212" x2="337" y2="212" stroke="#1F2937" stroke-width="2" marker-end="url(#arrow_d05_data)"/>
+  <text x="240" y="204" font-size="10" text-anchor="middle" fill="#1F2937">send(IAME-N)</text>
+  <text x="240" y="230" font-size="9" font-style="italic" text-anchor="middle" fill="#6B7280">predecessor: chain_hash(N-1)</text>
+
+  <!-- Step 3: Relay routes via path_id -->
+  <text x="78" y="265" font-size="10" font-weight="bold" text-anchor="end" fill="#1F2937">3</text>
+  <rect x="276" y="248" width="128" height="26" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <text x="340" y="265" font-size="10" text-anchor="middle" fill="#1F2937">route by path_id</text>
+
+  <!-- Step 4: Relay writes to Witness (witness path: dashed grey 2px) -->
+  <text x="78" y="305" font-size="10" font-weight="bold" text-anchor="end" fill="#1F2937">4</text>
+  <line x1="340" y1="302" x2="577" y2="302" stroke="#6B7280" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow_d05_witness)"/>
+  <text x="460" y="294" font-size="10" text-anchor="middle" fill="#1F2937">write(record_N)</text>
+
+  <!-- Step 5: Witness Layer computes chain_hash (hash record box: cool-neutral + mono) -->
+  <text x="78" y="344" font-size="10" font-weight="bold" text-anchor="end" fill="#1F2937">5</text>
+  <rect x="515" y="326" width="130" height="64" fill="#EBEDF3" stroke="#9CA3AF" stroke-width="1.5"/>
+  <text x="580" y="344" font-size="10" text-anchor="middle" fill="#1F2937">compute</text>
+  <text x="580" y="360" font-size="10" text-anchor="middle" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">chain_hash =</text>
+  <text x="580" y="376" font-size="10" text-anchor="middle" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">SHA256(prev || N)</text>
+
+  <!-- Step 6: Witness signs and returns attestation (witness path: dashed grey 2px) -->
+  <text x="78" y="421" font-size="10" font-weight="bold" text-anchor="end" fill="#1F2937">6</text>
+  <line x1="580" y1="418" x2="343" y2="418" stroke="#6B7280" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow_d05_witness)"/>
+  <text x="460" y="410" font-size="10" text-anchor="middle" fill="#1F2937">witness_attestation</text>
+  <text x="460" y="436" font-size="9" font-style="italic" text-anchor="middle" fill="#6B7280">witness_record_id, chain_hash, signature</text>
+
+  <!-- Step 7: Relay forwards enveloped message to Receiver (data path: solid 2px) -->
+  <text x="78" y="463" font-size="10" font-weight="bold" text-anchor="end" fill="#1F2937">7</text>
+  <line x1="340" y1="460" x2="837" y2="460" stroke="#1F2937" stroke-width="2" marker-end="url(#arrow_d05_data)"/>
+  <text x="710" y="452" font-size="10" text-anchor="middle" fill="#1F2937">deliver(IAME-N + witness_attestation)</text>
+
+  <!-- Step 8: Receiver verifies signature, chain, sequence -->
+  <text x="78" y="502" font-size="10" font-weight="bold" text-anchor="end" fill="#1F2937">8</text>
+  <rect x="770" y="484" width="140" height="40" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <text x="840" y="501" font-size="10" text-anchor="middle" fill="#1F2937">verify checks</text>
+  <text x="840" y="516" font-size="9" font-style="italic" text-anchor="middle" fill="#6B7280">8 verification steps</text>
+
+  <!-- Step 9: Receiver queries Witness for chain continuity confirm (witness paths: dashed grey 2px) -->
+  <text x="78" y="555" font-size="10" font-weight="bold" text-anchor="end" fill="#1F2937">9</text>
+  <line x1="840" y1="552" x2="583" y2="552" stroke="#6B7280" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow_d05_witness)"/>
+  <text x="710" y="544" font-size="10" text-anchor="middle" fill="#1F2937">verify chain continuity</text>
+
+  <line x1="580" y1="590" x2="837" y2="590" stroke="#6B7280" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow_d05_witness)"/>
+  <text x="710" y="582" font-size="10" text-anchor="middle" fill="#1F2937">continuity OK</text>
+
+  <!-- Step 10: Receiver acks (sequence advances) -->
+  <text x="78" y="631" font-size="10" font-weight="bold" text-anchor="end" fill="#1F2937">10</text>
+  <rect x="790" y="614" width="100" height="26" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <text x="840" y="631" font-size="10" text-anchor="middle" fill="#1F2937">accept N</text>
+
+  <text x="490" y="662" font-size="9" font-style="italic" text-anchor="middle" fill="#6B7280">[record N becomes predecessor for record N+1]</text>
+
+  <!-- Hash chain visualization -->
+  <rect x="60" y="696" width="840" height="140" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <text x="84" y="720" font-size="11" font-weight="bold" letter-spacing="0.01em" fill="#1F2937">HASH-CHAIN STRUCTURE (per path)</text>
+  <text x="84" y="740" font-size="10" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">record_N.chain_hash = SHA-256( record_(N-1).chain_hash || record_N.payload_hash )</text>
+
+  <!-- Chain-link record boxes (hash record encoding: cool-neutral fill, mono labels, deep-sapphire chain links) -->
+  <rect x="84" y="754" width="104" height="24" fill="#EBEDF3" stroke="#9CA3AF" stroke-width="1.5"/>
+  <text x="136" y="770" font-size="9" text-anchor="middle" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">record_(N-1)</text>
+  <line x1="188" y1="766" x2="260" y2="766" stroke="#0A3B85" stroke-width="2" marker-end="url(#arrow_d05_chain)"/>
+  <rect x="264" y="754" width="104" height="24" fill="#EBEDF3" stroke="#9CA3AF" stroke-width="1.5"/>
+  <text x="316" y="770" font-size="9" text-anchor="middle" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">record_N</text>
+  <line x1="368" y1="766" x2="440" y2="766" stroke="#0A3B85" stroke-width="2" marker-end="url(#arrow_d05_chain)"/>
+  <rect x="444" y="754" width="104" height="24" fill="#EBEDF3" stroke="#9CA3AF" stroke-width="1.5"/>
+  <text x="496" y="770" font-size="9" text-anchor="middle" fill="#1F2937" font-family="JetBrains Mono, 'Cascadia Code', Consolas, ui-monospace, monospace">record_(N+1)</text>
+
+  <text x="84" y="802" font-size="9" font-style="italic" fill="#6B7280">A chain break implies Witness Layer compromise OR forgery attempt; both trigger</text>
+  <text x="84" y="816" font-size="9" font-style="italic" fill="#6B7280">EMERGENCY_HALT_BROADCAST + SOVEREIGN_REQUIRED_REVIEW (per §3.18.5).</text>
+
+  <!-- Legend (Guide 8: decodes visual elements used in this diagram) -->
+  <rect x="60" y="860" width="640" height="124" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <text x="72" y="880" font-size="10" font-weight="bold" fill="#1F2937">LEGEND</text>
+
+  <line x1="72" y1="897" x2="104" y2="897" stroke="#1F2937" stroke-width="2"/>
+  <text x="112" y="900" font-size="10" fill="#1F2937">Solid dark 2px = data message path</text>
+
+  <line x1="72" y1="915" x2="104" y2="915" stroke="#6B7280" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="112" y="918" font-size="10" fill="#1F2937">Dashed grey 2px = witness path (write / attestation / continuity query)</text>
+
+  <rect x="72" y="925" width="28" height="12" fill="#475569" fill-opacity="0.13" stroke="#475569" stroke-width="2"/>
+  <text x="112" y="936" font-size="10" fill="#1F2937">Slate-tinted header = RELAY archetype actor</text>
+
+  <rect x="72" y="943" width="28" height="12" fill="#DCE7F5" stroke="#0A3B85" stroke-width="2"/>
+  <text x="112" y="954" font-size="10" fill="#1F2937">Sapphire-pale header = non-archetype actor (SENDER / WITNESS LAYER / RECEIVER)</text>
+
+  <rect x="72" y="961" width="28" height="12" fill="#EBEDF3" stroke="#9CA3AF" stroke-width="1.5"/>
+  <text x="112" y="972" font-size="10" fill="#1F2937">Grey panel, monospace = hash-chain record content; deep-sapphire arrows = chain links</text>
+
+  <!-- Bottom notes -->
+  <text x="60" y="1010" font-size="9" fill="#6B7280">Multiple agents witnessing the same path see the same chain. Episodic memory (§3.11) is a topology-governed read view on this chain.</text>
+  <text x="60" y="1024" font-size="9" fill="#6B7280">Witness records are WORM-immutable. The Forensic Query Engine retrieves any historical record by witness_record_id.</text>
+</svg>
