@@ -1,0 +1,36 @@
+{
+  "specification_version": "XSI-AIMS-v2.1.2",
+  "scope_level": "FEDERATION_SCOPE",
+  "federation_treaty_id": "env-treaty-9a2c-47b1",
+  "coexistence_steady_state": true,
+  "protocol_transport": "DISTRIBUTED_COHERENCE_PROTOCOL",
+  "reconciliation_cadence_seconds": 300,
+  "heartbeat_interval_seconds": 30,
+  "bridge_attestation_manifest": {
+    "environment_a_root": "PUB_KEY_ATTEST_ENV_A_ML_DSA_87",
+    "environment_b_root": "PUB_KEY_ATTEST_ENV_B_ML_DSA_87",
+    "rule_assertion": "Attestation keys MUST be distinct from operational signing keys."
+  },
+  "authorized_operations_allowlist": [
+    "SHARED_MEMORY_ACCESS",
+    "WORKLOAD_DELEGATION",
+    "CROSS_ENVIRONMENT_WORKLOAD_OFFLOAD"
+  ],
+  "identity_bridge_policy": {
+    "provenance_preservation": "VERBATIM_NAMESPACING",
+    "canonical_format": "originating_framework::local_agent_id",
+    "example_routing_string": "framework_B::agent_47"
+  },
+  "partition_fault_strategy": {
+    "missed_heartbeats_threshold": 3,
+    "on_partition_outbound": "QUEUE_CHRONOLOGICALLY",
+    "on_partition_inbound": "REJECT_UNCONDITIONALLY",
+    "on_reconnection": "REVALIDATE_AGAINST_CURRENT_AUTHORITY_THEN_ORDERED_RELEASE",
+    "on_reconnection_note": "Queued traffic is REVALIDATED against the authority and policy in force at reconnection before it is released in original order — it is not replayed on pre-partition standing; anything that no longer clears is rejected. An immediate full reconciliation runs on heal rather than waiting for the next scheduled tick."
+  },
+  "required_signatures": {
+    "environment_a_sovereign_signature": "SIG_SOV_A",
+    "environment_b_sovereign_signature": "SIG_SOV_B",
+    "principal_human_cosign": "SIG_HUMAN_PRINCIPAL_REQUIRED_FOR_OFFLOAD"
+  }
+}

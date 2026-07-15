@@ -1,0 +1,45 @@
+specification: XSI-AIMS-v2.1.2
+operation_profile: WORKLOAD_OFFLOAD_MIGRATION
+transaction_mode: STRICT_ATOMIC_ABORT_CAPABLE
+# Atomicity note: an abort restores the framework's INTERNAL state exactly.
+# External side effects a phase already emitted (e.g. an external identity
+# rotation, an outbound call that reached a foreign system) cannot be un-sent;
+# those are reconciled by compensation and a witnessed record of what was
+# emitted, not rewound. The all-or-nothing guarantee covers what the framework
+# controls; what already crossed the boundary is reconciled.
+phases:
+  01_AUTHORIZATION:
+    initiator: HUMAN_PRINCIPAL
+    verification: SOVEREIGN_DECREE_RECORD
+    abort_target: SOURCE_INTERNAL_STATE_UNTOUCHED
+  02_ENVELOPE_ESTABLISHMENT:
+    initiator: BRIDGE_COMPONENT
+    mechanism: MUTUAL_BRIDGE_ATTESTATION
+    abort_target: DESTINATION_STATE_PURGED
+  03_DRAIN:
+    initiator: SUSTAINER
+    action: QUIESCE_IN_FLIGHT_TASKS_OR_SNAPSHOT
+    baseline_sla: PT300S
+  04_SEAL:
+    initiator: RELAY
+    dependencies: [CLASS_2_HISTORY, CLASS_3_LIVE_STATE]
+    output_protection: CRYPTOGRAPHIC_INTEGRITY_HASH
+  05_TRANSFER:
+    channel: FEDERATION_ENVELOPE_CHANNEL
+    exclusion: CATEGORICAL_CLASS_1_MATERIAL_FORBIDDEN
+  06_INSTANTIATE_DESTINATION:
+    action: STAND_UP_FRESH_OPERATIONAL_CORE
+    keys: FRESH_VALIDATOR_AND_MONITOR_KEYS_GENERATED
+  07_FRESH_CONFIG_IMPORT:
+    action: TRANSLATE_CONFIGURATION_INTENT
+    user_review: REQUIRED_ON_VERSION_MEANING_SHIFT
+  08_EXTERNAL_IDENTITY_ROTATION:
+    target: [API_TOKENS, CERTIFICATES, WEBHOOK_REGISTRATIONS]
+    mechanism: RE_KEY_UNDER_DESTINATION_CREDENTIALS
+    external_effect_note: PAST_THIS_POINT_EFFECTS_ARE_COMPENSATED_NOT_REWOUND
+  09_VERIFICATION:
+    mechanism: CONFORMANCE_SELF_CHECK_RUN
+    sign_off: PRINCIPAL_CONFIRMATION_REQUIRED
+  10_SOURCE_DECOMMISSION:
+    action: DESTROY_ORIGINAL_OPERATIONAL_CORE_PERMANENTLY
+    retention: WITNESS_CHAIN_ARCHIVE_EXPORTED

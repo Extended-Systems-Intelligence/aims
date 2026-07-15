@@ -1,0 +1,43 @@
+{
+  "specification_version": "XSI-AIMS-v2.1.2",
+  "archetype_gatekeeper": "ENFORCER",
+  "note": "Every boundary crossing is independently cross-checked by the Enforcer. The judgment tiers (4-5) run at elevated cadence in regulated subverticals by design and at a sampled cadence in standard deployments; the deterministic tiers (1-3) run on every crossing. Illustrative; the specification is the contract.",
+  "validation_ladder": {
+    "tier_1": {
+      "name": "SCHEMA_AND_SIGNATURE_VALIDITY",
+      "type": "DETERMINISTIC",
+      "enforcement_cadence": "EVERY_CROSSING",
+      "action_on_fail": "ABORT_AND_QUARANTINE"
+    },
+    "tier_2": {
+      "name": "POLICY_RESOLUTION_CORRECTNESS",
+      "type": "DETERMINISTIC",
+      "enforcement_cadence": "EVERY_CROSSING",
+      "action_on_fail": "FORCE_DOWNGRADE"
+    },
+    "tier_3": {
+      "name": "SIGNAL_TO_DECISION_COHERENCE",
+      "type": "DETERMINISTIC",
+      "enforcement_cadence": "EVERY_CROSSING",
+      "action_on_fail": "ESCALATE_TO_SOVEREIGN"
+    },
+    "tier_4": {
+      "name": "SIGNAL_PLAUSIBILITY_JUDGMENT",
+      "type": "INFERENCE_HYBRID",
+      "context_overrides": {
+        "REGULATED_CONTEXT": "EVERY_CROSSING",
+        "STANDARD_CONTEXT": "SAMPLE_CADENCE_10_PERCENT"
+      },
+      "action_on_fail": "ESCALATE_TO_SOVEREIGN"
+    },
+    "tier_5": {
+      "name": "ADVERSARIAL_PROBE_FINGERPRINTING",
+      "type": "INFERENCE_JUDGMENT",
+      "context_overrides": {
+        "REGULATED_CONTEXT": "SAMPLE_CADENCE_25_PERCENT",
+        "STANDARD_CONTEXT": "SAMPLE_CADENCE_5_PERCENT"
+      },
+      "action_on_fail": "ABORT_AND_ROLLBACK"
+    }
+  }
+}
